@@ -1,0 +1,1497 @@
+[
+	{
+ 	"id" : 0,
+	 "name" : "Lucid Air Dream Edition R", 
+	 "distance" : 	685
+	},
+	{
+ 	"id" : 1,
+	 "name" : "Lucid Air Grand Touring", 
+	 "distance" : 	665
+	},
+	{
+ 	"id" : 2,
+	 "name" : "Lucid Air Dream Edition P", 
+	 "distance" : 	645
+	},
+	{
+ 	"id" : 3,
+	 "name" : "Mercedes EQS 450+", 
+	 "distance" : 	640
+	},
+	{
+ 	"id" : 4,
+	 "name" : "Mercedes EQS 450 4MATIC", 
+	 "distance" : 	615
+	},
+	{
+ 	"id" : 5,
+	 "name" : "Mercedes EQS 500 4MATIC", 
+	 "distance" : 	605
+	},
+	{
+ 	"id" : 6,
+	 "name" : "Mercedes EQS 580 4MATIC", 
+	 "distance" : 	605
+	},
+	{
+ 	"id" : 7,
+	 "name" : "Tesla Model S Dual Motor", 
+	 "distance" : 	570
+	},
+	{
+ 	"id" : 8,
+	 "name" : "Mercedes EQS AMG 53 4MATIC+", 
+	 "distance" : 	565
+	},
+	{
+ 	"id" : 9,
+	 "name" : "Lucid Air Pure", 
+	 "distance" : 	560
+	},
+	{
+ 	"id" : 10,
+	 "name" : "Lucid Air Touring", 
+	 "distance" : 	550
+	},
+	{
+ 	"id" : 11,
+	 "name" : "Tesla Model S Plaid", 
+	 "distance" : 	550
+	},
+	{
+ 	"id" : 12,
+	 "name" : "Mercedes EQE 350+", 
+	 "distance" : 	525
+	},
+	{
+ 	"id" : 13,
+	 "name" : "Audi Q8 e-tron Sportback 55 quattro", 
+	 "distance" : 	525
+	},
+	{
+ 	"id" : 14,
+	 "name" : "VinFast VF 9 Extended Range", 
+	 "distance" : 	520
+	},
+	{
+ 	"id" : 15,
+	 "name" : "Lotus Eletre", 
+	 "distance" : 	520
+	},
+	{
+ 	"id" : 16,
+	 "name" : "Mercedes EQE 300", 
+	 "distance" : 	515
+	},
+	{
+ 	"id" : 17,
+	 "name" : "Mercedes EQE 350", 
+	 "distance" : 	515
+	},
+	{
+ 	"id" : 18,
+	 "name" : "BMW i7 xDrive60", 
+	 "distance" : 	510
+	},
+	{
+ 	"id" : 19,
+	 "name" : "Fisker Ocean Extreme", 
+	 "distance" : 	510
+	},
+	{
+ 	"id" : 20,
+	 "name" : "Fisker Ocean One", 
+	 "distance" : 	510
+	},
+	{
+ 	"id" : 21,
+	 "name" : "Fisker Ocean Ultra", 
+	 "distance" : 	505
+	},
+	{
+ 	"id" : 22,
+	 "name" : "BMW iX xDrive50", 
+	 "distance" : 	505
+	},
+	{
+ 	"id" : 23,
+	 "name" : "NIO ET7 100 kWh", 
+	 "distance" : 	505
+	},
+	{
+ 	"id" : 24,
+	 "name" : "XPENG P7 RWD Long Range", 
+	 "distance" : 	500
+	},
+	{
+ 	"id" : 25,
+	 "name" : "Mercedes EQE 350 4MATIC", 
+	 "distance" : 	500
+	},
+	{
+ 	"id" : 26,
+	 "name" : "Mercedes EQE 500 4MATIC", 
+	 "distance" : 	500
+	},
+	{
+ 	"id" : 27,
+	 "name" : "Mercedes EQS SUV 450+", 
+	 "distance" : 	495
+	},
+	{
+ 	"id" : 28,
+	 "name" : "Audi Q8 e-tron 55 quattro", 
+	 "distance" : 	495
+	},
+	{
+ 	"id" : 29,
+	 "name" : "NIO ET5 100 kWh", 
+	 "distance" : 	495
+	},
+	{
+ 	"id" : 30,
+	 "name" : "Polestar 3 Long Range Dual motor", 
+	 "distance" : 	490
+	},
+	{
+ 	"id" : 31,
+	 "name" : "Mercedes EQS SUV 500 4MATIC", 
+	 "distance" : 	485
+	},
+	{
+ 	"id" : 32,
+	 "name" : "BMW iX M60", 
+	 "distance" : 	485
+	},
+	{
+ 	"id" : 33,
+	 "name" : "Tesla Model 3 Long Range Dual Motor", 
+	 "distance" : 	485
+	},
+	{
+ 	"id" : 34,
+	 "name" : "Mercedes EQE AMG 43 4MATIC", 
+	 "distance" : 	485
+	},
+	{
+ 	"id" : 35,
+	 "name" : "Mercedes EQS SUV 450 4MATIC", 
+	 "distance" : 	485
+	},
+	{
+ 	"id" : 36,
+	 "name" : "Mercedes EQS SUV 580 4MATIC", 
+	 "distance" : 	485
+	},
+	{
+ 	"id" : 37,
+	 "name" : "Mercedes EQE AMG 53 4MATIC+", 
+	 "distance" : 	480
+	},
+	{
+ 	"id" : 38,
+	 "name" : "Porsche Taycan Plus", 
+	 "distance" : 	475
+	},
+	{
+ 	"id" : 39,
+	 "name" : "Hyundai IONIQ 6 Long Range 2WD", 
+	 "distance" : 	475
+	},
+	{
+ 	"id" : 40,
+	 "name" : "XPENG P7 AWD Performance", 
+	 "distance" : 	470
+	},
+	{
+ 	"id" : 41,
+	 "name" : "XPENG G9 RWD Long Range", 
+	 "distance" : 	470
+	},
+	{
+ 	"id" : 42,
+	 "name" : "Tesla Model X Dual Motor", 
+	 "distance" : 	470
+	},
+	{
+ 	"id" : 43,
+	 "name" : "Polestar 3 Long Range Performance", 
+	 "distance" : 	470
+	},
+	{
+ 	"id" : 44,
+	 "name" : "Mercedes EQE SUV 350+", 
+	 "distance" : 	470
+	},
+	{
+ 	"id" : 45,
+	 "name" : "BMW i4 eDrive40", 
+	 "distance" : 	470
+	},
+	{
+ 	"id" : 46,
+	 "name" : "Audi SQ8 e-tron Sportback", 
+	 "distance" : 	470
+	},
+	{
+ 	"id" : 47,
+	 "name" : "XPENG P7 Wing Edition", 
+	 "distance" : 	465
+	},
+	{
+ 	"id" : 48,
+	 "name" : "BYD HAN", 
+	 "distance" : 	465
+	},
+	{
+ 	"id" : 49,
+	 "name" : "Tesla Model 3 Performance", 
+	 "distance" : 	460
+	},
+	{
+ 	"id" : 50,
+	 "name" : "Porsche Taycan 4S Plus", 
+	 "distance" : 	460
+	},
+	{
+ 	"id" : 51,
+	 "name" : "Tesla Model X Plaid", 
+	 "distance" : 	455
+	},
+	{
+ 	"id" : 52,
+	 "name" : "Ford Mustang Mach-E ER RWD", 
+	 "distance" : 	455
+	},
+	{
+ 	"id" : 53,
+	 "name" : "Mercedes EQE SUV 350 4MATIC", 
+	 "distance" : 	455
+	},
+	{
+ 	"id" : 54,
+	 "name" : "Mercedes EQE SUV 500 4MATIC", 
+	 "distance" : 	455
+	},
+	{
+ 	"id" : 55,
+	 "name" : "Rolls-Royce Spectre", 
+	 "distance" : 	455
+	},
+	{
+ 	"id" : 56,
+	 "name" : "Volvo EX90 Twin Motor", 
+	 "distance" : 	455
+	},
+	{
+ 	"id" : 57,
+	 "name" : "Porsche Taycan GTS", 
+	 "distance" : 	450
+	},
+	{
+ 	"id" : 58,
+	 "name" : "Lotus Eletre R", 
+	 "distance" : 	450
+	},
+	{
+ 	"id" : 59,
+	 "name" : "CUPRA Born 170 kW - 77 kWh", 
+	 "distance" : 	450
+	},
+	{
+ 	"id" : 60,
+	 "name" : "Volkswagen ID.3 Pro S - 4 Seats", 
+	 "distance" : 	450
+	},
+	{
+ 	"id" : 61,
+	 "name" : "Nissan Ariya 87kWh", 
+	 "distance" : 	445
+	},
+	{
+ 	"id" : 62,
+	 "name" : "Porsche Taycan Plus Sport Turismo", 
+	 "distance" : 	445
+	},
+	{
+ 	"id" : 63,
+	 "name" : "Skoda Enyaq Coupe iV 80", 
+	 "distance" : 	445
+	},
+	{
+ 	"id" : 64,
+	 "name" : "Audi SQ8 e-tron", 
+	 "distance" : 	445
+	},
+	{
+ 	"id" : 65,
+	 "name" : "Polestar 2 Long Range Single Motor", 
+	 "distance" : 	440
+	},
+	{
+ 	"id" : 66,
+	 "name" : "XPENG G9 AWD Long Range", 
+	 "distance" : 	440
+	},
+	{
+ 	"id" : 67,
+	 "name" : "Genesis G80 Electrified Luxury", 
+	 "distance" : 	440
+	},
+	{
+ 	"id" : 68,
+	 "name" : "Hyundai IONIQ 6 Long Range AWD", 
+	 "distance" : 	440
+	},
+	{
+ 	"id" : 69,
+	 "name" : "Ford Mustang Mach-E ER AWD", 
+	 "distance" : 	440
+	},
+	{
+ 	"id" : 70,
+	 "name" : "Audi Q8 e-tron Sportback 50 quattro", 
+	 "distance" : 	440
+	},
+	{
+ 	"id" : 71,
+	 "name" : "Volvo EX90 Twin Motor Performance", 
+	 "distance" : 	440
+	},
+	{
+ 	"id" : 72,
+	 "name" : "Tesla Model Y Long Range Dual Motor", 
+	 "distance" : 	435
+	},
+	{
+ 	"id" : 73,
+	 "name" : "Mercedes EQE SUV AMG 43 4MATIC", 
+	 "distance" : 	435
+	},
+	{
+ 	"id" : 74,
+	 "name" : "BMW i4 M50", 
+	 "distance" : 	435
+	},
+	{
+ 	"id" : 75,
+	 "name" : "Volkswagen ID.5 Pro", 
+	 "distance" : 	430
+	},
+	{
+ 	"id" : 76,
+	 "name" : "Volkswagen ID.5 Pro Performance", 
+	 "distance" : 	430
+	},
+	{
+ 	"id" : 77,
+	 "name" : "Porsche Taycan 4S Plus Sport Turismo", 
+	 "distance" : 	430
+	},
+	{
+ 	"id" : 78,
+	 "name" : "Skoda Enyaq Coupe iV 80x", 
+	 "distance" : 	430
+	},
+	{
+ 	"id" : 79,
+	 "name" : "NIO EL7 100 kWh", 
+	 "distance" : 	430
+	},
+	{
+ 	"id" : 80,
+	 "name" : "Maserati GranTurismo Folgore", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 81,
+	 "name" : "VinFast VF 8 Eco Extended Range", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 82,
+	 "name" : "VinFast VF 8 Plus Extended Range", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 83,
+	 "name" : "Porsche Taycan GTS Sport Turismo", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 84,
+	 "name" : "Porsche Taycan 4S Cross Turismo", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 85,
+	 "name" : "Porsche Taycan 4 Cross Turismo", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 86,
+	 "name" : "Ford Mustang Mach-E GT", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 87,
+	 "name" : "Mercedes EQE SUV AMG 53 4MATIC+", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 88,
+	 "name" : "Audi Q4 Sportback e-tron 40", 
+	 "distance" : 	425
+	},
+	{
+ 	"id" : 89,
+	 "name" : "Skoda Enyaq iV 80", 
+	 "distance" : 	420
+	},
+	{
+ 	"id" : 90,
+	 "name" : "Volvo C40 Recharge Single Motor ER", 
+	 "distance" : 	420
+	},
+	{
+ 	"id" : 91,
+	 "name" : "Nissan Ariya e-4ORCE 87kWh", 
+	 "distance" : 	420
+	},
+	{
+ 	"id" : 92,
+	 "name" : "Polestar 2 Long Range Dual Motor", 
+	 "distance" : 	420
+	},
+	{
+ 	"id" : 93,
+	 "name" : "Audi e-tron GT quattro", 
+	 "distance" : 	420
+	},
+	{
+ 	"id" : 94,
+	 "name" : "Tesla Model Y Performance", 
+	 "distance" : 	415
+	},
+	{
+ 	"id" : 95,
+	 "name" : "Porsche Taycan Turbo", 
+	 "distance" : 	415
+	},
+	{
+ 	"id" : 96,
+	 "name" : "Audi Q8 e-tron 50 quattro", 
+	 "distance" : 	415
+	},
+	{
+ 	"id" : 97,
+	 "name" : "Polestar 2 Long Range Performance", 
+	 "distance" : 	410
+	},
+	{
+ 	"id" : 98,
+	 "name" : "Volkswagen ID.4 Pro Performance", 
+	 "distance" : 	410
+	},
+	{
+ 	"id" : 99,
+	 "name" : "Volkswagen ID.4 Pro", 
+	 "distance" : 	410
+	},
+	{
+ 	"id" : 100,
+	 "name" : "Porsche Taycan", 
+	 "distance" : 	410
+	},
+	{
+ 	"id" : 101,
+	 "name" : "Kia EV6 Long Range 2WD", 
+	 "distance" : 	410
+	},
+	{
+ 	"id" : 102,
+	 "name" : "Volvo XC40 Recharge Single Motor ER", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 103,
+	 "name" : "VinFast VF 8 Eco Standard Range", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 104,
+	 "name" : "Volkswagen ID.5 GTX", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 105,
+	 "name" : "Porsche Taycan Turbo Sport Turismo", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 106,
+	 "name" : "Skoda Enyaq Coupe iV RS", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 107,
+	 "name" : "Audi e-tron GT RS", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 108,
+	 "name" : "Volkswagen ID.4 Pro 4MOTION", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 109,
+	 "name" : "Audi Q4 e-tron 40", 
+	 "distance" : 	405
+	},
+	{
+ 	"id" : 110,
+	 "name" : "Skoda Enyaq iV 80x", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 111,
+	 "name" : "Volvo C40 Recharge Twin Motor", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 112,
+	 "name" : "VinFast VF 8 Plus Standard Range", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 113,
+	 "name" : "VinFast VF 9 Standard Range", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 114,
+	 "name" : "Volkswagen ID.4 GTX", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 115,
+	 "name" : "Hyundai Kona Electric 65 kWh", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 116,
+	 "name" : "Porsche Taycan Turbo S", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 117,
+	 "name" : "Porsche Taycan Turbo Cross Turismo", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 118,
+	 "name" : "Audi Q4 Sportback e-tron 45 quattro", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 119,
+	 "name" : "Kia EV6 Long Range AWD", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 120,
+	 "name" : "Audi Q4 Sportback e-tron 50 quattro", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 121,
+	 "name" : "NIO ET7 75 kWh", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 122,
+	 "name" : "BMW i4 eDrive35", 
+	 "distance" : 	400
+	},
+	{
+ 	"id" : 123,
+	 "name" : "Porsche Taycan Turbo S Sport Turismo", 
+	 "distance" : 	395
+	},
+	{
+ 	"id" : 124,
+	 "name" : "Hyundai Kona Electric 64 kWh", 
+	 "distance" : 	395
+	},
+	{
+ 	"id" : 125,
+	 "name" : "Porsche Taycan 4S", 
+	 "distance" : 	395
+	},
+	{
+ 	"id" : 126,
+	 "name" : "NIO ET5 75 kWh", 
+	 "distance" : 	395
+	},
+	{
+ 	"id" : 127,
+	 "name" : "Skoda Enyaq iV RS", 
+	 "distance" : 	390
+	},
+	{
+ 	"id" : 128,
+	 "name" : "Volvo XC40 Recharge Twin Motor", 
+	 "distance" : 	390
+	},
+	{
+ 	"id" : 129,
+	 "name" : "Genesis GV60 Premium", 
+	 "distance" : 	390
+	},
+	{
+ 	"id" : 130,
+	 "name" : "Hyundai IONIQ 5 Long Range 2WD", 
+	 "distance" : 	390
+	},
+	{
+ 	"id" : 131,
+	 "name" : "Polestar 2 Standard Range Single Motor", 
+	 "distance" : 	385
+	},
+	{
+ 	"id" : 132,
+	 "name" : "Hyundai IONIQ 5 Long Range AWD", 
+	 "distance" : 	385
+	},
+	{
+ 	"id" : 133,
+	 "name" : "Porsche Taycan Turbo S Cross Turismo", 
+	 "distance" : 	385
+	},
+	{
+ 	"id" : 134,
+	 "name" : "Audi Q4 e-tron 50 quattro", 
+	 "distance" : 	385
+	},
+	{
+ 	"id" : 135,
+	 "name" : "Audi Q4 e-tron 45 quattro", 
+	 "distance" : 	385
+	},
+	{
+ 	"id" : 136,
+	 "name" : "BMW iX3", 
+	 "distance" : 	385
+	},
+	{
+ 	"id" : 137,
+	 "name" : "Tesla Model 3", 
+	 "distance" : 	380
+	},
+	{
+ 	"id" : 138,
+	 "name" : "Jaguar I-Pace EV400", 
+	 "distance" : 	380
+	},
+	{
+ 	"id" : 139,
+	 "name" : "Porsche Taycan Sport Turismo", 
+	 "distance" : 	380
+	},
+	{
+ 	"id" : 140,
+	 "name" : "Genesis GV60 Sport", 
+	 "distance" : 	380
+	},
+	{
+ 	"id" : 141,
+	 "name" : "Kia Niro EV", 
+	 "distance" : 	380
+	},
+	{
+ 	"id" : 142,
+	 "name" : "Fisker Ocean Sport", 
+	 "distance" : 	380
+	},
+	{
+ 	"id" : 143,
+	 "name" : "XPENG G9 RWD Standard Range", 
+	 "distance" : 	375
+	},
+	{
+ 	"id" : 144,
+	 "name" : "Mercedes EQA 250+", 
+	 "distance" : 	375
+	},
+	{
+ 	"id" : 145,
+	 "name" : "Mercedes EQC 400 4MATIC", 
+	 "distance" : 	370
+	},
+	{
+ 	"id" : 146,
+	 "name" : "Porsche Taycan 4S Sport Turismo", 
+	 "distance" : 	370
+	},
+	{
+ 	"id" : 147,
+	 "name" : "Kia EV6 GT", 
+	 "distance" : 	370
+	},
+	{
+ 	"id" : 148,
+	 "name" : "Kia e-Soul 64 kWh", 
+	 "distance" : 	370
+	},
+	{
+ 	"id" : 149,
+	 "name" : "MG ZS EV Long Range", 
+	 "distance" : 	365
+	},
+	{
+ 	"id" : 150,
+	 "name" : "Renault Megane E-Tech EV60 130hp", 
+	 "distance" : 	365
+	},
+	{
+ 	"id" : 151,
+	 "name" : "Genesis GV60 Sport Plus", 
+	 "distance" : 	365
+	},
+	{
+ 	"id" : 152,
+	 "name" : "MG MG4 Electric 64 kWh", 
+	 "distance" : 	365
+	},
+	{
+ 	"id" : 153,
+	 "name" : "Mercedes EQB 250+", 
+	 "distance" : 	365
+	},
+	{
+ 	"id" : 154,
+	 "name" : "Hyundai IONIQ 6 Standard Range 2WD", 
+	 "distance" : 	360
+	},
+	{
+ 	"id" : 155,
+	 "name" : "BMW iX xDrive40", 
+	 "distance" : 	360
+	},
+	{
+ 	"id" : 156,
+	 "name" : "Renault Megane E-Tech EV60 220hp", 
+	 "distance" : 	360
+	},
+	{
+ 	"id" : 157,
+	 "name" : "Volvo C40 Recharge Single Motor", 
+	 "distance" : 	355
+	},
+	{
+ 	"id" : 158,
+	 "name" : "Mercedes EQA 250", 
+	 "distance" : 	355
+	},
+	{
+ 	"id" : 159,
+	 "name" : "BMW iX1 xDrive30", 
+	 "distance" : 	355
+	},
+	{
+ 	"id" : 160,
+	 "name" : "Hongqi E-HS9 99 kWh", 
+	 "distance" : 	355
+	},
+	{
+ 	"id" : 161,
+	 "name" : "Ford Mustang Mach-E SR RWD", 
+	 "distance" : 	355
+	},
+	{
+ 	"id" : 162,
+	 "name" : "Smart #1", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 163,
+	 "name" : "Genesis GV70 Electrified Sport", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 164,
+	 "name" : "Mercedes EQA 300 4MATIC", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 165,
+	 "name" : "Mercedes EQA 350 4MATIC", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 166,
+	 "name" : "Aiways U6", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 167,
+	 "name" : "CUPRA Born 150 kW - 58 kWh", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 168,
+	 "name" : "BYD TANG", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 169,
+	 "name" : "Volkswagen ID.3 Pro Performance", 
+	 "distance" : 	350
+	},
+	{
+ 	"id" : 170,
+	 "name" : "Volvo XC40 Recharge Single Motor", 
+	 "distance" : 	345
+	},
+	{
+ 	"id" : 171,
+	 "name" : "Mercedes EQB 250", 
+	 "distance" : 	345
+	},
+	{
+ 	"id" : 172,
+	 "name" : "Tesla Model Y", 
+	 "distance" : 	345
+	},
+	{
+ 	"id" : 173,
+	 "name" : "Ford Mustang Mach-E SR AWD", 
+	 "distance" : 	345
+	},
+	{
+ 	"id" : 174,
+	 "name" : "CUPRA Born 170 kW - 58 kWh", 
+	 "distance" : 	345
+	},
+	{
+ 	"id" : 175,
+	 "name" : "ORA Funky Cat 63 kWh", 
+	 "distance" : 	340
+	},
+	{
+ 	"id" : 176,
+	 "name" : "Nissan Leaf e+", 
+	 "distance" : 	340
+	},
+	{
+ 	"id" : 177,
+	 "name" : "NIO EL7 75 kWh", 
+	 "distance" : 	340
+	},
+	{
+ 	"id" : 178,
+	 "name" : "Mercedes EQB 300 4MATIC", 
+	 "distance" : 	335
+	},
+	{
+ 	"id" : 179,
+	 "name" : "Toyota bZ4X FWD", 
+	 "distance" : 	335
+	},
+	{
+ 	"id" : 180,
+	 "name" : "Skoda Enyaq Coupe iV 60", 
+	 "distance" : 	335
+	},
+	{
+ 	"id" : 181,
+	 "name" : "MG MG5 Electric Long Range", 
+	 "distance" : 	335
+	},
+	{
+ 	"id" : 182,
+	 "name" : "Smart #1 Brabus", 
+	 "distance" : 	335
+	},
+	{
+ 	"id" : 183,
+	 "name" : "Mercedes EQB 350 4MATIC", 
+	 "distance" : 	335
+	},
+	{
+ 	"id" : 184,
+	 "name" : "MG Marvel R", 
+	 "distance" : 	335
+	},
+	{
+ 	"id" : 185,
+	 "name" : "ORA Funky Cat GT", 
+	 "distance" : 	330
+	},
+	{
+ 	"id" : 186,
+	 "name" : "Toyota bZ4X AWD", 
+	 "distance" : 	330
+	},
+	{
+ 	"id" : 187,
+	 "name" : "Volkswagen ID. Buzz Pro", 
+	 "distance" : 	330
+	},
+	{
+ 	"id" : 188,
+	 "name" : "MG Marvel R Performance", 
+	 "distance" : 	330
+	},
+	{
+ 	"id" : 189,
+	 "name" : "Skoda Enyaq iV 60", 
+	 "distance" : 	325
+	},
+	{
+ 	"id" : 190,
+	 "name" : "Nissan Ariya 63kWh", 
+	 "distance" : 	320
+	},
+	{
+ 	"id" : 191,
+	 "name" : "Subaru Solterra AWD", 
+	 "distance" : 	320
+	},
+	{
+ 	"id" : 192,
+	 "name" : "BYD ATTO 3", 
+	 "distance" : 	320
+	},
+	{
+ 	"id" : 193,
+	 "name" : "Renault Zoe ZE50 R110", 
+	 "distance" : 	315
+	},
+	{
+ 	"id" : 194,
+	 "name" : "Aiways U5", 
+	 "distance" : 	315
+	},
+	{
+ 	"id" : 195,
+	 "name" : "Opel Astra Electric", 
+	 "distance" : 	310
+	},
+	{
+ 	"id" : 196,
+	 "name" : "Mercedes eVito Tourer Long 90 kWh", 
+	 "distance" : 	310
+	},
+	{
+ 	"id" : 197,
+	 "name" : "Lexus RZ 450e", 
+	 "distance" : 	310
+	},
+	{
+ 	"id" : 198,
+	 "name" : "Renault Zoe ZE50 R135", 
+	 "distance" : 	310
+	},
+	{
+ 	"id" : 199,
+	 "name" : "Peugeot e-308", 
+	 "distance" : 	310
+	},
+	{
+ 	"id" : 200,
+	 "name" : "Mercedes EQV 300 Extra-Long", 
+	 "distance" : 	305
+	},
+	{
+ 	"id" : 201,
+	 "name" : "Mercedes eVito Tourer Extra-Long 90 kWh", 
+	 "distance" : 	305
+	},
+	{
+ 	"id" : 202,
+	 "name" : "Kia EV6 Standard Range 2WD", 
+	 "distance" : 	305
+	},
+	{
+ 	"id" : 203,
+	 "name" : "Hongqi E-HS9 84 kWh", 
+	 "distance" : 	305
+	},
+	{
+ 	"id" : 204,
+	 "name" : "Mercedes EQV 300 Long", 
+	 "distance" : 	305
+	},
+	{
+ 	"id" : 205,
+	 "name" : "Opel Astra Sports Tourer Electric", 
+	 "distance" : 	300
+	},
+	{
+ 	"id" : 206,
+	 "name" : "Jeep Avenger Electric", 
+	 "distance" : 	300
+	},
+	{
+ 	"id" : 207,
+	 "name" : "Hyundai Kona Electric 48 kWh", 
+	 "distance" : 	300
+	},
+	{
+ 	"id" : 208,
+	 "name" : "MG MG4 Electric 51 kWh", 
+	 "distance" : 	300
+	},
+	{
+ 	"id" : 209,
+	 "name" : "Peugeot e-308 SW", 
+	 "distance" : 	300
+	},
+	{
+ 	"id" : 210,
+	 "name" : "DS 3 E-Tense", 
+	 "distance" : 	300
+	},
+	{
+ 	"id" : 211,
+	 "name" : "Jeep Avenger Electric 1st Edition", 
+	 "distance" : 	295
+	},
+	{
+ 	"id" : 212,
+	 "name" : "Audi Q4 Sportback e-tron 35", 
+	 "distance" : 	295
+	},
+	{
+ 	"id" : 213,
+	 "name" : "Hyundai IONIQ 5 Standard Range 2WD", 
+	 "distance" : 	295
+	},
+	{
+ 	"id" : 214,
+	 "name" : "SsangYong Korando e-Motion", 
+	 "distance" : 	290
+	},
+	{
+ 	"id" : 215,
+	 "name" : "Peugeot e-208", 
+	 "distance" : 	285
+	},
+	{
+ 	"id" : 216,
+	 "name" : "Opel Corsa-e", 
+	 "distance" : 	285
+	},
+	{
+ 	"id" : 217,
+	 "name" : "Volkswagen ID.4 Pure Performance", 
+	 "distance" : 	285
+	},
+	{
+ 	"id" : 218,
+	 "name" : "Audi Q4 e-tron 35", 
+	 "distance" : 	285
+	},
+	{
+ 	"id" : 219,
+	 "name" : "Volkswagen ID.4 Pure", 
+	 "distance" : 	285
+	},
+	{
+ 	"id" : 220,
+	 "name" : "CUPRA Born 110 kW - 45 kWh", 
+	 "distance" : 	275
+	},
+	{
+ 	"id" : 221,
+	 "name" : "MG ZS EV Standard Range", 
+	 "distance" : 	270
+	},
+	{
+ 	"id" : 222,
+	 "name" : "Citroen e-C4", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 223,
+	 "name" : "Citroen e-Jumpy Combi M 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 224,
+	 "name" : "Citroen e-SpaceTourer M 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 225,
+	 "name" : "Opel Vivaro-e Combi M 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 226,
+	 "name" : "Opel Zafira-e Life M 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 227,
+	 "name" : "Peugeot e-Expert Combi Standard 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 228,
+	 "name" : "Peugeot e-Traveller Standard 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 229,
+	 "name" : "MG MG5 Electric Standard Range", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 230,
+	 "name" : "Citroen e-C4 X", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 231,
+	 "name" : "Fiat E-Ulysse L2 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 232,
+	 "name" : "Toyota PROACE Verso M 75 kWh", 
+	 "distance" : 	265
+	},
+	{
+ 	"id" : 233,
+	 "name" : "Seres 3", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 234,
+	 "name" : "Citroen e-Jumpy Combi XL 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 235,
+	 "name" : "Citroen e-SpaceTourer XL 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 236,
+	 "name" : "Opel Vivaro-e Combi L 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 237,
+	 "name" : "Opel Zafira-e Life L 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 238,
+	 "name" : "Peugeot e-Expert Combi Long 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 239,
+	 "name" : "Peugeot e-Traveller Long 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 240,
+	 "name" : "Toyota PROACE Shuttle M 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 241,
+	 "name" : "Toyota PROACE Shuttle L 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 242,
+	 "name" : "Fiat E-Ulysse L3 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 243,
+	 "name" : "Toyota PROACE Verso L 75 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 244,
+	 "name" : "ORA Funky Cat 48 kWh", 
+	 "distance" : 	260
+	},
+	{
+ 	"id" : 245,
+	 "name" : "Peugeot e-2008 SUV", 
+	 "distance" : 	255
+	},
+	{
+ 	"id" : 246,
+	 "name" : "Opel Mokka-e", 
+	 "distance" : 	255
+	},
+	{
+ 	"id" : 247,
+	 "name" : "Renault Megane E-Tech EV40 130hp", 
+	 "distance" : 	250
+	},
+	{
+ 	"id" : 248,
+	 "name" : "Hyundai Kona Electric 39 kWh", 
+	 "distance" : 	250
+	},
+	{
+ 	"id" : 249,
+	 "name" : "Fiat 500e Hatchback 42 kWh", 
+	 "distance" : 	235
+	},
+	{
+ 	"id" : 250,
+	 "name" : "Fiat 500e 3+1 42 kWh", 
+	 "distance" : 	235
+	},
+	{
+ 	"id" : 251,
+	 "name" : "Nissan Leaf", 
+	 "distance" : 	235
+	},
+	{
+ 	"id" : 252,
+	 "name" : "Lexus UX 300e", 
+	 "distance" : 	235
+	},
+	{
+ 	"id" : 253,
+	 "name" : "Kia e-Soul 39.2 kWh", 
+	 "distance" : 	230
+	},
+	{
+ 	"id" : 254,
+	 "name" : "Fiat 500e Cabrio 42 kWh", 
+	 "distance" : 	230
+	},
+	{
+ 	"id" : 255,
+	 "name" : "JAC iEV7s", 
+	 "distance" : 	225
+	},
+	{
+ 	"id" : 256,
+	 "name" : "Abarth 500e Scorpionissima", 
+	 "distance" : 	225
+	},
+	{
+ 	"id" : 257,
+	 "name" : "Renault Kangoo E-Tech Electric", 
+	 "distance" : 	215
+	},
+	{
+ 	"id" : 258,
+	 "name" : "Mercedes eVito Tourer Long 60 kWh", 
+	 "distance" : 	210
+	},
+	{
+ 	"id" : 259,
+	 "name" : "Mercedes EQV 250 Long", 
+	 "distance" : 	205
+	},
+	{
+ 	"id" : 260,
+	 "name" : "Mercedes EQV 250 Extra-Long", 
+	 "distance" : 	205
+	},
+	{
+ 	"id" : 261,
+	 "name" : "Mercedes eVito Tourer Extra-Long 60 kWh", 
+	 "distance" : 	205
+	},
+	{
+ 	"id" : 262,
+	 "name" : "Volkswagen e-Up!", 
+	 "distance" : 	205
+	},
+	{
+ 	"id" : 263,
+	 "name" : "Toyota Proace City Verso Electric L1 50 kWh", 
+	 "distance" : 	205
+	},
+	{
+ 	"id" : 264,
+	 "name" : "Opel Combo-e Life 50 kWh", 
+	 "distance" : 	200
+	},
+	{
+ 	"id" : 265,
+	 "name" : "Citroen e-Berlingo M 50 kWh", 
+	 "distance" : 	200
+	},
+	{
+ 	"id" : 266,
+	 "name" : "Peugeot e-Rifter Standard 50 kWh", 
+	 "distance" : 	200
+	},
+	{
+ 	"id" : 267,
+	 "name" : "Toyota Proace City Verso Electric L2 50 kWh", 
+	 "distance" : 	200
+	},
+	{
+ 	"id" : 268,
+	 "name" : "Opel Combo-e Life XL 50 kWh", 
+	 "distance" : 	195
+	},
+	{
+ 	"id" : 269,
+	 "name" : "Citroen e-Berlingo XL 50 kWh", 
+	 "distance" : 	195
+	},
+	{
+ 	"id" : 270,
+	 "name" : "Peugeot e-Rifter Long 50 kWh", 
+	 "distance" : 	195
+	},
+	{
+ 	"id" : 271,
+	 "name" : "Citroen e-Jumpy Combi M 50 kWh", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 272,
+	 "name" : "Citroen e-SpaceTourer M 50 kWh", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 273,
+	 "name" : "Opel Vivaro-e Combi M 50 kWh", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 274,
+	 "name" : "Opel Zafira-e Life M 50 kWh", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 275,
+	 "name" : "Peugeot e-Expert Combi Standard 50 kWh", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 276,
+	 "name" : "Peugeot e-Traveller Standard 50 kWh", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 277,
+	 "name" : "Mini Cooper SE", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 278,
+	 "name" : "Fiat E-Ulysse L2 50 kWh", 
+	 "distance" : 	180
+	},
+	{
+ 	"id" : 279,
+	 "name" : "Citroen e-Jumpy Combi XL 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 280,
+	 "name" : "Citroen e-SpaceTourer XL 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 281,
+	 "name" : "Opel Vivaro-e Combi L 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 282,
+	 "name" : "Opel Zafira-e Life L 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 283,
+	 "name" : "Peugeot e-Expert Combi Long 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 284,
+	 "name" : "Peugeot e-Traveller Long 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 285,
+	 "name" : "Toyota PROACE Shuttle M 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 286,
+	 "name" : "Toyota PROACE Shuttle L 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 287,
+	 "name" : "Fiat E-Ulysse L3 50 kWh", 
+	 "distance" : 	175
+	},
+	{
+ 	"id" : 288,
+	 "name" : "Mini Cooper SE Convertible", 
+	 "distance" : 	170
+	},
+	{
+ 	"id" : 289,
+	 "name" : "Mazda MX-30", 
+	 "distance" : 	170
+	},
+	{
+ 	"id" : 290,
+	 "name" : "Honda e Advance", 
+	 "distance" : 	170
+	},
+	{
+ 	"id" : 291,
+	 "name" : "Dacia Spring Electric 45", 
+	 "distance" : 	165
+	},
+	{
+ 	"id" : 292,
+	 "name" : "Dacia Spring Electric 65 Extreme", 
+	 "distance" : 	160
+	},
+	{
+ 	"id" : 293,
+	 "name" : "Fiat 500e Hatchback 24 kWh", 
+	 "distance" : 	135
+	},
+	{
+ 	"id" : 294,
+	 "name" : "Fiat 500e 3+1 24 kWh", 
+	 "distance" : 	135
+	},
+	{
+ 	"id" : 295,
+	 "name" : "Fiat 500e Cabrio 24 kWh", 
+	 "distance" : 	135
+	},
+	{
+ 	"id" : 296,
+	 "name" : "Renault Twingo Electric", 
+	 "distance" : 	130
+	},
+	{
+ 	"id" : 297,
+	 "name" : "Smart EQ fortwo coupe", 
+	 "distance" : 	100
+	},
+	{
+ 	"id" : 298,
+	 "name" : "Smart EQ fortwo cabrio", 
+	 "distance" : 	95
+	}
+]

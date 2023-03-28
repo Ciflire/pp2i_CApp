@@ -1,0 +1,299 @@
+Lucid Air Dream Edition R	685Average
+Lucid Air Grand Touring	665Average
+Lucid Air Dream Edition P	645Average
+Mercedes EQS 450+	640Average
+Mercedes EQS 450 4MATIC	615Average
+Mercedes EQS 500 4MATIC	605Average
+Mercedes EQS 580 4MATIC	605Average
+Tesla Model S Dual Motor	570Average
+Mercedes EQS AMG 53 4MATIC+	565Average
+Lucid Air Pure	560Average
+Lucid Air Touring	550Average
+Tesla Model S Plaid	550Average
+Mercedes EQE 350+	525Average
+Audi Q8 e-tron Sportback 55 quattro	525Average
+VinFast VF 9 Extended Range	520Average
+Lotus Eletre	520Average
+Mercedes EQE 300	515Average
+Mercedes EQE 350	515Average
+BMW i7 xDrive60	510Average
+Fisker Ocean Extreme	510Average
+Fisker Ocean One	510Average
+Fisker Ocean Ultra	505Average
+BMW iX xDrive50	505Average
+NIO ET7 100 kWh	505Average
+XPENG P7 RWD Long Range	500Average
+Mercedes EQE 350 4MATIC	500Average
+Mercedes EQE 500 4MATIC	500Average
+Mercedes EQS SUV 450+	495Average
+Audi Q8 e-tron 55 quattro	495Average
+NIO ET5 100 kWh	495Average
+Polestar 3 Long Range Dual motor	490Average
+Mercedes EQS SUV 500 4MATIC	485Average
+BMW iX M60	485Average
+Tesla Model 3 Long Range Dual Motor	485Average
+Mercedes EQE AMG 43 4MATIC	485Average
+Mercedes EQS SUV 450 4MATIC	485Average
+Mercedes EQS SUV 580 4MATIC	485Average
+Mercedes EQE AMG 53 4MATIC+	480Average
+Porsche Taycan Plus	475Average
+Hyundai IONIQ 6 Long Range 2WD	475Average
+XPENG P7 AWD Performance	470Average
+XPENG G9 RWD Long Range	470Average
+Tesla Model X Dual Motor	470Average
+Polestar 3 Long Range Performance	470Average
+Mercedes EQE SUV 350+	470Average
+BMW i4 eDrive40	470Average
+Audi SQ8 e-tron Sportback	470Average
+XPENG P7 Wing Edition	465Average
+BYD HAN	465Average
+Tesla Model 3 Performance	460Average
+Porsche Taycan 4S Plus	460Average
+Tesla Model X Plaid	455Average
+Ford Mustang Mach-E ER RWD	455Average
+Mercedes EQE SUV 350 4MATIC	455Average
+Mercedes EQE SUV 500 4MATIC	455Average
+Rolls-Royce Spectre	455Average
+Volvo EX90 Twin Motor	455Average
+Porsche Taycan GTS	450Average
+Lotus Eletre R	450Average
+CUPRA Born 170 kW - 77 kWh	450Average
+Volkswagen ID.3 Pro S - 4 Seats	450Average
+Nissan Ariya 87kWh	445Average
+Porsche Taycan Plus Sport Turismo	445Average
+Skoda Enyaq Coupe iV 80	445Average
+Audi SQ8 e-tron	445Average
+Polestar 2 Long Range Single Motor	440Average
+XPENG G9 AWD Long Range	440Average
+Genesis G80 Electrified Luxury	440Average
+Hyundai IONIQ 6 Long Range AWD	440Average
+Ford Mustang Mach-E ER AWD	440Average
+Audi Q8 e-tron Sportback 50 quattro	440Average
+Volvo EX90 Twin Motor Performance	440Average
+Tesla Model Y Long Range Dual Motor	435Average
+Mercedes EQE SUV AMG 43 4MATIC	435Average
+BMW i4 M50	435Average
+Volkswagen ID.5 Pro	430Average
+Volkswagen ID.5 Pro Performance	430Average
+Porsche Taycan 4S Plus Sport Turismo	430Average
+Skoda Enyaq Coupe iV 80x	430Average
+NIO EL7 100 kWh	430Average
+Maserati GranTurismo Folgore	425Average
+VinFast VF 8 Eco Extended Range	425Average
+VinFast VF 8 Plus Extended Range	425Average
+Porsche Taycan GTS Sport Turismo	425Average
+Porsche Taycan 4S Cross Turismo	425Average
+Porsche Taycan 4 Cross Turismo	425Average
+Ford Mustang Mach-E GT	425Average
+Mercedes EQE SUV AMG 53 4MATIC+	425Average
+Audi Q4 Sportback e-tron 40	425Average
+Skoda Enyaq iV 80	420Average
+Volvo C40 Recharge Single Motor ER	420Average
+Nissan Ariya e-4ORCE 87kWh	420Average
+Polestar 2 Long Range Dual Motor	420Average
+Audi e-tron GT quattro	420Average
+Tesla Model Y Performance	415Average
+Porsche Taycan Turbo	415Average
+Audi Q8 e-tron 50 quattro	415Average
+Polestar 2 Long Range Performance	410Average
+Volkswagen ID.4 Pro Performance	410Average
+Volkswagen ID.4 Pro	410Average
+Porsche Taycan	410Average
+Kia EV6 Long Range 2WD	410Average
+Volvo XC40 Recharge Single Motor ER	405Average
+VinFast VF 8 Eco Standard Range	405Average
+Volkswagen ID.5 GTX	405Average
+Porsche Taycan Turbo Sport Turismo	405Average
+Skoda Enyaq Coupe iV RS	405Average
+Audi e-tron GT RS	405Average
+Volkswagen ID.4 Pro 4MOTION	405Average
+Audi Q4 e-tron 40	405Average
+Skoda Enyaq iV 80x	400Average
+Volvo C40 Recharge Twin Motor	400Average
+VinFast VF 8 Plus Standard Range	400Average
+VinFast VF 9 Standard Range	400Average
+Volkswagen ID.4 GTX	400Average
+Hyundai Kona Electric 65 kWh	400Average
+Porsche Taycan Turbo S	400Average
+Porsche Taycan Turbo Cross Turismo	400Average
+Audi Q4 Sportback e-tron 45 quattro	400Average
+Kia EV6 Long Range AWD	400Average
+Audi Q4 Sportback e-tron 50 quattro	400Average
+NIO ET7 75 kWh	400Average
+BMW i4 eDrive35	400Average
+Porsche Taycan Turbo S Sport Turismo	395Average
+Hyundai Kona Electric 64 kWh	395Average
+Porsche Taycan 4S	395Average
+NIO ET5 75 kWh	395Average
+Skoda Enyaq iV RS	390Average
+Volvo XC40 Recharge Twin Motor	390Average
+Genesis GV60 Premium	390Average
+Hyundai IONIQ 5 Long Range 2WD	390Average
+Polestar 2 Standard Range Single Motor	385Average
+Hyundai IONIQ 5 Long Range AWD	385Average
+Porsche Taycan Turbo S Cross Turismo	385Average
+Audi Q4 e-tron 50 quattro	385Average
+Audi Q4 e-tron 45 quattro	385Average
+BMW iX3	385Average
+Tesla Model 3	380Average
+Jaguar I-Pace EV400	380Average
+Porsche Taycan Sport Turismo	380Average
+Genesis GV60 Sport	380Average
+Kia Niro EV	380Average
+Fisker Ocean Sport	380Average
+XPENG G9 RWD Standard Range	375Average
+Mercedes EQA 250+	375Average
+Mercedes EQC 400 4MATIC	370Average
+Porsche Taycan 4S Sport Turismo	370Average
+Kia EV6 GT	370Average
+Kia e-Soul 64 kWh	370Average
+MG ZS EV Long Range	365Average
+Renault Megane E-Tech EV60 130hp	365Average
+Genesis GV60 Sport Plus	365Average
+MG MG4 Electric 64 kWh	365Average
+Mercedes EQB 250+	365Average
+Hyundai IONIQ 6 Standard Range 2WD	360Average
+BMW iX xDrive40	360Average
+Renault Megane E-Tech EV60 220hp	360Average
+Volvo C40 Recharge Single Motor	355Average
+Mercedes EQA 250	355Average
+BMW iX1 xDrive30	355Average
+Hongqi E-HS9 99 kWh	355Average
+Ford Mustang Mach-E SR RWD	355Average
+Smart #1	350Average
+Genesis GV70 Electrified Sport	350Average
+Mercedes EQA 300 4MATIC	350Average
+Mercedes EQA 350 4MATIC	350Average
+Aiways U6	350Average
+CUPRA Born 150 kW - 58 kWh	350Average
+BYD TANG	350Average
+Volkswagen ID.3 Pro Performance	350Average
+Volvo XC40 Recharge Single Motor	345Average
+Mercedes EQB 250	345Average
+Tesla Model Y	345Average
+Ford Mustang Mach-E SR AWD	345Average
+CUPRA Born 170 kW - 58 kWh	345Average
+ORA Funky Cat 63 kWh	340Average
+Nissan Leaf e+	340Average
+NIO EL7 75 kWh	340Average
+Mercedes EQB 300 4MATIC	335Average
+Toyota bZ4X FWD	335Average
+Skoda Enyaq Coupe iV 60	335Average
+MG MG5 Electric Long Range	335Average
+Smart #1 Brabus	335Average
+Mercedes EQB 350 4MATIC	335Average
+MG Marvel R	335Average
+ORA Funky Cat GT	330Average
+Toyota bZ4X AWD	330Average
+Volkswagen ID. Buzz Pro	330Average
+MG Marvel R Performance	330Average
+Skoda Enyaq iV 60	325Average
+Nissan Ariya 63kWh	320Average
+Subaru Solterra AWD	320Average
+BYD ATTO 3	320Average
+Renault Zoe ZE50 R110	315Average
+Aiways U5	315Average
+Opel Astra Electric	310Average
+Mercedes eVito Tourer Long 90 kWh	310Average
+Lexus RZ 450e	310Average
+Renault Zoe ZE50 R135	310Average
+Peugeot e-308	310Average
+Mercedes EQV 300 Extra-Long	305Average
+Mercedes eVito Tourer Extra-Long 90 kWh	305Average
+Kia EV6 Standard Range 2WD	305Average
+Hongqi E-HS9 84 kWh	305Average
+Mercedes EQV 300 Long	305Average
+Opel Astra Sports Tourer Electric	300Average
+Jeep Avenger Electric	300Average
+Hyundai Kona Electric 48 kWh	300Average
+MG MG4 Electric 51 kWh	300Average
+Peugeot e-308 SW	300Average
+DS 3 E-Tense	300Average
+Jeep Avenger Electric 1st Edition	295Average
+Audi Q4 Sportback e-tron 35	295Average
+Hyundai IONIQ 5 Standard Range 2WD	295Average
+SsangYong Korando e-Motion	290Average
+Peugeot e-208	285Average
+Opel Corsa-e	285Average
+Volkswagen ID.4 Pure Performance	285Average
+Audi Q4 e-tron 35	285Average
+Volkswagen ID.4 Pure	285Average
+CUPRA Born 110 kW - 45 kWh	275Average
+MG ZS EV Standard Range	270Average
+Citroen e-C4	265Average
+Citroen e-Jumpy Combi M 75 kWh	265Average
+Citroen e-SpaceTourer M 75 kWh	265Average
+Opel Vivaro-e Combi M 75 kWh	265Average
+Opel Zafira-e Life M 75 kWh	265Average
+Peugeot e-Expert Combi Standard 75 kWh	265Average
+Peugeot e-Traveller Standard 75 kWh	265Average
+MG MG5 Electric Standard Range	265Average
+Citroen e-C4 X	265Average
+Fiat E-Ulysse L2 75 kWh	265Average
+Toyota PROACE Verso M 75 kWh	265Average
+Seres 3	260Average
+Citroen e-Jumpy Combi XL 75 kWh	260Average
+Citroen e-SpaceTourer XL 75 kWh	260Average
+Opel Vivaro-e Combi L 75 kWh	260Average
+Opel Zafira-e Life L 75 kWh	260Average
+Peugeot e-Expert Combi Long 75 kWh	260Average
+Peugeot e-Traveller Long 75 kWh	260Average
+Toyota PROACE Shuttle M 75 kWh	260Average
+Toyota PROACE Shuttle L 75 kWh	260Average
+Fiat E-Ulysse L3 75 kWh	260Average
+Toyota PROACE Verso L 75 kWh	260Average
+ORA Funky Cat 48 kWh	260Average
+Peugeot e-2008 SUV	255Average
+Opel Mokka-e	255Average
+Renault Megane E-Tech EV40 130hp	250Average
+Hyundai Kona Electric 39 kWh	250Average
+Fiat 500e Hatchback 42 kWh	235Average
+Fiat 500e 3+1 42 kWh	235Average
+Nissan Leaf	235Average
+Lexus UX 300e	235Average
+Kia e-Soul 39.2 kWh	230Average
+Fiat 500e Cabrio 42 kWh	230Average
+JAC iEV7s	225Average
+Abarth 500e Scorpionissima	225Average
+Renault Kangoo E-Tech Electric	215Average
+Mercedes eVito Tourer Long 60 kWh	210Average
+Mercedes EQV 250 Long	205Average
+Mercedes EQV 250 Extra-Long	205Average
+Mercedes eVito Tourer Extra-Long 60 kWh	205Average
+Volkswagen e-Up!	205Average
+Toyota Proace City Verso Electric L1 50 kWh	205Average
+Opel Combo-e Life 50 kWh	200Average
+Citroen e-Berlingo M 50 kWh	200Average
+Peugeot e-Rifter Standard 50 kWh	200Average
+Toyota Proace City Verso Electric L2 50 kWh	200Average
+Opel Combo-e Life XL 50 kWh	195Average
+Citroen e-Berlingo XL 50 kWh	195Average
+Peugeot e-Rifter Long 50 kWh	195Average
+Citroen e-Jumpy Combi M 50 kWh	180Average
+Citroen e-SpaceTourer M 50 kWh	180Average
+Opel Vivaro-e Combi M 50 kWh	180Average
+Opel Zafira-e Life M 50 kWh	180Average
+Peugeot e-Expert Combi Standard 50 kWh	180Average
+Peugeot e-Traveller Standard 50 kWh	180Average
+Mini Cooper SE	180Average
+Fiat E-Ulysse L2 50 kWh	180Average
+Citroen e-Jumpy Combi XL 50 kWh	175Average
+Citroen e-SpaceTourer XL 50 kWh	175Average
+Opel Vivaro-e Combi L 50 kWh	175Average
+Opel Zafira-e Life L 50 kWh	175Average
+Peugeot e-Expert Combi Long 50 kWh	175Average
+Peugeot e-Traveller Long 50 kWh	175Average
+Toyota PROACE Shuttle M 50 kWh	175Average
+Toyota PROACE Shuttle L 50 kWh	175Average
+Fiat E-Ulysse L3 50 kWh	175Average
+Mini Cooper SE Convertible	170Average
+Mazda MX-30	170Average
+Honda e Advance	170Average
+Dacia Spring Electric 45	165Average
+Dacia Spring Electric 65 Extreme	160Average
+Fiat 500e Hatchback 24 kWh	135Average
+Fiat 500e 3+1 24 kWh	135Average
+Fiat 500e Cabrio 24 kWh	135Average
+Renault Twingo Electric	130Average
+Smart EQ fortwo coupe	100Average
+Smart EQ fortwo cabrio	95Average

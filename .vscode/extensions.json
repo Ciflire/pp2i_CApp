@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "xaver.clang-format",
+        "eamodio.gitlens",
+        "ms-python.autopep8"
+    ]
+}
