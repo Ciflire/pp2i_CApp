@@ -9,5 +9,6 @@ typedef struct borne{
     int qte;
 };
 
+typedef struct borne borne;
 
 #endif

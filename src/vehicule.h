@@ -1,12 +1,12 @@
 #ifndef VEHICULE_H
 #define VEHICULE_H
 
-typedef struct vehicules{
+typedef struct vehicule{
     int id;
     char* name;
     int autonomie;
 };
 
-typedef struct vehicules vehicules;
+typedef struct vehicule vehicule;
 
 #endif
