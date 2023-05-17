@@ -7,6 +7,7 @@ typedef struct bornes_graph{
     bornes_list[] bornes_graph;
 };
 
+typedef strict bornes_graph bornes_graph;
 
-
+bornes_graph* create_bornes_graph(int n);
 #endif

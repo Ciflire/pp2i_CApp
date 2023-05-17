@@ -11,4 +11,7 @@ typedef struct borne{
 
 typedef struct borne borne;
 
+borne* create_borne(int id, double xpos, double ypos, double power, int qte);
+
+
 #endif

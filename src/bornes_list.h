@@ -10,5 +10,6 @@ typedef struct bornes_list{
 
 typedef struct bornes_list bornes_list;
 
+bornes_list* create_bornes_list();
 
 #endif
