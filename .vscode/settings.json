@@ -8,5 +8,6 @@
         "editor.formatOnSave": true
     },
     "cmake.configureOnOpen": false,
+    "C_Cpp.dimInactiveRegions": false,
     
 }
