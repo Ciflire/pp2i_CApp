@@ -34,7 +34,7 @@ def cleanup():
 
     XYPN = XYP.join(A["nbre_pdc"])# ajout du nombre de bornes
 
-    XYPN = XYPN.groupby(["X","Y","puissance_nominale"]).sum()# somme des bornes par coordonnes et puissance
+    XYPN = XYPN.groupby(["X","Y","puissance_nominale"]).max()# somme des bornes par coordonnes et puissance
     XYPN = XYPN.reset_index()# retour a 4 colonnes
 
     # latitude et longitude bornees
@@ -52,24 +52,28 @@ def cleanup():
 
     XYPN = XYPN.drop(XYPN[XYPN["puissance_nominale"] <= 1.7].index)
 
-    XYPN = XYPN.reset_index()
-    # XYPN.drop(columns="index")
-    # XYPN.to_json("./bornes.json",orient="index")
-
-    vect1=haversine_vector(XYPN[["X","Y"]].iloc[:6000], XYPN[["X","Y"]], comb=True, check=False)    
-    vect2=haversine_vector(XYPN[["X","Y"]].iloc[6000:], XYPN[["X","Y"]], comb=True, check=False)    
-    vect = np.concatenate((vect1,vect2),axis=1)
-    adjacence=pd.DataFrame(vect)
-    adjacence.to_csv("./adjacence.csv")
+    # XYPN.to_csv("./bornes.csv", index=False, header=False)
+  
+    L = np.zeros((len(XYPN.index)*(len(XYPN.index)-1)//2,1))
+    
+    L_index = 0
+    for i in range(len(XYPN.index)-1):
+        L[L_index:L_index+len(XYPN.index)-1-i]=haversine_vector(XYPN[["X","Y"]].iloc[i], XYPN[["X","Y"]].iloc[i+1:], comb=True, check=False) 
+        L_index+=len(XYPN.index)-1-i
+    
+    # np.savetxt("adjacence.csv", L, delimiter=",")
+    # print("done")
 
     # plot des bornes
-    # plt.figure(0, figsize=[8,8])
-    # plt.scatter(XYPN["X"].values,XYPN["Y"].values, 0.1)
+    plt.figure(0, figsize=[50,50])
+    plt.scatter(XYPN["X"].values,XYPN["Y"].values, c=XYPN["puissance_nominale"].values, s=10*XYPN["nbre_pdc"].values, cmap="plasma")
+    # plt.xlim(2,3)
+    # plt.ylim(48,49)
 
     # plot des puissances de chaque borne
     # plt.figure(1)
-    # plt.plot(XYPN["puissance_nominale"],'.')
+    # plt.plot(XYPN["nbre_pdc"],'.')
 
-    # plt.show()
+    plt.savefig('bornes.png')
 
 cleanup()
