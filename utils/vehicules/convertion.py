@@ -1,28 +1,17 @@
-f = open("Données distance.txt", "r")
-longueur = len(open("Données distance.txt", "r").readlines())
-json = open("Vehicules.json", "w")
+# This file contains the functions to convert the data from txt to csv
+def parse_txt(origin_txt, destination):
+    f = open(origin_txt, "r")
+    csv = open(destination, "a")
+    k = 0
+    for x in f:
+        L = x.strip().split(' ')
+        s = ""
+        for y in L[:-2]:
+            s += y+" "
+        csv.write(str(k) + "," + s + str(L[-2]) + "," + str(L[-1]) + '\n')
+    csv.close
+    f.close
 
 
-k = 0
-json.write("[\n")
-for x in f:
-    json.write('\t{\n \t"id" : ' + str(k) + ',\n\t "name" : "')
-    flag = False
-    for i in x:
-        if i == "\t":
-            json.write('", \n\t "distance" : ')
-            flag = True
-        if i == "A" and flag:
-            break  # permet d'enlever "Average" des données
-        json.write(i)
-    k += 1
-    if k == longueur:
-        # j'ai pas trouvé mieux pour enlever la virgule à la fin
-        json.write('\n\t}\n')
-    else:
-        json.write('\n\t},\n')
-json.write("]")
-
-
-json.close
-f.close
+parse_txt('utils/vehicules/données_distance.txt',
+          'utils/vehicules/Vehicules.csv')
