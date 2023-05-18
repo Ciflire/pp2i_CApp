@@ -17,7 +17,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test bornes_list_test bornes_graph_test
+ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test
 
 all : $(ALL) clean
 
@@ -29,7 +29,7 @@ borne.o : src/borne.c src/borne.h
 	$(CC) $(CFLAGS) -c src/borne.c
 
 borne_test : borne_test.o borne.o
-	$(CC) $(CFLAGS) -o borne_test borne_test.o borne.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o borne_test borne_test.o borne.o
 
 #Borne_list
 bornes_list_test.o : src/bornes_list_test.c src/bornes_list.h
@@ -39,7 +39,7 @@ bornes_list.o : src/bornes_list.c src/bornes_list.h
 	$(CC) $(CFLAGS) -c src/bornes_list.c
 
 bornes_list_test : bornes_list_test.o bornes_list.o borne.o
-	$(CC) $(CFLAGS) -o bornes_list_test bornes_list_test.o bornes_list.o borne.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o bornes_list_test bornes_list_test.o bornes_list.o borne.o
 
 #Borne_graph
 bornes_graph_test.o : src/bornes_graph_test.c src/bornes_graph.h
@@ -49,12 +49,34 @@ bornes_graph.o : src/bornes_graph.c src/bornes_graph.h
 	$(CC) $(CFLAGS) -c src/bornes_graph.c
 
 bornes_graph_test : bornes_graph_test.o bornes_graph.o bornes_list.o borne.o
-	$(CC) $(CFLAGS) -o bornes_graph_test bornes_graph_test.o bornes_graph.o bornes_list.o borne.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o bornes_graph_test bornes_graph_test.o bornes_graph.o bornes_list.o borne.o
+
+#Vehicule
+vehicule_test.o : src/vehicule_test.c src/vehicule.h
+	$(CC) $(CFLAGS) -c src/vehicule_test.c
+
+vehicule.o : src/vehicule.c src/vehicule.h
+	$(CC) $(CFLAGS) -c src/vehicule.c
+
+vehicule_test : vehicule_test.o vehicule.o bornes_graph.o bornes_list.o borne.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o vehicule_test vehicule_test.o vehicule.o bornes_graph.o bornes_list.o borne.o
+
+#vehicule_list
+vehicule_list_test.o : src/vehicule_list_test.c src/vehicule_list.h
+	$(CC) $(CFLAGS) -c src/vehicule_list_test.c
+
+vehicule_list.o : src/vehicule_list.c src/vehicule_list.h
+	$(CC) $(CFLAGS) -c src/vehicule_list.c
+
+vehicule_list_test : vehicule_list_test.o vehicule_list.o vehicule.o bornes_graph.o bornes_list.o borne.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o vehicule_list_test vehicule_list_test.o vehicule_list.o vehicule.o bornes_graph.o bornes_list.o borne.o
 
 #clean
 clean :
 	rm -f *.o
+	mv $(ALL) bin/
 
+#remake all the executables
 remake : 
-	rm -f $(ALL)
+	rm -f bin/$(ALL)
 	make all
