@@ -15,7 +15,8 @@ def timeit(method):
             name = kw.get('log_name', method.__name__.upper()) 
             kw['log_time'][name] = int((te - ts) * 1000) 
         else: 
-            print('%r  %2.2f ms' (method.__name__, (te - ts) * 1000)) 
+            print ('%r  %2.2f ms' % \
+                  (method.__name__, (te - ts) * 1000)) 
         return result 
     return timed 
  
@@ -24,7 +25,7 @@ def timeit(method):
  
 @timeit 
 def cleanup(): 
-    A= pd.read_csv("./schema.csv") #ouverture du CSV 
+    A= pd.read_csv("data/schema.csv") #ouverture du CSV 
  
     coords = A["coordonneesXY"] #traitement des coordonnees 
     XandY = [eval(smth) for smth in coords.values] 
@@ -53,9 +54,9 @@ def cleanup():
  
     XYPN = XYPN.drop(XYPN[XYPN["puissance_nominale"] <= 1.7].index) 
  
-    XYPN.to_csv("./bornes.csv", index=False, header=False) 
+    XYPN.to_csv("data/bornes.csv", index=False, header=False) 
    
-    f=open("adjacence.csv","w") 
+    f=open("data/adjacence.csv","w") 
     exceed_count = 0 
     for i in range(len(XYPN.index)-1): 
         new_line = haversine_vector(XYPN[["X","Y"]].iloc[i], XYPN[["X","Y"]].iloc[i+1:], comb=True, check=False) 
@@ -65,8 +66,6 @@ def cleanup():
             while new_line[j][0] > 685 and j < len(new_line)-1: 
                 exceed_count += 1 
                 j+=1 
-            if exceed_count >10000: 
-                print("exceed_count = ", exceed_count) 
             if exceed_count == 0: 
                 L.append(int(new_line[j][0]))     
             else: 

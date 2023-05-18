@@ -12,7 +12,7 @@ int generate_graph_framCSV (borne_t bornes[]) {
     char* token = (char*)malloc(50);
     int i = 0;
     
-    fp = fopen("../utils/bornes/bornes.csv","r");
+    fp = fopen("data/bornes.csv","r");
 
     if (!fp){
         printf("Can't open file\n");
@@ -81,7 +81,7 @@ void generateListFromCSV(char* csvLine, int* resultList, int* resultSize) {
 int main() {
     FILE* fp;
     
-    fp = fopen("../utils/bornes/adjacence.csv","r");
+    fp = fopen("data/adjacence.csv","r");
 
     if (!fp){
         printf("Can't open file\n");

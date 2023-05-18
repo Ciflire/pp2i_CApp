@@ -1,7 +1,7 @@
 # This file contains the functions to convert the data from txt to csv
 def parse_txt(origin_txt, destination):
     f = open(origin_txt, "r")
-    csv = open(destination, "a")
+    csv = open(destination, "w")
     k = 0
     for x in f:
         L = x.strip().split(' ')
@@ -13,5 +13,5 @@ def parse_txt(origin_txt, destination):
     f.close
 
 
-parse_txt('utils/vehicules/données_distance.txt',
-          'utils/vehicules/Vehicules.csv')
+parse_txt("data/données_distance.txt",
+          "data/Vehicules.csv")
