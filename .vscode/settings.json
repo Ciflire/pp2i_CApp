@@ -1,14 +1,19 @@
 {
-    "[c]": {
-        "editor.defaultFormatter": "xaver.clang-format",
-        "editor.formatOnSave": true
-      },
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8",
-        "editor.formatOnSave": true
-    },
-    "cmake.configureOnOpen": false,
-    "C_Cpp.dimInactiveRegions": false,
-    "C_Cpp.errorSquiggles": "disabled",
-    
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnSave": true
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true
+  },
+  "cmake.configureOnOpen": false,
+  "C_Cpp.dimInactiveRegions": false,
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "cstdlib": "c",
+    "memory_resource": "c",
+    "memory": "c",
+    "new": "c"
+  }
 }

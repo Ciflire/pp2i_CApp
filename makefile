@@ -54,3 +54,7 @@ bornes_graph_test : bornes_graph_test.o bornes_graph.o bornes_list.o borne.o
 #clean
 clean :
 	rm -f *.o
+
+remake : 
+	rm -f $(ALL)
+	make all
