@@ -2,10 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "borne.h"
 
 #define MAXBORNES 20000
 
-int csv_bornes (borne_t bornes[]) {
+int generate_graph_framCSV (borne_t bornes[]) {
     FILE* fp;
     char row[50];
     char* token = (char*)malloc(50);
@@ -20,16 +21,16 @@ int csv_bornes (borne_t bornes[]) {
 
     while(!feof(fp)) {
         fgets(row, 50, fp);
-
-        token = strtok(row, ",");
-        bornes[i].X = atof(token);
-        token = strtok(NULL, ",");
-        bornes[i].Y = atof(token);
-        token = strtok(NULL, ",");
-        bornes[i].puissance = atof(token);
-        token = strtok(NULL, ",");
-        bornes[i].nombre = atoi(token);
-        // printf("X: %lf Y: %lf Puissance : %lf Nombre de bornes : %d\n", bornes[i].X, bornes[i].Y, bornes[i].puissance, bornes[i].nombre);
+        int id;
+        double xpos;
+        double ypos;
+        double power;
+        int qte;
+        xpos = strtok(row, ",");
+        ypos = strtok(NULL, ",");
+        power = strtok(NULL, ",");
+        qte = strtok(NULL, ",");
+        printf("X: %lf Y: %lf Puissance : %lf Nombre de bornes : %d\n", bornes[i].X, bornes[i].Y, bornes[i].puissance, bornes[i].nombre);
         i++;
     }
 
@@ -37,10 +38,48 @@ int csv_bornes (borne_t bornes[]) {
     return(0);
 }
 
-int csv_adjacence (float * longeurs) {
+
+void generateListFromCSV(char* csvLine, int* resultList, int* resultSize) {
+    // Initialisation des variables
+    int count = 0;
+    
+    // Découpage de la ligne CSV en tokens
+    char* token = strtok((char*)csvLine, ",");
+    while (token != NULL) {
+        // Conversion du token en entier si possible
+        char* endPtr;
+        int value = (int)strtol(token, &endPtr, 10);
+        
+        // Si le token commence par "-", on ajoute la valeur -1 plusieurs fois à la liste
+        if (value <= 0) {
+            
+            int repetitions = abs(value);
+            //printf("Repetitions : %d\n", repetitions);
+            for (int i = 0; i < repetitions; i++) {
+                // Ajout de la valeur -1 à la liste
+                resultList[count++] = -1;
+            }
+        }
+        else {
+            // Ajout de la valeur entière à la liste
+            resultList[count++] = value;
+        }
+        
+        // Passage au token suivant
+        token = strtok(NULL, ",");
+    }
+    free(token);
+    
+
+
+    
+    // Affectation des résultats
+    *resultSize = count;
+}
+/*
+
+int main() {
     FILE* fp;
-    char row[30];
-    int i = 0;
     
     fp = fopen("../utils/bornes/adjacence.csv","r");
 
@@ -48,16 +87,29 @@ int csv_adjacence (float * longeurs) {
         printf("Can't open file\n");
         return(-1);
     }
-
-    while(!feof(fp)) {
-        fgets(row, 30, fp);
-        longeurs[i] = atof(row);
-        i++;
-    }
-
-    fclose(fp);
-    return(0);
+    char* csvLine = (char*)malloc(184099266);
+    int *longeurs = (int *)malloc(sizeof(int)*184099266);
+    fgets(csvLine, 184099266, fp);
+    int resultSize;
+    
+    generateListFromCSV(csvLine, longeurs, &resultSize);
+    
+    //printf("Liste générée : ");
+    //for (int i = 0; i < resultSize; i++) {
+    //    printf("%d ", longeurs[i]);
+    //}
+    //printf("\n");
+    
+    
+    
+    free(longeurs);
+    //free(csvLine);
+    free(fp);
+    
+    return 0;
 }
+*/
+
 
 int index_of_distance(int a, int b){
     
@@ -72,3 +124,4 @@ int index_of_distance(int a, int b){
     }
     return(-1);
 }
+
