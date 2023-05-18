@@ -48,8 +48,8 @@ bornes_graph_test.o : src/bornes_graph_test.c src/bornes_graph.h
 bornes_graph.o : src/bornes_graph.c src/bornes_graph.h
 	$(CC) $(CFLAGS) -c src/bornes_graph.c
 
-bornes_graph_test : bornes_graph_test.o bornes_graph.o borne.o
-	$(CC) $(CFLAGS) -o bornes_graph_test bornes_graph_test.o bornes_graph.o borne.o
+bornes_graph_test : bornes_graph_test.o bornes_graph.o bornes_list.o borne.o
+	$(CC) $(CFLAGS) -o bornes_graph_test bornes_graph_test.o bornes_graph.o bornes_list.o borne.o
 
 #clean
 clean :
