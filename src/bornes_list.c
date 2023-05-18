@@ -28,3 +28,14 @@ void add_borne(bornes_list *bl, borne *b) {
   bl->next->borne = b;
   bl->size++;
 }
+
+borne *get_borne(bornes_list *bl, int index) {
+  if (index >= bl->size) {
+    printf("Index out of bounds\n");
+    exit(1);
+  }
+  for (int i = 0; i < index; i++) {
+    bl = bl->next;
+  }
+  return bl->borne;
+}

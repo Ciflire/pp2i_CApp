@@ -17,4 +17,6 @@ void destroy_bornes_list(bornes_list *bl);
 
 void add_borne(bornes_list *bl, borne *b);
 
+borne *get_borne(bornes_list *bl, int index);
+
 #endif
