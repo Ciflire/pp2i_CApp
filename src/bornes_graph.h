@@ -5,7 +5,7 @@
 
 struct bornes_graph {
   int size;
-  bornes_list *bornes_graph;
+  bornes_list **bornes_graph;
 };
 
 typedef struct bornes_graph bornes_graph;

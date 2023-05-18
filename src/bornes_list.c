@@ -17,3 +17,5 @@ void destroy_bornes_list(bornes_list *bl) {
   }
   free(bl);
 }
+
+// TODO : add_borne
