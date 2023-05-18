@@ -1,1 +1,10 @@
+#ignores python env
 env/ 
+
+#ingores executable folder
+bin/
+
+#ignores object files
+*.o
+#ignores executables
+*test
