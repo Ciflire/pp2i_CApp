@@ -78,7 +78,5 @@ clean :
 
 #remake all the executables
 remake :
-	cd bin
-	rm -f $(ALL)
-	cd ..
+	rm -f $(addprefix bin/, $(ALL))
 	make all
