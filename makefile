@@ -77,6 +77,8 @@ clean :
 	mv $(ALL) bin/
 
 #remake all the executables
-remake : 
-	rm -f bin/$(ALL)
+remake :
+	cd bin
+	rm -f $(ALL)
+	cd ..
 	make all
