@@ -1,12 +1,16 @@
+#include "borne.h"
+#include "bornes_graph.h"
+#include "bornes_list.h"
 
-typedef struct {
-    double X;
-    double Y;
-    double puissance;
-    int nombre;
-} borne_t;
+#ifndef CSV_HANDLER_H
+#define CSV_HANDLER_H
 
-int csv_bornes (borne_t bornes[]);
-int csv_adjacence (float * longeurs);
+#define NB_BORNES 19188
+
+bornes_graph *generate_graph_fromCSV(int autonomie);
 int index_of_distance(int a, int b);
-void generateListFromCSV(char* csvLine, int* resultList, int* resultSize);
+void getBornesNumberFromIndex(int indexdistance, int *idborne1, int *idborne2);
+void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
+                         int autonomie);
+
+#endif

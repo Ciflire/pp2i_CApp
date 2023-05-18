@@ -17,7 +17,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test
+ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test
 
 all : $(ALL) clean
 
@@ -71,6 +71,15 @@ vehicule_list.o : src/vehicule_list.c src/vehicule_list.h
 vehicule_list_test : vehicule_list_test.o vehicule_list.o vehicule.o bornes_graph.o bornes_list.o borne.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o vehicule_list_test vehicule_list_test.o vehicule_list.o vehicule.o bornes_graph.o bornes_list.o borne.o
 
+#csv_handler
+csv_handler_test.o : src/csv_handler_test.c src/csv_handler.h
+	$(CC) $(CFLAGS) -c src/csv_handler_test.c
+
+csv_handler.o : src/csv_handler.c src/csv_handler.h
+	$(CC) $(CFLAGS) -c src/csv_handler.c
+
+csv_handler_test : csv_handler_test.o csv_handler.o vehicule_list.o vehicule.o bornes_graph.o bornes_list.o borne.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o csv_handler_test csv_handler_test.o csv_handler.o vehicule_list.o vehicule.o bornes_graph.o bornes_list.o borne.o
 #clean
 clean :
 	rm -f *.o
