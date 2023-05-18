@@ -14,4 +14,6 @@ bornes_graph *create_bornes_graph(int n);
 
 void destroy_bornes_graph(bornes_graph *bg);
 
+void add_borne(bornes_graph *bg, int i, int j, int k);
+
 #endif

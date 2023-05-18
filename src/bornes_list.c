@@ -8,14 +8,23 @@ bornes_list *create_bornes_list(void) {
 }
 
 void destroy_bornes_list(bornes_list *bl) {
-  bornes_list *next = bl->next;
-  while (next != NULL) {
-    bornes_list *tmp = next->next;
-    destroy_borne(next->borne);
-    free(next);
-    next = tmp;
+  if (bl->next != NULL) {
+    destroy_bornes_list(bl->next);
   }
   free(bl);
 }
 
-// TODO : add_borne
+void add_borne(bornes_list *bl, borne *b) {
+  if (bl->size == 0) {
+    bl->borne = b;
+    bl->size++;
+    return;
+  }
+  while (bl->next != NULL) {
+    bl->size++;
+    bl = bl->next;
+  }
+  bl->next = create_bornes_list();
+  bl->next->borne = b;
+  bl->size++;
+}
