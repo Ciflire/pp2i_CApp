@@ -1,5 +1,6 @@
 #include "include/bornes_list.h"
 
+// Construct a bornes_list
 bornes_list *create_bornes_list(void) {
   bornes_list *bl = malloc(sizeof(bornes_list));
   bl->index = 0;
@@ -8,6 +9,7 @@ bornes_list *create_bornes_list(void) {
   return bl;
 }
 
+// Destroy a bornes_list
 void destroy_bornes_list(bornes_list *bl) {
   int length = get_length(bl);
   if (length == 0) {
@@ -22,6 +24,7 @@ void destroy_bornes_list(bornes_list *bl) {
   }
 }
 
+// Append a borne to a bornes_list
 void add_borne(bornes_list *bl, borne *b) {
   if (bl->index == 0) {
     bl->index = 1;
@@ -39,6 +42,7 @@ void add_borne(bornes_list *bl, borne *b) {
   }
 }
 
+// Returns the length of the list 0 if the list is empty
 int get_length(bornes_list *bl) {
   if (bl->index == 0) {
     return 0;
@@ -47,6 +51,8 @@ int get_length(bornes_list *bl) {
   }
 }
 
+// Returns NULL if the index is out of bounds,
+// otherwise returns the borne at the given index
 borne *get_borne(bornes_list *bl, int index) {
   if (index > get_length(bl)) {
     return NULL;
@@ -59,6 +65,7 @@ borne *get_borne(bornes_list *bl, int index) {
   }
 }
 
+// Returns false if the borne is not in the list true otherwise
 bool is_borne_in_list(bornes_list *bl, int id) {
   if (bl->index == 0) {
     return false;
@@ -74,6 +81,7 @@ bool is_borne_in_list(bornes_list *bl, int id) {
   }
 }
 
+// Returns NULL if the borne is not in the list
 borne *get_borne_by_id(bornes_list *bl, int id) {
   if (bl->index == 0) {
     return NULL;
@@ -86,5 +94,18 @@ borne *get_borne_by_id(bornes_list *bl, int id) {
       current = current->next;
     }
     return NULL;
+  }
+}
+
+// Print a bornes_list
+void print_bornes_list(bornes_list *bl) {
+  if (bl->index == 0) {
+    printf("bornes_list is empty\n");
+  } else {
+    bornes_list *current = bl;
+    for (int i = 0; i < get_length(bl); i++) {
+      print_borne(current->borne);
+      current = current->next;
+    }
   }
 }
