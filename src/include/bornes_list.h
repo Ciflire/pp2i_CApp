@@ -29,4 +29,5 @@ int get_length(bornes_list *bl);
 
 bool is_borne_in_list(bornes_list *bl, int id);
 
+borne *get_borne_by_id(bornes_list *bl, int id);
 #endif
