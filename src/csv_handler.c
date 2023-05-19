@@ -1,7 +1,4 @@
-#include "csv_handler.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "include/csv_handler.h"
 
 bornes_graph *generate_graph_fromCSV(int autonomie) {
   FILE *f_adjacence;
@@ -29,7 +26,6 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
     printf("Can't open file bornes.csv\n");
     return (NULL);
   }
-
   bornes_graph *bg = create_bornes_graph(NB_BORNES);
   printf("bg created\n");
   // création de la liste de toutes les bornes

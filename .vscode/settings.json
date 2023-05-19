@@ -14,6 +14,11 @@
     "cstdlib": "c",
     "memory_resource": "c",
     "memory": "c",
-    "new": "c"
+    "new": "c",
+    "vehicule_list.h": "c",
+    "bornes_graph.h": "c",
+    "stdlib.h": "c",
+    "djikstra.h": "c",
+    "vehicule.h": "c"
   }
 }

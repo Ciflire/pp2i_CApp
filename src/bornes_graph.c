@@ -1,4 +1,4 @@
-#include "bornes_graph.h"
+#include "include/bornes_graph.h"
 
 bornes_graph *create_bornes_graph(int n) {
   bornes_graph *bg = malloc(sizeof(bornes_graph));
