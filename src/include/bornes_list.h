@@ -27,4 +27,6 @@ borne *get_borne(bornes_list *bl, int index);
 // Get the length of a bornes_list
 int get_length(bornes_list *bl);
 
+bool is_borne_in_list(bornes_list *bl, int id);
+
 #endif

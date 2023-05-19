@@ -19,3 +19,7 @@ void destroy_bornes_graph(bornes_graph *bg) {
   free(bg->bornes_graph);
   free(bg);
 }
+
+void add_borne_index(bornes_graph *bg, int index, borne *borne) {
+  add_borne(bg->bornes_graph[index], borne);
+}

@@ -1,4 +1,5 @@
 #include "bornes_graph.h"
+#include <string.h>
 
 #ifndef CSV_HANDLER_H
 #define CSV_HANDLER_H

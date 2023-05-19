@@ -58,10 +58,8 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
       int borne2;
       getBornesNumberFromIndex(i, &borne1, &borne2);
 
-      add_borne(bg->bornes_graph[borne1],
-                get_borne(list_de_toutes_les_bornes, borne2));
-      add_borne(bg->bornes_graph[borne2],
-                get_borne(list_de_toutes_les_bornes, borne1));
+      add_borne_index(bg, borne1, get_borne(list_de_toutes_les_bornes, borne2));
+      add_borne_index(bg, borne2, get_borne(list_de_toutes_les_bornes, borne1));
     }
   }
   free(longeurs);
