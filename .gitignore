@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 #ignores python env
 env/ 
 
@@ -9,6 +8,6 @@ bin/
 *.o
 #ignores executables
 *test
-=======
 
->>>>>>> Stashed changes
+#ingores heavy data files
+data/adjacence.csv
