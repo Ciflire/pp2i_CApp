@@ -7,7 +7,7 @@ bin/
 #ignores object files
 *.o
 #ignores executables
-*test
+*test$
 
 #ingores heavy data files
 data/adjacence.csv
