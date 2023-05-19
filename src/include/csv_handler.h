@@ -5,7 +5,7 @@
 #ifndef CSV_HANDLER_H
 #define CSV_HANDLER_H
 
-#define NB_BORNES 19189
+#define NB_BORNES 19188
 
 bornes_graph *generate_graph_fromCSV(int autonomie);
 int index_of_distance(int a, int b);

@@ -38,6 +38,9 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
   bornes_list *list_de_toutes_les_bornes = create_bornes_list();
   while (!feof(fp)) {
     fgets(row, 40000, fp);
+    if(id == NB_BORNES) {
+      continue;
+    }
     double xpos;
     double ypos;
     double power;
@@ -75,7 +78,7 @@ void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
                          int autonomie) {
   // Initialisation des variables
   int count = 0;
-
+  int count_links = 0;
   // Découpage de la ligne CSV en tokens
   char *token = strtok((char *)csvLine, ",");
   while (token != NULL) {
@@ -99,6 +102,7 @@ void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
     } else {
       // Ajout de la valeur entière à la liste
       resultList[count++] = value;
+      count_links++;
     }
 
     // Passage au token suivant
@@ -108,6 +112,7 @@ void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
 
   // Affectation des résultats
   *resultSize = count;
+  printf("count_links = %d\n", count_links);
 }
 /*
 
