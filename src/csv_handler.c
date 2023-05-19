@@ -1,7 +1,4 @@
 #include "include/csv_handler.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 bornes_graph *generate_graph_fromCSV(int autonomie) {
   FILE *f_adjacence;
