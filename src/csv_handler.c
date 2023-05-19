@@ -3,10 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 bornes_graph *generate_graph_fromCSV(int autonomie) {
   FILE *f_adjacence;
-    printf("in generate_graph_fromCSV\n");
+  printf("in generate_graph_fromCSV\n");
   f_adjacence = fopen("data/adjacence.csv", "r");
 
   if (!f_adjacence) {
@@ -20,6 +19,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
   int resultSize;
 
   generateListFromCSV(csvLine, longeurs, &resultSize, autonomie);
+  printf("resultSize = %d\n", resultSize);
   FILE *fp;
   char row[50];
 
@@ -31,14 +31,13 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
   }
 
   bornes_graph *bg = create_bornes_graph(NB_BORNES);
-  bornes_list **bl = bg->bornes_graph;
-
+  printf("bg created\n");
   // création de la liste de toutes les bornes
 
   int id = 0;
   bornes_list *list_de_toutes_les_bornes = create_bornes_list();
   while (!feof(fp)) {
-    fgets(row, 50, fp);
+    fgets(row, 40000, fp);
     double xpos;
     double ypos;
     double power;
@@ -52,20 +51,22 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
     id++;
   }
   fclose(fp);
-
+  printf("list_de_toutes_les_bornes created\n");
   for (int i = 0; i < resultSize; i++) {
     if (longeurs[i] != -1) {
       int borne1;
       int borne2;
       getBornesNumberFromIndex(i, &borne1, &borne2);
-      add_borne(bl[borne1], get_borne(list_de_toutes_les_bornes, borne2));
-      add_borne(bl[borne2], get_borne(list_de_toutes_les_bornes, borne1));
+
+      add_borne(bg->bornes_graph[borne1],
+                get_borne(list_de_toutes_les_bornes, borne2));
+      add_borne(bg->bornes_graph[borne2],
+                get_borne(list_de_toutes_les_bornes, borne1));
     }
   }
   free(longeurs);
   free(csvLine);
-  free(list_de_toutes_les_bornes);
-  free(bl);
+  destroy_bornes_list(list_de_toutes_les_bornes);
 
   return bg;
 }
@@ -156,14 +157,14 @@ int index_of_distance(int a, int b) {
   return (-1);
 }
 
-void getBornesNumberFromIndex(int indexdistance, int *idborne1, int *idborne2) {
+void getBornesNumberFromIndex(int indexDistance, int *idBorne1, int *idBorne2) {
   int i = 1;
   int sum = 0;
-  while (indexdistance >= sum) {
+  while (indexDistance >= sum) {
     sum += i;
     i++;
   }
   i--;
-  *idborne1 = i;
-  *idborne2 = indexdistance - (sum - i);
+  *idBorne1 = i;
+  *idBorne2 = indexDistance - (sum - i);
 }

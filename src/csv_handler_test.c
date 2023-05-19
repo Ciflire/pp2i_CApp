@@ -1,9 +1,9 @@
 #include "csv_handler.h"
 #include "bornes_graph.h"
 
-int main(){
+int main(void){
     printf("Hello world\n");
-    bornes_graph *bg = generate_graph_fromCSV(800);
+    bornes_graph *bg = generate_graph_fromCSV(150);
     if (bg == NULL) {
         printf("Error while generating graph\n");
         return 1;

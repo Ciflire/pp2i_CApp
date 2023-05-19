@@ -58,8 +58,9 @@ def cleanup():
    
     f=open("data/adjacence.csv","w") 
     exceed_count = 0 
-    for i in range(len(XYPN.index)-1): 
-        new_line = haversine_vector(XYPN[["X","Y"]].iloc[i], XYPN[["X","Y"]].iloc[i+1:], comb=True, check=False) 
+    
+    for i in range(1,len(XYPN.index)): 
+        new_line = haversine_vector(XYPN[["X","Y"]].iloc[i], XYPN[["X","Y"]].iloc[:i], comb=True, check=False)
         L = [] 
         j=0 
         while j < len(new_line): 
@@ -72,8 +73,10 @@ def cleanup():
                 L.append('-'+str(exceed_count)) 
                 exceed_count = 0 
             j+=1 
-         
-        f.write(",".join(map(str,L))+"\n") 
+        if i==0:
+            f.write(",".join(map(str,L))) 
+        else:
+            f.write(",".join(map(str,L))+",") 
     f.close() 
     print("done") 
  
