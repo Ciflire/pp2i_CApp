@@ -9,13 +9,13 @@ bornes_list *create_bornes_list(void) {
 }
 
 void destroy_bornes_list(bornes_list *bl) {
-  bornes_list *next = bl->next;
-  while (next != bl) {
-    bornes_list *tmp = next->next;
-    free(next);
-    next = tmp;
+  int length = bl->prev->index;
+  for (int i = 0; i < length; i++) {
+    bornes_list *next = bl->next;
+    destroy_borne(bl->borne);
+    free(bl);
+    bl = next;
   }
-  free(bl);
 }
 
 void add_borne(bornes_list *bl, borne *b) {
