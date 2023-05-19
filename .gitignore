@@ -9,8 +9,5 @@ bin/
 #ignores executables
 *test
 
-<<<<<<< Updated upstream
 #ingores heavy data files
 data/adjacence.csv
-=======
->>>>>>> Stashed changes
