@@ -1,6 +1,6 @@
 {
   "[c]": {
-    "editor.defaultFormatter": "xaver.clang-format",
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
     "editor.formatOnSave": true
   },
   "[python]": {
@@ -19,6 +19,7 @@
     "bornes_graph.h": "c",
     "stdlib.h": "c",
     "djikstra.h": "c",
-    "vehicule.h": "c"
+    "vehicule.h": "c",
+    "bornes_list.h": "c"
   }
 }

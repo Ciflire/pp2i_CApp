@@ -1,9 +1,6 @@
 #include "borne.h"
 #include "bornes_graph.h"
 #include "bornes_list.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 #ifndef CSV_HANDLER_H
 #define CSV_HANDLER_H

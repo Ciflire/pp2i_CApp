@@ -3,7 +3,7 @@
 
 int main(void) {
   printf("Hello world\n");
-  bornes_graph *bg = generate_graph_fromCSV(800);
+  bornes_graph *bg = generate_graph_fromCSV(150);
   if (bg == NULL) {
     printf("Error while generating graph\n");
     return 1;

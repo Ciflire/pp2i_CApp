@@ -4,10 +4,11 @@ env/
 #ingores executable folder
 bin/
 
+#ignores data folder
+data/
+
 #ignores object files
 *.o
 #ignores executables
 *test$
 
-#ingores heavy data files
-data/adjacence.csv

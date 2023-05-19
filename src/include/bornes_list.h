@@ -4,9 +4,10 @@
 #define BORNES_LIST_H
 
 struct bornes_list {
-  int size;
+  int index;
   borne *borne;
   struct bornes_list *next;
+  struct bornes_list *prev;
 };
 
 typedef struct bornes_list bornes_list;
