@@ -35,13 +35,16 @@ void add_borne(bornes_list *bl, borne *b) {
   }
 }
 
-borne *get_borne(bornes_list *bl, int pos) {
-  if (pos >= bl->prev->index) {
-printf("Index out of bounds\n");
-exit(1);
+int get_length(bornes_list *bl) { return bl->prev->index; }
+
+borne *get_borne(bornes_list *bl, int index) {
+  if (index > get_length(bl)) {
+    return NULL;
+  } else {
+    bornes_list *current = bl;
+    for (int i = 0; i < index; i++) {
+      current = current->next;
+    }
+    return current->borne;
   }
-  for (int i = 0; i < pos; i++) {
-    bl = bl->next;
-  }
-  return bl->borne;
 }

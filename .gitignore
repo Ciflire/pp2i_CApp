@@ -5,7 +5,7 @@ env/
 bin/
 
 #ignores data folder
-data/
+data
 
 #ignores object files
 *.o
