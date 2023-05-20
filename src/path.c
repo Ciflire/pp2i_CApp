@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
+                         int battery_minimum, int max_time_charging,
+                         int max_time_waiting, int *distances,
+                         bornes_list *list_de_toutes_les_bornes,
+                         int actual_time, vehicule *v);
+
 int main(int argc, char *argv[]) {
   char *car_name;
   int id_origin;

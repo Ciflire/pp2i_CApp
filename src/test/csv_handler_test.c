@@ -14,7 +14,7 @@ int main(void) {
   destroy_bornes_graph(bg);
   printf("Graph destroyed\n");
   vehicule_list* v = create_vehicule_list();
-  void getCarInfos(v);
+  getCarInfos(v);
   printf("Car infos got\n");
   destroy_vehicule_list(v);
   return 0;
