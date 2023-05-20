@@ -7,7 +7,7 @@
 
 #define NB_BORNES 19188
 
-bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_les_bornes,int* distances);
+bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_les_bornes, int *distances);
 int index_of_distance(int a, int b);
 void getBornesNumberFromIndex(int indexdistance, int *idborne1, int *idborne2);
 void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
