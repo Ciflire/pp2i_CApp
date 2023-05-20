@@ -10,8 +10,7 @@ int main(int argc, char *argv[]);
 bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int battery_minimum, int max_time_charging,
                          int max_time_waiting, int *distances,
-                         bornes_list *list_de_toutes_les_bornes,
-                         int actual_time, vehicule *v);
+                         /*int actual_time, */vehicule *v);
 
 bool test_condition(borne *current_borne, borne *current_neighbour_i,
                     borne *destination, borne *nearest_neighbour, int charge,
