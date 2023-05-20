@@ -11,6 +11,7 @@ def parse_txt(origin_txt_autonomie,origin_txt_charge, destination):
         for y in L[:-2]:
             s += y+" "
         voitures.append([str(k),s+L[-2],L[-1]])
+        k+=1
     for x in g:
         L = x.strip().split(' ')
         name=""

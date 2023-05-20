@@ -13,7 +13,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int max_time_waiting, int *distances,
                          /*int actual_time, */ vehicule *v);
 int main(void) {
-  char *car_name[400];
+  char *car_name[1000];
   int *id_origin = 0;
   int *id_destination = 0;
   int *battery_minimum = 0;
