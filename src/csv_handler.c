@@ -181,7 +181,7 @@ void getCarInfos(vehicule_list *v_list){
   char *csvLine = (char *)malloc(6000);
   fgets(csvLine, 6000, f_car);
   
-  char *name = malloc(100);
+  char *name = malloc(1000);
   int autonomie;
   double capacity;
   int id = 0;
