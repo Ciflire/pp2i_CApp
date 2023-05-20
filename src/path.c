@@ -13,7 +13,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int max_time_waiting, int *distances,
                          /*int actual_time, */ vehicule *v);
 int main(void) {
-  char *car_name[1000];
+  char *car_name[400];
   int *id_origin = 0;
   int *id_destination = 0;
   int *battery_minimum = 0;
@@ -22,7 +22,7 @@ int main(void) {
   int *autonomie = 0;
   // get car name from user and get autonomie from csv
   printf("Give your car name:");
-  scanf("%99s", *car_name);
+  scanf("%399s", *car_name);
   printf("test\n");
   vehicule_list *list_of_all_vehicules =
       create_vehicule_list();
