@@ -14,8 +14,7 @@ borne *create_borne(int id, double xpos, double ypos, double power, int qte) {
 // Destroy a borne
 void destroy_borne(borne *b) { free(b); }
 
-// Print a borne
 void print_borne(borne *b) {
-  printf("id: %d, xpos: %f, ypos: %f, power: %f, qte: %d\n", b->id, b->xpos,
-         b->ypos, b->power, b->qte);
+  printf("Borne %d: (%f, %f) - %f - %d\n", b->id, b->xpos, b->ypos, b->power,
+         b->qte);
 }

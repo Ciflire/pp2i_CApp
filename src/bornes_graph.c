@@ -26,3 +26,10 @@ void destroy_bornes_graph(bornes_graph *bg) {
 void add_borne_index(bornes_graph *bg, int index, borne *borne) {
   add_borne(bg->bornes_graph[index], borne);
 }
+
+void print_bornes_graph(bornes_graph *bg) {
+  for (int i = 0; i < bg->size; i++) {
+    printf("Borne %d:\n", i);
+    print_bornes_list(bg->bornes_graph[i]);
+  }
+}

@@ -97,10 +97,10 @@ borne *get_borne_by_id(bornes_list *bl, int id) {
   }
 }
 
-// Print a bornes_list
+
 void print_bornes_list(bornes_list *bl) {
   if (bl->index == 0) {
-    printf("bornes_list is empty\n");
+    printf("Bornes list is empty\n");
   } else {
     bornes_list *current = bl;
     for (int i = 0; i < get_length(bl); i++) {
