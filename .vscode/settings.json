@@ -20,6 +20,7 @@
     "stdlib.h": "c",
     "djikstra.h": "c",
     "vehicule.h": "c",
-    "bornes_list.h": "c"
+    "bornes_list.h": "c",
+    "utils_dijkstra.h": "c"
   }
 }

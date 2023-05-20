@@ -2,4 +2,4 @@
 // TODO : supposed to work now
 void dijkstra(void) { return; }
 
-int main(void) { return 0; }
+// int main(void) { return 0; }
