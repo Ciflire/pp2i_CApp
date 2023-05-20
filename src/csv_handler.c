@@ -193,8 +193,10 @@ void getCarInfos(vehicule_list *v_list){
     add_vehicule(v_list, create_vehicule(id, name, autonomie, capacity));
     id++;
   }
-  
+  printf("Véhicules chargés\n");
   fclose(f_car);
+  printf("Véhicules.csv closed\n");
   free(csvLine);
+  printf("csvLine freed\n");
   return;
 }
