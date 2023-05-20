@@ -1,6 +1,6 @@
 #include "include/csv_handler.h"
 
-bornes_graph *generate_graph_fromCSV(int autonomie) {
+bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_les_bornes, int *distances) {
   FILE *f_adjacence;
   //  printf("in generate_graph_fromCSV\n");
   f_adjacence = fopen("data/adjacence.csv", "r");
@@ -10,12 +10,12 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
     return (NULL);
   }
   char *csvLine = (char *)malloc(184099266);
-  int *longeurs = (int *)malloc(sizeof(int) * 184099266);
+  
   fgets(csvLine, 184099266, f_adjacence);
   fclose(f_adjacence);
   int resultSize;
 
-  generateListFromCSV(csvLine, longeurs, &resultSize, autonomie);
+  generateListFromCSV(csvLine, distances, &resultSize, autonomie);
   printf("resultSize = %d\n", resultSize);
   FILE *fp;
   char row[50];
@@ -32,7 +32,6 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
   // création de la liste de toutes les bornes
 
   int id = 0;
-  bornes_list *list_de_toutes_les_bornes = create_bornes_list();
   while (!feof(fp)) {
     fgets(row, 40000, fp);
     if(id == NB_BORNES) {
@@ -53,7 +52,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
   fclose(fp);
   printf("list_de_toutes_les_bornes created\n");
   for (int i = 0; i < resultSize; i++) {
-    if (longeurs[i] != -1) {
+    if (distances[i] != -1) {
       int borne1;
       int borne2;
       getBornesNumberFromIndex(i, &borne1, &borne2);
@@ -62,7 +61,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie) {
       add_borne_index(bg, borne2, get_borne(list_de_toutes_les_bornes, borne1));
     }
   }
-  free(longeurs);
+  free(distances);
   free(csvLine);
   destroy_bornes_list(list_de_toutes_les_bornes);
 
@@ -167,4 +166,35 @@ void getBornesNumberFromIndex(int indexDistance, int *idBorne1, int *idBorne2) {
   i--;
   *idBorne1 = i;
   *idBorne2 = indexDistance - (sum - i);
+}
+
+
+void getCarInfos(vehicule_list *v_list){
+  FILE *f_car;
+  char row[50];
+  f_car = fopen("data/Vehicules.csv", "r");
+
+  if (!f_car) {
+    printf("Can't open file Véhicules.csv\n");
+    return;
+  }
+  char *csvLine = (char *)malloc(6000);
+  fgets(csvLine, 6000, f_car);
+  
+  char *name = malloc(100);
+  int autonomie;
+  double capacity;
+  int id = 0;
+  while (!feof(f_car)) {
+    fgets(row, 100, f_car);
+    name = (char*)strtok(row, ",");
+    autonomie = (int)*strtok(NULL, ",");
+    capacity = (double)*strtok(NULL, ",");
+    add_vehicule(v_list, create_vehicule(id, name, autonomie, capacity));
+    id++;
+  }
+  
+  fclose(f_car);
+  free(csvLine);
+  return;
 }

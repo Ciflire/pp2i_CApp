@@ -26,3 +26,29 @@ void add_vehicule(vehicule_list *vl, vehicule *v) {
   }
   vl->size++;
 }
+
+int get_vehicule_id_by_name(vehicule_list *vl, char *name) {
+  if(vl->vehicule == NULL) {
+    return -1;
+  }
+  for (int i = 0; i < vl->size; i++) {
+    if (strcmp(vl->vehicule->name, name) == 0) {
+      return vl->vehicule->id;
+    }
+    vl = vl->next;
+  }
+  return -1;
+}
+
+vehicule *get_vehicule_by_id(vehicule_list *vl, int id) {
+  if(vl->vehicule == NULL) {
+    return NULL;
+  }
+  for (int i = 0; i < vl->size; i++) {
+    if (vl->vehicule->id == id) {
+      return vl->vehicule;
+    }
+    vl = vl->next;
+  }
+  return NULL;
+}
