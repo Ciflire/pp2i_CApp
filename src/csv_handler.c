@@ -186,8 +186,8 @@ void getCarInfos(vehicule_list *v_list){
   while (!feof(f_car)) {
     fgets(row, 100000, f_car);
     char* name =(char*)strtok(row, ",");
-    autonomie = (int)*strtok(NULL, ",");
-    capacity = (double)*strtok(NULL, ",");
+    autonomie = atoi(strtok(NULL, ","));
+    capacity = atoi(strtok(NULL, ","));
     add_vehicule(v_list, create_vehicule(id, name, autonomie, capacity));
     id++;
   }

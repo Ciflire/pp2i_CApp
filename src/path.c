@@ -19,7 +19,7 @@ int main(void) {
   int *battery_minimum = 0;
   int *max_time_charging = 0;
   int *max_time_waiting = 0;
-  int *autonomie = 0;
+  int autonomie = 0;
   // get car name from user and get autonomie from csv
   printf("Give your car id:");
   scanf("%d", &car_id);
@@ -34,20 +34,22 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     return (1);
   }
   // generate the graph
   bornes_list *list_de_toutes_les_bornes = create_bornes_list();
   int *distances = (int *)malloc(sizeof(int) * 184099266);
-  bornes_graph *bg =generate_graph_fromCSV(*autonomie, list_de_toutes_les_bornes, distances);
+  printf("Generating graph...\n");
+  printf("Autonomie: %d\n", v->autonomie);
+  autonomie = v->autonomie;
+  bornes_graph *bg =generate_graph_fromCSV(autonomie, list_de_toutes_les_bornes, distances);
+  printf("Graph generated\n");
   if (bg == NULL) {
     free(id_destination);
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -65,7 +67,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -80,7 +81,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -97,7 +97,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -113,7 +112,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -131,7 +129,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -148,7 +145,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -165,7 +161,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
     destroy_bornes_graph(bg);
@@ -186,7 +181,6 @@ int main(void) {
     free(battery_minimum);
     free(max_time_charging);
     free(max_time_waiting);
-    free(autonomie);
     destroy_vehicule_list(list_of_all_vehicules);
     return 1;
   }
@@ -196,7 +190,6 @@ int main(void) {
   free(battery_minimum);
   free(max_time_charging);
   free(max_time_waiting);
-  free(autonomie);
   destroy_vehicule_list(list_of_all_vehicules);
   destroy_bornes_list(list_de_toutes_les_bornes);
   destroy_bornes_graph(bg);
