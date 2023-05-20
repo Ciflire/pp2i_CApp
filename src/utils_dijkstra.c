@@ -1,5 +1,5 @@
 #include "include/utils_dijkstra.h"
-#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
 #define M_PI 3.14159265358979323846
 
 int get_distance_x_y(borne *bDep, borne *bArr) {
@@ -15,5 +15,5 @@ int get_distance_x_y(borne *bDep, borne *bArr) {
 }
 
 int get_charging_time(borne* b,vehicule* v, int max_time_charging){
-    return MAX((int)(v->capacity / b->power)*60, max_time_charging);
+    return MIN((int)(v->capacity / b->power)*60, max_time_charging);
 }

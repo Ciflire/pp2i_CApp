@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
 
   // get the path
   int actual_time = 0;
-  pathFinding(bg, origin, destination, battery_minimum, max_time_charging,
+  bornes_list *chemin = pathFinding(bg, origin, destination, battery_minimum, max_time_charging,
               max_time_waiting, &distances, list_de_toutes_les_bornes,
               actual_time, v);
   return 0;
@@ -114,6 +114,16 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
         dist_nearest_neighbour_final = get_distance_x_y(nearest_neighbour, destination);
       }
     }
+    add_borne(&path, nearest_neighbour);
+    current_borne = nearest_neighbour;
+    current_borne_id = current_borne->id;
+    if (get_charging_time(nearest_neighbour, v, max_time_charging)!=max_time_charging){
+      charge = autonomie;
+    }
+    else{
+      charge = charge - dist_current_nearest_neighbour + (max_time_charging / get_charging_time(nearest_neighbour, v, 99999999999999))*autonomie;
+    }
+    actual_time = actual_time + dist_current_nearest_neighbour*60/130;
   }
 
   return path;
