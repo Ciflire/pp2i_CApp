@@ -16,4 +16,5 @@ void destroy_bornes_graph(bornes_graph *bg);
 
 void add_borne_index(bornes_graph *bg, int index, borne *borne);
 
+void print_bornes_graph(bornes_graph *bg);
 #endif
