@@ -17,7 +17,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test path
+ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test
 
 all : $(ALL) clean
 
@@ -78,7 +78,7 @@ csv_handler_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard 
 csv_handler.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/csv_handler.c
 
-csv_handler_test : csv_handler.o csv_handler_test.o borne.o bornes_list.o bornes_graph.o vehicule.o vehicule_list.o
+csv_handler_test : csv_handler.o csv_handler_test.o borne.o bornes_list.o bornes_graph.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #dijkstra
@@ -98,12 +98,6 @@ utils_dijkstra_test.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcar
 utils_dijkstra_test : utils_dijkstra.o utils_dijkstra_test.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
-#path
-path.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
-	$(CC) $(CFLAGS) -c src/path.c
-
-path: path.o utils_dijkstra.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o csv_handler.o
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #clean
 clean :

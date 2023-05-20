@@ -88,3 +88,15 @@ borne *get_borne_by_id(bornes_list *bl, int id) {
     return NULL;
   }
 }
+
+void print_bornes_list(bornes_list *bl) {
+  if (bl->index == 0) {
+    printf("Bornes list is empty\n");
+  } else {
+    bornes_list *current = bl;
+    for (int i = 0; i < get_length(bl); i++) {
+      print_borne(current->borne);
+      current = current->next;
+    }
+  }
+}

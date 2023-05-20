@@ -30,4 +30,6 @@ int get_length(bornes_list *bl);
 bool is_borne_in_list(bornes_list *bl, int id);
 
 borne *get_borne_by_id(bornes_list *bl, int id);
+
+void print_bornes_list(bornes_list *bl);
 #endif
