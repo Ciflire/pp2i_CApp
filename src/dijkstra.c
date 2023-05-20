@@ -1,15 +1,6 @@
 #include "include/dijkstra.h"
-
-bornes_list dijkstra(double x_start, double y_start, 
-                    double x_end, double y_end, int autonomie){ 
-    //revoie le chemin le plus court entre 
-    
-    bornes_list chemin_bornes = create_bornes_list();
-    borne b0 = create_borne(0, x_start,y_start,0,1); 
-    borne b1 = create_borne(1, x_end, y_end, 0, 1);
-    chemin_bornes = add_borne(b0);
-    //l'idée est de considerer le point de départ et d'arrivé 
-    //comme deux bornes
+// TODO : supposed to work now
+void dijkstra(void) { return; }
 
     if(distance_cord(x_start,y_start,x_end,y_end) > autonomie){
         //label_list *ll = create_label_list();
