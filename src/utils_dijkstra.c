@@ -1,4 +1,6 @@
 #include "include/utils_dijkstra.h"
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define M_PI 3.14159265358979323846
 
 int get_distance_x_y(borne *bDep, borne *bArr) {
   double R = 6371;
@@ -10,4 +12,8 @@ int get_distance_x_y(borne *bDep, borne *bArr) {
   double c = 2 * atan2(sqrt(a), sqrt(1 - a));
   int d = (int)R * c;
   return d;
+}
+
+int get_charging_time(borne* b,vehicule* v, int max_time_charging){
+    return MAX((int)(v->capacity / b->power)*60, max_time_charging);
 }
