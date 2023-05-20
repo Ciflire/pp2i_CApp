@@ -2,13 +2,15 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+bool test_condition(borne *current_borne, borne *current_neighbour_i,
+                    borne *destination, borne *nearest_neighbour, int charge,
+                    int battery_minimum, int max_time_waiting, /*int actual_time,*/
+                    vehicule *v, int max_time_charging);
 
 bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int battery_minimum, int max_time_charging,
                          int max_time_waiting, int *distances,
-                         bornes_list *list_de_toutes_les_bornes,
                          int actual_time, vehicule *v);
-
 int main(int argc, char *argv[]) {
   char *car_name;
   int id_origin;
@@ -41,7 +43,8 @@ int main(int argc, char *argv[]) {
   }
 
   // get id_origin and id_destination from user
-  read_int_value("Give your origin id:", id_origin);
+  printf("Give your origin id:")
+  scanf("%d", id_origin);
   if (id_origin < 0) {
     printf("Origin id not found\n");
     return (1);
@@ -53,7 +56,8 @@ int main(int argc, char *argv[]) {
     return (1);
   }
 
-  read_int_value("Give your destination id:", id_destination);
+  printf("Give your destination id:")
+  scanf("%d", id_destination);
   if (id_destination < 0) {
     printf("Destination id not found\n");
     return (1);
@@ -65,32 +69,27 @@ int main(int argc, char *argv[]) {
     return (1);
   }
 
-  read_int_value(
-      "Give your minimum battery allowed (in percent):",
-      battery_minimum);
+  printf("Give your battery minimum (in percent):")
+  scanf("%d", battery_minimum);
   if (battery_minimum < 0 || battery_minimum > 100) {
     printf("Battery minimum not well defined\n");
     return (1);
   }
-  read_int_value(
-      "Give your max time charging in minutes(9999 for infinite) (in minutes):",
-      max_time_charging);
-  read_int_value("Give your max time waiting at a charging point in minutes "
-                 "(99999 for infinite):",
-                 max_time_waiting);
+  printf("Give your max time charging in minutes (99999 for infinite):")
+  scanf("%d", max_time_charging);
+  printf("Give your max time waiting in minutes (99999 for infinite):")
+  scanf("%d", max_time_waiting);
 
   // get the path
   int actual_time = 0;
   bornes_list *chemin = pathFinding(bg, origin, destination, battery_minimum, max_time_charging,
-              max_time_waiting, &distances, list_de_toutes_les_bornes,
-              actual_time, v);
+              max_time_waiting, &distances, actual_time, v);
   return 0;
 }
 
 bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int battery_minimum, int max_time_charging,
                          int max_time_waiting, int *distances,
-                         bornes_list *list_de_toutes_les_bornes,
                          int actual_time, vehicule *v) {
   bornes_list *path = create_bornes_list();
   add_borne(&path, origin);
@@ -101,11 +100,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
   while (!is_borne_in_list(&path, destination->id)) {
     bornes_list *list_of_neighbours = bg->bornes_graph[current_borne_id];
     borne *nearest_neighbour = get_borne(list_of_neighbours, 0);
-    int dist_current_nearest_neighbour =
-        get_distance_x_y(nearest_neighbour, current_borne_id);
-    int dist_nearest_neighbour_final =
-        get_distance_x_y(nearest_neighbour, destination);
-
+    
     for (int i = 0; i < get_length(list_of_neighbours); i++) {
       borne *current_neighbour_i = get_borne(list_of_neighbours, i);
       int dist_current_i = distances[index_of_distance(
@@ -113,11 +108,9 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
       int dist_i_final = get_distance_x_y(current_neighbour_i, destination);
       if (test_condition(current_borne, current_neighbour_i, destination,
                          nearest_neighbour, charge, battery_minimum,
-                         max_time_waiting, actual_time, v, max_time_charging)) {
+                         max_time_waiting, /*actual_time,*/ v, max_time_charging)) {
 
         nearest_neighbour = current_neighbour_i;
-        dist_current_nearest_neighbour = get_distance_x_y(nearest_neighbour, current_borne_id);
-        dist_nearest_neighbour_final = get_distance_x_y(nearest_neighbour, destination);
       }
     }
     add_borne(&path, nearest_neighbour);
@@ -127,7 +120,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
       charge = autonomie;
     }
     else{
-      charge = charge - dist_current_nearest_neighbour + (max_time_charging / get_charging_time(nearest_neighbour, v, 99999999999999))*autonomie;
+      charge = charge - dist_current_nearest_neighbour + (max_time_charging / get_charging_time(nearest_neighbour, v, 999999))*autonomie;
     }
     actual_time = actual_time + dist_current_nearest_neighbour*60/130;
   }
@@ -137,9 +130,8 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
 
 bool test_condition(borne *current_borne, borne *current_neighbour_i,
                     borne *destination, borne *nearest_neighbour, int charge,
-                    int battery_minimum, int max_time_waiting, int actual_time,
+                    int battery_minimum, int max_time_waiting, /*int actual_time,*/
                     vehicule *v, int max_time_charging) {
-  // int dist_current_i, int dist_i_final,int dist_current_nearest_neighbour,
   int dist_current_i = get_distance_x_y(current_borne, current_neighbour_i);
   int dist_i_final = get_distance_x_y(current_neighbour_i, destination);
   int dist_current_nearest_neighbour =
