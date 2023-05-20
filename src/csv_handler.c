@@ -2,7 +2,7 @@
 
 bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_les_bornes, int *distances) {
   FILE *f_adjacence;
-  //  printf("in generate_graph_fromCSV\n");
+  printf("in generate_graph_fromCSV\n");
   f_adjacence = fopen("data/adjacence.csv", "r");
 
   if (!f_adjacence) {
@@ -180,23 +180,19 @@ void getCarInfos(vehicule_list *v_list){
   }
   char *csvLine = (char *)malloc(6000);
   fgets(csvLine, 6000, f_car);
-  int id;
+  int id =0;
   int autonomie;
   double capacity;
   while (!feof(f_car)) {
     fgets(row, 100000, f_car);
-    id= (int)*strtok(row, ",");
-    char* name =(char*)strtok(NULL, ",");
+    char* name =(char*)strtok(row, ",");
     autonomie = (int)*strtok(NULL, ",");
     capacity = (double)*strtok(NULL, ",");
     add_vehicule(v_list, create_vehicule(id, name, autonomie, capacity));
     id++;
   }
-  printf("Véhicules chargés\n");
   fclose(f_car);
-  printf("Véhicules.csv closed\n");
   free(csvLine);
-  printf("csvLine freed\n");
 
   return;
 }

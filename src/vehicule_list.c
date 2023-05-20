@@ -51,7 +51,8 @@ vehicule *get_vehicule_by_id(vehicule_list *vl, int id) {
   if(vl->vehicule == NULL) {
     return NULL;
   }
-  for (int i = 0; i < vl->size; i++) {
+  int length = vl->size;
+  for (int i = 0; i < length; i++) {
     if (vl->vehicule->id == id) {
       return vl->vehicule;
     }
