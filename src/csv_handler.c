@@ -180,14 +180,13 @@ void getCarInfos(vehicule_list *v_list){
   }
   char *csvLine = (char *)malloc(6000);
   fgets(csvLine, 6000, f_car);
-  
-  char *name = malloc(400);
+  int id;
   int autonomie;
   double capacity;
-  int id = 0;
   while (!feof(f_car)) {
-    fgets(row, 100, f_car);
-    name = (char*)strtok(row, ",");
+    fgets(row, 100000, f_car);
+    id= (int)*strtok(row, ",");
+    char* name =(char*)strtok(NULL, ",");
     autonomie = (int)*strtok(NULL, ",");
     capacity = (double)*strtok(NULL, ",");
     add_vehicule(v_list, create_vehicule(id, name, autonomie, capacity));
@@ -198,5 +197,6 @@ void getCarInfos(vehicule_list *v_list){
   printf("Véhicules.csv closed\n");
   free(csvLine);
   printf("csvLine freed\n");
+
   return;
 }

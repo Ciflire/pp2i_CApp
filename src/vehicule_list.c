@@ -9,10 +9,17 @@ vehicule_list *create_vehicule_list(void) {
 }
 
 void destroy_vehicule_list(vehicule_list *vl) {
-  if (vl->next != NULL) {
-    destroy_vehicule_list(vl->next);
+  int size = vl->size;
+  if (size == 0) {
+    free(vl);
+    return;
   }
-  free(vl);
+  for(int i=0;i<size;i++) {
+    vehicule_list *next = vl->next;
+    destroy_vehicule(vl->vehicule);
+    free(vl);
+    vl = next;
+  }
 }
 
 void add_vehicule(vehicule_list *vl, vehicule *v) {
