@@ -14,12 +14,15 @@ void destroy_bornes_list(bornes_list *bl) {
     free(bl);
     return;
   }
-  for (int i = 0; i < length; i++) {
+  bl->prev->next = NULL;
+  while(bl!=NULL) {
     bornes_list *next = bl->next;
     destroy_borne(bl->borne);
     free(bl);
     bl = next;
+    
   }
+  
 }
 
 void add_borne(bornes_list *bl, borne *b) {
@@ -43,7 +46,7 @@ int get_length(bornes_list *bl) {
   if (bl->index == 0) {
     return 0;
   } else {
-    return bl->prev->index;
+    return bl->prev->index+1;
   }
 }
 
