@@ -13,58 +13,79 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int max_time_waiting, int *distances,
                          /*int actual_time, */ vehicule *v);
 int main(void) {
-  char *car_name[400];
+  int car_id = 0;
   int *id_origin = 0;
   int *id_destination = 0;
   int *battery_minimum = 0;
   int *max_time_charging = 0;
   int *max_time_waiting = 0;
-  int *autonomie = 0;
+  int autonomie = 0;
   // get car name from user and get autonomie from csv
-  printf("Give your car name:");
-  scanf("%399s", *car_name);
-  printf("test\n");
-  vehicule_list *list_of_all_vehicules =
-      create_vehicule_list();
+  printf("Give your car id:");
+  scanf("%d", &car_id);
+  vehicule_list *list_of_all_vehicules = create_vehicule_list();
   getCarInfos(list_of_all_vehicules);
-  printf("test\n");
   free(id_origin);
-  printf("test1\n");
-  free(id_destination);
-  free(battery_minimum);
-  free(max_time_charging);
-  free(max_time_waiting);
-  free(autonomie);
-  destroy_vehicule_list(list_of_all_vehicules);
-  return 0;
-  vehicule *v = get_vehicule_by_id(
-      list_of_all_vehicules,
-      get_vehicule_id_by_name(list_of_all_vehicules, *car_name));
+
+  vehicule *v = get_vehicule_by_id(list_of_all_vehicules, car_id);
   if (v == NULL) {
     printf("Car not found\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
     return (1);
   }
   // generate the graph
   bornes_list *list_de_toutes_les_bornes = create_bornes_list();
   int *distances = (int *)malloc(sizeof(int) * 184099266);
-  bornes_graph *bg =
-      generate_graph_fromCSV(*autonomie, list_de_toutes_les_bornes, distances);
+  printf("Generating graph...\n");
+  printf("Autonomie: %d\n", v->autonomie);
+  autonomie = v->autonomie;
+  bornes_graph *bg =generate_graph_fromCSV(autonomie, list_de_toutes_les_bornes, distances);
+  printf("Graph generated\n");
   if (bg == NULL) {
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
     printf("Error while generating graph\n");
     return 1;
   }
-
+  printf("Graph generated\n");
   // get id_origin and id_destination from user
   printf("Give your origin id:");
   scanf("%d", id_origin);
   if (*id_origin < 0) {
     printf("Origin id not found\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
     return (1);
   }
   borne *origin;
   origin = get_borne_by_id(list_de_toutes_les_bornes, *id_origin);
   if (origin == NULL) {
     printf("Origin id not found\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
+    destroy_borne(origin);
     return (1);
   }
 
@@ -72,12 +93,31 @@ int main(void) {
   scanf("%d", id_destination);
   if (*id_destination < 0) {
     printf("Destination id not found\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
+    destroy_borne(origin);
     return (1);
   }
   borne *destination;
   destination = get_borne_by_id(list_de_toutes_les_bornes, *id_destination);
   if (destination == NULL) {
-    printf("Origin id not found\n");
+    printf("Destination id not found\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
+    destroy_borne(origin);
+    destroy_borne(destination);
     return (1);
   }
 
@@ -85,12 +125,50 @@ int main(void) {
   scanf("%d", battery_minimum);
   if (*battery_minimum < 0 || *battery_minimum > 100) {
     printf("Battery minimum not well defined\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
+    destroy_borne(origin);
+    destroy_borne(destination);
     return (1);
   }
   printf("Give your max time charging in minutes (99999 for infinite):");
   scanf("%d", max_time_charging);
+  if (*max_time_charging < 0) {
+    printf("Max time charging not well defined\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
+    destroy_borne(origin);
+    destroy_borne(destination);
+    return (1);
+  }
   printf("Give your max time waiting in minutes (99999 for infinite):");
   scanf("%d", max_time_waiting);
+  if (*max_time_waiting < 0) {
+    printf("Max time waiting not well defined\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
+    destroy_bornes_list(list_de_toutes_les_bornes);
+    destroy_bornes_graph(bg);
+    free(distances);
+    destroy_borne(origin);
+    destroy_borne(destination);
+    return (1);
+  }
 
   // get the path
   // int actual_time = 0;
@@ -99,10 +177,25 @@ int main(void) {
                   *max_time_waiting, distances, /*actual_time,*/ v);
   if (chemin == NULL) {
     printf("No path found\n");
+    free(id_destination);
+    free(battery_minimum);
+    free(max_time_charging);
+    free(max_time_waiting);
+    destroy_vehicule_list(list_of_all_vehicules);
     return 1;
   }
   // print the path
   print_bornes_list(chemin);
+  free(id_destination);
+  free(battery_minimum);
+  free(max_time_charging);
+  free(max_time_waiting);
+  destroy_vehicule_list(list_of_all_vehicules);
+  destroy_bornes_list(list_de_toutes_les_bornes);
+  destroy_bornes_graph(bg);
+  free(distances);
+  destroy_borne(origin);
+  destroy_borne(destination);
   return 0;
 }
 
@@ -177,5 +270,4 @@ bool test_condition(borne *current_borne, borne *current_neighbour_i,
                  dist_nearest_neighbour_final * 60 / 130 &&
          charge - dist_current_i > v->autonomie * battery_minimum &&
          wait_time < max_time_waiting;
-
 }
