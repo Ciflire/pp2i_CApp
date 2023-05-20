@@ -171,7 +171,7 @@ void getBornesNumberFromIndex(int indexDistance, int *idBorne1, int *idBorne2) {
 
 void getCarInfos(vehicule_list *v_list){
   FILE *f_car;
-  char row[50];
+  char row[100];
   f_car = fopen("data/Vehicules.csv", "r");
 
   if (!f_car) {
@@ -181,7 +181,7 @@ void getCarInfos(vehicule_list *v_list){
   char *csvLine = (char *)malloc(6000);
   fgets(csvLine, 6000, f_car);
   
-  char *name = malloc(1000);
+  char *name = malloc(400);
   int autonomie;
   double capacity;
   int id = 0;
