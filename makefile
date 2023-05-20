@@ -17,7 +17,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test dijkstra
+ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test
 
 all : $(ALL) clean
 
@@ -82,19 +82,29 @@ csv_handler_test : csv_handler.o csv_handler_test.o borne.o bornes_list.o bornes
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #dijkstra
-dijkstra.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
-	$(CC) $(CFLAGS) -c src/dijkstra.c
+#dijkstra.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+#	$(CC) $(CFLAGS) -c src/dijkstra.c
 
-dijkstra : dijkstra.o
+#dijkstra : dijkstra.o
+#	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+
+#utils_dijkstra
+utils_dijkstra.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/utils_dijkstra.c
+
+utils_dijkstra_test.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/test/utils_dijkstra_test.c
+
+utils_dijkstra_test : utils_dijkstra.o utils_dijkstra_test.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
-
 
 
 #clean
 clean :
 	rm -f *.o
-	mv $(ALL) bin/
+	rm -f bin/*
 	rm -f src/include/*.gch
+	mv $(ALL) bin/
 
 #remake all the executables
 remake :

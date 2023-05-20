@@ -2,7 +2,7 @@
 
 bornes_graph *generate_graph_fromCSV(int autonomie) {
   FILE *f_adjacence;
-  printf("in generate_graph_fromCSV\n");
+  //  printf("in generate_graph_fromCSV\n");
   f_adjacence = fopen("data/adjacence.csv", "r");
 
   if (!f_adjacence) {
