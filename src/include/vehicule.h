@@ -18,4 +18,6 @@ typedef struct vehicule vehicule;
 vehicule *create_vehicule(int id, char *name, int autonomie, double capacity);
 
 void destroy_vehicule(vehicule *v);
+
+void print_vehicule(vehicule *v);
 #endif
