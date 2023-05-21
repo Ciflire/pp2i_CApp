@@ -13,7 +13,7 @@ borne *create_borne(int id, double xpos, double ypos, double power, int qte) {
 void destroy_borne(borne *b) { free(b); }
 
 void print_borne(borne *b) {
-  printf("Borne %d: (%f, %f) - %f - %d\n", b->id, b->xpos, b->ypos, b->power,
+  printf("Borne %d: (%lf, %lf) - %lf - %d\n", b->id, b->xpos, b->ypos, b->power,
          b->qte);
 }
 
