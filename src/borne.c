@@ -16,3 +16,7 @@ void print_borne(borne *b) {
   printf("Borne %d: (%f, %f) - %f - %d\n", b->id, b->xpos, b->ypos, b->power,
          b->qte);
 }
+
+borne *copy_borne(borne *b) {
+  return create_borne(b->id, b->xpos, b->ypos, b->power, b->qte);
+}
