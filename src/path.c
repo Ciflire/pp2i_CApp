@@ -25,7 +25,6 @@ int main(void) {
   scanf("%d", &car_id);
   vehicule_list *list_of_all_vehicules = create_vehicule_list();
   getCarInfos(list_of_all_vehicules);
-  free(id_origin);
 
   vehicule *v = get_vehicule_by_id(list_of_all_vehicules, car_id);
   if (v == NULL) {
@@ -43,7 +42,8 @@ int main(void) {
   printf("Generating graph...\n");
   printf("Autonomie: %d\n", v->autonomie);
   autonomie = v->autonomie;
-  bornes_graph *bg =generate_graph_fromCSV(autonomie, list_de_toutes_les_bornes, distances);
+  bornes_graph *bg =
+      generate_graph_fromCSV(autonomie, list_de_toutes_les_bornes, distances);
   printf("Graph generated\n");
   if (bg == NULL) {
     free(id_destination);

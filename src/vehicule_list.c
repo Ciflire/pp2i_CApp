@@ -60,3 +60,14 @@ vehicule *get_vehicule_by_id(vehicule_list *vl, int id) {
   }
   return NULL;
 }
+
+void print_vehicule_list(vehicule_list *vl) {
+  if (vl->vehicule == NULL) {
+    return;
+  }
+  int length = vl->size;
+  for (int i = 0; i < length; i++) {
+    print_vehicule(vl->vehicule);
+    vl = vl->next;
+  }
+}
