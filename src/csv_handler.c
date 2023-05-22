@@ -34,6 +34,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
   int id = 0;
   while (!feof(fp)) {
     fgets(row, 40000, fp);
+    char *token;
     if(id == NB_BORNES) {
       continue;
     }
@@ -41,9 +42,11 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
     double ypos;
     double power;
     int qte;
-    xpos = (double)*strtok(row, ",");
-    ypos = (double)*strtok(NULL, ",");
-    power = (double)*strtok(NULL, ",");
+    token = strtok(row, ",");
+    xpos = strtod(token, NULL);
+    printf("xpos = %f\n", xpos);
+    token = strtok(NULL, ",");
+    token = strtok(NULL, ",");
     qte = (int)*strtok(NULL, ",");
     add_borne(list_de_toutes_les_bornes,
               create_borne(id, xpos, ypos, power, qte));
