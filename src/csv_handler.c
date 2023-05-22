@@ -61,9 +61,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
       add_borne_index(bg, borne2, get_borne(list_de_toutes_les_bornes, borne1));
     }
   }
-  free(distances);
   free(csvLine);
-  destroy_bornes_list(list_de_toutes_les_bornes);
 
   return bg;
 }
