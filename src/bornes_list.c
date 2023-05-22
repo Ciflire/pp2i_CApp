@@ -86,12 +86,14 @@ bool is_borne_in_list(bornes_list *bl, int id) {
 
 // Returns NULL if the borne is not in the list
 borne *get_borne_by_id(bornes_list *bl, int id) {
+  printf("in get_borne_by_id\n");
   if (bl->index == 0) {
     return NULL;
   } else {
     bornes_list *current = bl;
     for (int i = 0; i < get_length(bl); i++) {
       if (current->borne->id == id) {
+        printf("found borne %d\n", id);
         return current->borne;
       }
       current = current->next;
