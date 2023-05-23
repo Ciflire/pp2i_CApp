@@ -19,3 +19,5 @@ typedef struct label_list label_list;
 bornes_list dijkstra(double x_start, double y_start, double x_end, double y_end, int autonomie);
 
 #endif
+
+
