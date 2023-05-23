@@ -207,7 +207,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
     }
     // actual_time = actual_time + dist_current_nearest_neighbour*60/130;
   }
-  destroy_borne(current_borne);
+  destroy_borne(current_borne); 
   return path;
 }
 
@@ -217,44 +217,44 @@ bool test_condition(borne *current_borne, borne *current_neighbour_i,
                     int max_time_waiting, /*int actual_time,*/
                     vehicule *v, int max_time_charging) {
   int dist_current_i = get_distance_x_y(current_borne, current_neighbour_i);
-  printf("dist_current_i: %d\n", dist_current_i);
+  //printf("dist_current_i: %d\n", dist_current_i);
   int dist_i_final = get_distance_x_y(current_neighbour_i, destination);
-  printf("dist_i_final: %d\n", dist_i_final);
+  //printf("dist_i_final: %d\n", dist_i_final);
   int dist_current_nearest_neighbour =
       get_distance_x_y(current_borne, nearest_neighbour);
-  printf("dist_current_nearest_neighbour: %d\n",
-         dist_current_nearest_neighbour);
+  /* printf("dist_current_nearest_neighbour: %d\n",
+         dist_current_nearest_neighbour); */
   int dist_nearest_neighbour_final =
       get_distance_x_y(nearest_neighbour, destination);
-  printf("dist_nearest_neighbour_final: %d\n", dist_nearest_neighbour_final);
+  //printf("dist_nearest_neighbour_final: %d\n", dist_nearest_neighbour_final);
   int wait_time = 0;
   // wait_time = get_wait_time(, actual_time);
   int max_charging_time_i =
       get_charging_time(current_neighbour_i, v, max_time_charging);
-  printf("max_charging_time_i: %d\n", max_charging_time_i);
+ // printf("max_charging_time_i: %d\n", max_charging_time_i);
 
   int max_charging_time_nearest_neighbour =
       get_charging_time(nearest_neighbour, v, max_time_charging);
-  printf("max_charging_time_nearest_neighbour: %d\n",
-         max_charging_time_nearest_neighbour);
+  /* printf("max_charging_time_nearest_neighbour: %d\n",
+         max_charging_time_nearest_neighbour); */
 
   // b1 test si le temps de trajet en passant par le voisin i+chargemeent et
   // attente en i est plus court que le temps de trajet en passant par l'actuel
   // meilleur+chargmeent et attente en l'actuel meilleur
-  bool b1 = (dist_current_i * (float)60 / (float)130 + wait_time +
-             max_charging_time_i * (1 - charge / v->autonomie) +
-             dist_i_final * (float)60 / (float)130) <
-            (dist_current_nearest_neighbour * (float)60 / (float)130 +
-             wait_time + max_charging_time_nearest_neighbour +
-             dist_nearest_neighbour_final * (float)60 / (float)130);
+  bool b1 = ((float)dist_current_i * (float)60 / (float)130 + (float)wait_time +
+             (float)max_charging_time_i +
+             (float)dist_i_final * (float)60 / (float)130) <
+            ((float)dist_current_nearest_neighbour * (float)60 / (float)130 +
+             (float)wait_time + (float)max_charging_time_nearest_neighbour +
+             (float)dist_nearest_neighbour_final * (float)60 / (float)130);
   // b2
-  bool b2 = charge - dist_current_i >
-            v->autonomie * battery_minimum; // on vérifie s'il est pas trop loin
+  bool b2 = charge - dist_current_i >=
+            (float)v->autonomie * (float)battery_minimum/(float)100; // on vérifie s'il est pas trop loin
   // b3
   bool b3 = wait_time <= max_time_waiting; // pourquoi vérifier ça ?
-printf("b1: %d\n", b1);
+/* printf("b1: %d\n", b1);
 printf("b2: %d\n", b2);
 printf("b3: %d\n", b3);
-
+ */
   return b1 && b2 && b3;
 }
