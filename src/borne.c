@@ -16,6 +16,8 @@ void destroy_borne(borne *b) { free(b); }
 
 // Prints a borne to the standard output
 void print_borne(borne *b) {
+  printf("Borne %lf, %lf\n", b->xpos, b->ypos);
+  printf("id : %d\n", b->id);
   printf("Borne %d: (%lf, %lf) - %lf - %d\n", b->id, b->xpos, b->ypos, b->power,
          b->qte);
 }

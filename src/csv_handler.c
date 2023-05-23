@@ -44,6 +44,8 @@ bornes_graph *generate_graph_fromCSV(int autonomie,
   // création de la liste de toutes les bornes
 
   int id = 0;
+  
+  char* token;
   while (!feof(fp)) {
     fgets(row, 40000, fp);
     if (id == NB_BORNES) {
@@ -53,10 +55,12 @@ bornes_graph *generate_graph_fromCSV(int autonomie,
     double ypos;
     double power;
     int qte;
-    // NULL permet d'avancer d'un token
-    xpos = (double)*strtok(row, ",");
-    ypos = (double)*strtok(NULL, ",");
-    power = (double)*strtok(NULL, ",");
+    token = strtok(row, ",");
+    xpos = strtod(token, NULL);
+    token = strtok(NULL, ",");
+    ypos = strtod(token, NULL);
+    token = strtok(NULL, ",");
+    power = strtod(token, NULL);
     qte = (int)*strtok(NULL, ",");
     add_borne(list_de_toutes_les_bornes,
               create_borne(id, xpos, ypos, power, qte));
@@ -121,39 +125,7 @@ void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
   *resultSize = count;
   printf("count_links = %d\n", count_links);
 }
-/*
 
-int main() {
-    FILE* fp;
-
-    fp = fopen("data/adjacence.csv","r");
-
-    if (!fp){
-        printf("Can't open file\n");
-        return(-1);
-    }
-    char* csvLine = (char*)malloc(184099266);
-    int *longeurs = (int *)malloc(sizeof(int)*184099266);
-    fgets(csvLine, 184099266, fp);
-    int resultSize;
-
-    generateListFromCSV(csvLine, longeurs, &resultSize);
-
-    //printf("Liste générée : ");
-    //for (int i = 0; i < resultSize; i++) {
-    //    printf("%d ", longeurs[i]);
-    //}
-    //printf("\n");
-
-
-
-    free(longeurs);
-    //free(csvLine);
-    free(fp);
-
-    return 0;
-}
-*/
 
 int index_of_distance(int a, int b) {
 
