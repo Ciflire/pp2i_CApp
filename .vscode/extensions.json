@@ -1,7 +1,7 @@
 {
     "recommendations": [
-        "xaver.clang-format",
-        "eamodio.gitlens",
-        "ms-python.autopep8"
+      "llvm-vs-code-extensions.vscode-clangd",
+      "eamodio.gitlens",
+      "ms-python.autopep8"
     ]
 }

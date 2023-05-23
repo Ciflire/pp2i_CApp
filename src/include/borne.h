@@ -21,8 +21,6 @@ void destroy_borne(borne *b);
 
 void print_borne(borne *b);
 
-void print_borne_file(borne *b, FILE *f);
-
 borne *copy_borne(borne *b);
 
 #endif

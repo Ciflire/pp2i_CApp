@@ -1,5 +1,6 @@
 #include "include/vehicule_list.h"
 
+// Creates a vehicule_list
 vehicule_list *create_vehicule_list(void) {
   vehicule_list *vl = malloc(sizeof(vehicule_list));
   vl->size = 0;
@@ -8,6 +9,7 @@ vehicule_list *create_vehicule_list(void) {
   return vl;
 }
 
+// Destroys a vehicule_list
 void destroy_vehicule_list(vehicule_list *vl) {
   int size = vl->size;
   if (size == 0) {
@@ -22,6 +24,7 @@ void destroy_vehicule_list(vehicule_list *vl) {
   }
 }
 
+// Adds a vehicule to a vehicule_list
 void add_vehicule(vehicule_list *vl, vehicule *v) {
   if (vl->vehicule == NULL) {
     vl->vehicule = v;
@@ -34,6 +37,7 @@ void add_vehicule(vehicule_list *vl, vehicule *v) {
   vl->size++;
 }
 
+// Gets the id of a vehicule by its name
 int get_vehicule_id_by_name(vehicule_list *vl, char *name) {
   if(vl->vehicule == NULL) {
     return -1;
@@ -47,6 +51,7 @@ int get_vehicule_id_by_name(vehicule_list *vl, char *name) {
   return -1;
 }
 
+// Gets a vehicule by its id
 vehicule *get_vehicule_by_id(vehicule_list *vl, int id) {
   if(vl->vehicule == NULL) {
     return NULL;
@@ -61,6 +66,7 @@ vehicule *get_vehicule_by_id(vehicule_list *vl, int id) {
   return NULL;
 }
 
+// Prints a vehicule_list
 void print_vehicule_list(vehicule_list *vl) {
   if (vl->vehicule == NULL) {
     return;
