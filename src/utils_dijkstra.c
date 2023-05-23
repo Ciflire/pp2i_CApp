@@ -15,5 +15,5 @@ int get_distance_x_y(borne *bDep, borne *bArr) {
 }
 
 int get_charging_time(borne* b,vehicule* v, int max_time_charging){
-    return MIN((int)(v->capacity / b->power)*60, max_time_charging);
+    return MIN((int)((float)v->capacity / (float)b->power)*60.0, max_time_charging);
 }
