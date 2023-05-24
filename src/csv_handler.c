@@ -1,28 +1,17 @@
 #include "include/csv_handler.h"
 
-// generates the graph based on the csv
-bornes_graph *generate_graph_fromCSV(int autonomie,
-                                     bornes_list *list_de_toutes_les_bornes,
-                                     int *distances) {
-  // creates a file pointer
+bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_les_bornes, int *distances) {
   FILE *f_adjacence;
   printf("in generate_graph_fromCSV\n");
-  // opens the file
   f_adjacence = fopen("data/adjacence.csv", "r");
 
-  // check if the file exists or is open
   if (!f_adjacence) {
     printf("Can't open file adjacence.csv\n");
     return (NULL);
   }
-
-  // creates a string to store the csv line
   char *csvLine = (char *)malloc(184099266);
-
-  // reads the first line of the csv which is the entire file
+  
   fgets(csvLine, 184099266, f_adjacence);
-
-  // closes the file
   fclose(f_adjacence);
   int resultSize;
 
@@ -33,7 +22,6 @@ bornes_graph *generate_graph_fromCSV(int autonomie,
 
   fp = fopen("data/bornes.csv", "r");
 
-  // check if the file exists or is open
   if (!fp) {
     printf("Can't open file bornes.csv\n");
     return (NULL);
@@ -48,7 +36,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie,
   char* token;
   while (!feof(fp)) {
     fgets(row, 40000, fp);
-    if (id == NB_BORNES) {
+    if(id == NB_BORNES) {
       continue;
     }
     double xpos;
@@ -76,9 +64,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie,
       add_borne_index(bg, borne2, get_borne(list_de_toutes_les_bornes, borne1));
     }
   }
-  free(distances);
   free(csvLine);
-  destroy_bornes_list(list_de_toutes_les_bornes);
 
   return bg;
 }
@@ -151,25 +137,24 @@ void getBornesNumberFromIndex(int indexDistance, int *idBorne1, int *idBorne2) {
   *idBorne2 = indexDistance - (sum - i);
 }
 
-void getCarInfos(vehicule_list *v_list) {
+
+void getCarInfos(vehicule_list *v_list){
   FILE *f_car;
   char row[100];
-  // Gets the file from were we execute the program
   f_car = fopen("data/Vehicules.csv", "r");
 
-  // check if the file exists or is open
   if (!f_car) {
     printf("Can't open file Véhicules.csv\n");
     return;
   }
   char *csvLine = (char *)malloc(6000);
   fgets(csvLine, 6000, f_car);
-  int id = 0;
+  int id =0;
   int autonomie;
   double capacity;
   while (!feof(f_car)) {
     fgets(row, 100000, f_car);
-    char *name = (char *)strtok(row, ",");
+    char* name =(char*)strtok(row, ",");
     autonomie = atoi(strtok(NULL, ","));
     capacity = atoi(strtok(NULL, ","));
     add_vehicule(v_list, create_vehicule(id, name, autonomie, capacity));
