@@ -33,9 +33,7 @@ def cleanup():
     XYP = XandY.join(A["puissance_nominale"])# ajout des puissances 
  
     XYPN = XYP.join(A["nbre_pdc"])# ajout du nombre de bornes 
- 
-    XYPN = XYPN.groupby(["X","Y","puissance_nominale"]).max()# somme des bornes par coordonnes et puissance 
-    XYPN = XYPN.reset_index()# retour a 4 colonnes 
+    XYPN = XYPN.groupby(['X', 'Y']).agg({'puissance_nominale': 'max', 'nbre_pdc': 'sum'}).reset_index()# regroupement des bornes par coordonnées
  
     # latitude et longitude bornees 
     minXY=[-4.902,42.28] 
