@@ -2,7 +2,7 @@
 
 bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_les_bornes, int *distances) {
   FILE *f_adjacence;
-  printf("in generate_graph_fromCSV\n");
+//  printf("in generate_graph_fromCSV\n");
   f_adjacence = fopen("data/adjacence.csv", "r");
 
   if (!f_adjacence) {
@@ -16,7 +16,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
   int resultSize;
 
   generateListFromCSV(csvLine, distances, &resultSize, autonomie);
-  printf("resultSize = %d\n", resultSize);
+//  printf("resultSize = %d\n", resultSize);
   FILE *fp;
   char row[50];
 
@@ -28,7 +28,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
   }
 
   bornes_graph *bg = create_bornes_graph(NB_BORNES);
-  printf("bg created\n");
+//  printf("bg created\n");
   // création de la liste de toutes les bornes
 
   int id = 0;
@@ -59,7 +59,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
     id++;
   }
   fclose(fp);
-  printf("list_de_toutes_les_bornes created\n");
+//  printf("list_de_toutes_les_bornes created\n");
   for (int i = 0; i < resultSize; i++) {
     if (distances[i] != -1) {
       int borne1;
@@ -79,7 +79,7 @@ void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
                          int autonomie) {
   // Initialisation des variables
   int count = 0;
-  int count_links = 0;
+  //int count_links = 0;
   // Découpage de la ligne CSV en tokens
   char *token = strtok((char *)csvLine, ",");
   while (token != NULL) {
@@ -103,7 +103,7 @@ void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
     } else {
       // Ajout de la valeur entière à la liste
       resultList[count++] = value;
-      count_links++;
+//      count_links++;
     }
 
     // Passage au token suivant
@@ -113,7 +113,7 @@ void generateListFromCSV(char *csvLine, int *resultList, int *resultSize,
 
   // Affectation des résultats
   *resultSize = count;
-  printf("count_links = %d\n", count_links);
+//  printf("count_links = %d\n", count_links);
 }
 
 
