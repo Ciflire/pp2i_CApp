@@ -43,11 +43,17 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
     double ypos;
     double power;
     int qte;
-    // NULL permet d'avancer d'un token
-    xpos = (double)*strtok(row, ",");
-    ypos = (double)*strtok(NULL, ",");
-    power = (double)*strtok(NULL, ",");
-    qte = (int)*strtok(NULL, ",");
+    token = strtok(row, ",");
+    xpos = strtod(token, NULL);
+    token = strtok(NULL, ",");
+    ypos = strtod(token, NULL);
+    token = strtok(NULL, ",");
+    power = strtod(token, NULL);
+    token = strtok(NULL, ",");
+    qte =(int) strtol(token, NULL, 10);
+    if (id<5){
+      printf("id : %d, xpos : %f, ypos : %f, power : %f, qte : %d\n", id, xpos, ypos, power, qte);
+    }
     add_borne(list_de_toutes_les_bornes,
               create_borne(id, xpos, ypos, power, qte));
     id++;
