@@ -175,10 +175,10 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
     bornes_list *list_of_neighbours = bg->bornes_graph[current_borne_id];
 //    printf("getting_nearest_neighbour\n");
     borne *nearest_neighbour = get_borne(list_of_neighbours, 1);
-    print_borne(nearest_neighbour);
+//    print_borne(nearest_neighbour);
 
 //    printf("nearest neighbour adress: %p\n", (void *)&nearest_neighbour);
-    print_borne(nearest_neighbour);
+//    print_borne(nearest_neighbour);
     // Teste pour tous les voisins du point actuel s'il est meilleur que le
     // meilleur actuel (nearest_neighbour)
     for (int i = 0; i < get_length(list_of_neighbours); i++) {
