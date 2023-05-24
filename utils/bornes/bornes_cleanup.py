@@ -28,7 +28,7 @@ def cleanup():
     coords = A["coordonneesXY"] #traitement des coordonnees 
     XandY = [eval(smth) for smth in coords.values] 
     XandY = pd.DataFrame(XandY, columns=["X","Y"])#separation des X et Y 
-    XandY = XandY.round(1)# Passage de precision à 75m près 
+    XandY = XandY.round(3)# Passage de precision à 75m près 
  
     XYP = XandY.join(A["puissance_nominale"])# ajout des puissances 
  

@@ -1,6 +1,6 @@
 #include "include/bornes_graph.h"
 
-// creates a bornes_graph of size n O(né)
+// creates a bornes_graph of size n O(n)
 bornes_graph *create_bornes_graph(int n) {
   bornes_graph *bg = malloc(sizeof(bornes_graph));
   bg->size = n;
