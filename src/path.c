@@ -160,6 +160,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int battery_minimum, int max_time_charging,
                          int max_time_waiting,
                          /*int actual_time, */ vehicule *v) {
+  printf("destination id : %d\n", destination->id);
   printf("in pathfinding...\n");
   bornes_list *path = create_bornes_list();
   add_borne(path, origin);
@@ -169,24 +170,22 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
   int charge = autonomie;
 
   while (!is_borne_in_list(path, destination->id)) {
-    printf("actual path:\n");
     bornes_list *list_of_neighbours = bg->bornes_graph[current_borne_id];
-    printf("getting_nearest_neighbour\n");
+    /* printf("getting_nearest_neighbour\n"); */
     borne *nearest_neighbour = get_borne(list_of_neighbours, 1);
-    print_borne(nearest_neighbour);
-
-    printf("nearest neighbour adress: %p\n", (void *)&nearest_neighbour);
-    print_borne(nearest_neighbour);
     // Teste pour tous les voisins du point actuel s'il est meilleur que le
     // meilleur actuel (nearest_neighbour)
     for (int i = 0; i < get_length(list_of_neighbours); i++) {
       borne *current_neighbour_i = get_borne(list_of_neighbours, i);
       if (!is_borne_in_list(path, current_neighbour_i->id)) {
+        /* if (current_neighbour_i->id == 1){
+        printf("path: \n");
+        print_bornes_list(path);
+      } */
         if (test_condition(current_borne, current_neighbour_i, destination,
                            nearest_neighbour, charge, battery_minimum,
                            max_time_waiting, /*actual_time,*/ v,
                            max_time_charging)) {
-          printf("oiefziuheçpfujbezfojn\n");
           nearest_neighbour = current_neighbour_i;
         }
       }
@@ -207,7 +206,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
     }
     // actual_time = actual_time + dist_current_nearest_neighbour*60/130;
   }
-  destroy_borne(current_borne); 
+  destroy_borne(current_borne);
   return path;
 }
 
@@ -217,21 +216,21 @@ bool test_condition(borne *current_borne, borne *current_neighbour_i,
                     int max_time_waiting, /*int actual_time,*/
                     vehicule *v, int max_time_charging) {
   int dist_current_i = get_distance_x_y(current_borne, current_neighbour_i);
-  //printf("dist_current_i: %d\n", dist_current_i);
+  // printf("dist_current_i: %d\n", dist_current_i);
   int dist_i_final = get_distance_x_y(current_neighbour_i, destination);
-  //printf("dist_i_final: %d\n", dist_i_final);
+  // printf("dist_i_final: %d\n", dist_i_final);
   int dist_current_nearest_neighbour =
       get_distance_x_y(current_borne, nearest_neighbour);
   /* printf("dist_current_nearest_neighbour: %d\n",
          dist_current_nearest_neighbour); */
   int dist_nearest_neighbour_final =
       get_distance_x_y(nearest_neighbour, destination);
-  //printf("dist_nearest_neighbour_final: %d\n", dist_nearest_neighbour_final);
+  // printf("dist_nearest_neighbour_final: %d\n", dist_nearest_neighbour_final);
   int wait_time = 0;
   // wait_time = get_wait_time(, actual_time);
   int max_charging_time_i =
       get_charging_time(current_neighbour_i, v, max_time_charging);
- // printf("max_charging_time_i: %d\n", max_charging_time_i);
+  // printf("max_charging_time_i: %d\n", max_charging_time_i);
 
   int max_charging_time_nearest_neighbour =
       get_charging_time(nearest_neighbour, v, max_time_charging);
@@ -249,12 +248,13 @@ bool test_condition(borne *current_borne, borne *current_neighbour_i,
              (float)dist_nearest_neighbour_final * (float)60 / (float)130);
   // b2
   bool b2 = charge - dist_current_i >=
-            (float)v->autonomie * (float)battery_minimum/(float)100; // on vérifie s'il est pas trop loin
+            (float)v->autonomie * (float)battery_minimum /
+                (float)100; // on vérifie s'il est pas trop loin
   // b3
   bool b3 = wait_time <= max_time_waiting; // pourquoi vérifier ça ?
-/* printf("b1: %d\n", b1);
-printf("b2: %d\n", b2);
-printf("b3: %d\n", b3);
- */
+                                           /* printf("b1: %d\n", b1);
+                                           printf("b2: %d\n", b2);
+                                           printf("b3: %d\n", b3);
+                                            */
   return b1 && b2 && b3;
 }
