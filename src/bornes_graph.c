@@ -14,9 +14,7 @@ bornes_graph *create_bornes_graph(int n) {
 // destroys a bornes_graph
 void destroy_bornes_graph(bornes_graph *bg) {
   for (int i = 0; i < bg->size; i++) {
-    if (bg->bornes_graph[i] != NULL) {
-      destroy_bornes_list(bg->bornes_graph[i]);
-    }
+    destroy_bornes_list(bg->bornes_graph[i]);
   }
   free(bg->bornes_graph);
   free(bg);
