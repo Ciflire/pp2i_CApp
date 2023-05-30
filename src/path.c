@@ -13,7 +13,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int max_time_waiting,
                          /*int actual_time, */ vehicule *v);
 int main(void) {
-  //init variables
+  // init variables
   int car_id = 0;
   int id_origin = 0;
   int id_destination = 0;
@@ -21,7 +21,7 @@ int main(void) {
   int max_time_charging = 0;
   int max_time_waiting = 0;
   int autonomie = 0;
-  
+
   // get car name from user and get autonomie from csv
   printf("Give your car id:");
   scanf("%d", &car_id);
@@ -37,12 +37,20 @@ int main(void) {
   // generate the graph
   bornes_list *list_de_toutes_les_bornes = create_bornes_list();
   int *distances = (int *)malloc(sizeof(int) * 184099266);
-//  printf("Generating graph...\n");
+  //  printf("Generating graph...\n");
   printf("Autonomie: %d\n", v->autonomie);
   autonomie = v->autonomie;
   bornes_graph *bg =
       generate_graph_fromCSV(autonomie, list_de_toutes_les_bornes, distances);
-//  printf("Graph generated\n");
+  printf("length: %d\n", get_length(list_de_toutes_les_bornes));
+  for (int i = 0; i <3858; i++) {
+    int iddemerde = list_de_toutes_les_bornes->borne->id;
+    if (iddemerde == 56) {
+      print_borne(list_de_toutes_les_bornes->borne);
+    }
+    list_de_toutes_les_bornes = list_de_toutes_les_bornes->next;
+  }
+  //  printf("Graph generated\n");
   if (bg == NULL) {
     destroy_vehicule_list(list_of_all_vehicules);
     destroy_bornes_list(list_de_toutes_les_bornes);
@@ -150,11 +158,11 @@ int main(void) {
   // print the path
   print_bornes_list(chemin);
   destroy_vehicule_list(list_of_all_vehicules);
-//  destroy_bornes_list(list_de_toutes_les_bornes);
+  //  destroy_bornes_list(list_de_toutes_les_bornes);
   destroy_bornes_graph(bg);
   free(distances);
-//  destroy_borne(origin);
-//  destroy_borne(destination);
+  //  destroy_borne(origin);
+  //  destroy_borne(destination);
   return 0;
 }
 
@@ -162,7 +170,7 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
                          int battery_minimum, int max_time_charging,
                          int max_time_waiting,
                          /*int actual_time, */ vehicule *v) {
-//  printf("in pathfinding...\n");
+  //  printf("in pathfinding...\n");
   bornes_list *path = create_bornes_list();
   add_borne(path, origin);
   borne *current_borne = origin;
@@ -171,14 +179,12 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
   int charge = autonomie;
 
   while (!is_borne_in_list(path, destination->id)) {
-//    printf("actual path:\n");
+    //    printf("actual path:\n");
     bornes_list *list_of_neighbours = bg->bornes_graph[current_borne_id];
-//    printf("getting_nearest_neighbour\n");
+    //    printf("getting_nearest_neighbour\n");
     borne *nearest_neighbour = get_borne(list_of_neighbours, 1);
-//    print_borne(nearest_neighbour);
 
-//    printf("nearest neighbour adress: %p\n", (void *)&nearest_neighbour);
-//    print_borne(nearest_neighbour);
+    //    printf("nearest neighbour adress: %p\n", (void *)&nearest_neighbour);
     // Teste pour tous les voisins du point actuel s'il est meilleur que le
     // meilleur actuel (nearest_neighbour)
     for (int i = 0; i < get_length(list_of_neighbours); i++) {
@@ -188,11 +194,15 @@ bornes_list *pathFinding(bornes_graph *bg, borne *origin, borne *destination,
         printf("path: \n");
         print_bornes_list(path);
       } */
+        if (destination->id == current_neighbour_i->id) {
+          printf("destination found\n");
+          add_borne(path, current_neighbour_i);
+          return path;
+        }
         if (test_condition(current_borne, current_neighbour_i, destination,
                            nearest_neighbour, charge, battery_minimum,
                            max_time_waiting, /*actual_time,*/ v,
                            max_time_charging)) {
-//          printf("oiefziuheçpfujbezfojn\n");
           nearest_neighbour = current_neighbour_i;
         }
       }
@@ -247,6 +257,9 @@ bool test_condition(borne *current_borne, borne *current_neighbour_i,
   // b1 test si le temps de trajet en passant par le voisin i+chargemeent et
   // attente en i est plus court que le temps de trajet en passant par l'actuel
   // meilleur+chargmeent et attente en l'actuel meilleur
+  if (current_neighbour_i->id == 56) {
+    return false;
+  }
   bool b1 = ((float)dist_current_i * (float)60 / (float)130 + (float)wait_time +
              (float)max_charging_time_i +
              (float)dist_i_final * (float)60 / (float)130) <
