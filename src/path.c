@@ -28,6 +28,9 @@ int path(itineraire_array *itineraires, unsigned int *seed,
 
   // get car name from user and get autonomie from csv
 
+
+
+  // get vehicule, origin and destination
   vehicule *v = get_vehicule_by_id(list_of_all_vehicules, car_id);
   borne *origin = get_borne_by_id(list_de_toutes_les_bornes, id_origin);
   borne *destination = get_borne_by_id(list_de_toutes_les_bornes, id_destination);
