@@ -29,10 +29,8 @@ int path(itineraire_array *itineraires, unsigned int *seed,
   // get car name from user and get autonomie from csv
 
   vehicule *v = get_vehicule_by_id(list_of_all_vehicules, car_id);
-  borne *origin;
-  origin = get_borne_by_id(list_de_toutes_les_bornes, id_origin);
-  borne *destination;
-  destination = get_borne_by_id(list_de_toutes_les_bornes, id_destination);
+  borne *origin = get_borne_by_id(list_de_toutes_les_bornes, id_origin);
+  borne *destination = get_borne_by_id(list_de_toutes_les_bornes, id_destination);
   if (test_if_args_null(v, origin, destination)) {
     return 1;
   }
@@ -183,6 +181,7 @@ bool test_condition(borne *current_borne, borne *current_neighbour_i,
   return (b1 && b2 && b3) || (b4 && b2);
 }
 
+//teste si les arguments sont null et détruit les arguments si c'est le cas
 bool test_if_args_null(vehicule *v, borne *depart, borne *arrivee) {
   if (v == NULL) {
     printf("Le vehicule n'existe pas\n");
