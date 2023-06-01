@@ -33,7 +33,7 @@ int path(itineraire_array *itineraires, unsigned int *seed,
   origin = get_borne_by_id(list_de_toutes_les_bornes, id_origin);
   borne *destination;
   destination = get_borne_by_id(list_de_toutes_les_bornes, id_destination);
-  if(test_if_args_null(v, origin, destination)){
+  if (test_if_args_null(v, origin, destination)) {
     return 1;
   }
   int actual_time = departure_time;

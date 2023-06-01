@@ -29,4 +29,6 @@ bool test_condition(borne *current_borne, borne *current_neighbour_i,
                     vehicule *v, int max_time_charging,
                     int *wait_time_at_nearest_neighbour,
                     itineraire_array *itineraires);
+bool test_if_args_null(vehicule *v, borne *depart, borne *arrivee);
+
 #endif
