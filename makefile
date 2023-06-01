@@ -1,6 +1,6 @@
 CC = clang
 #clang = compiler
-cflags.common := -Wall -Wextra -pedantic -fdiagnostics-color=always -g
+cflags.common := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O2
 #Wall = all warnings
 #Wextra = extra warnings
 #pedantic = all warnings demanded by strict ISO C and ISO C++
@@ -17,7 +17,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test app
+ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test path_test app
 
 all : $(ALL) clean
 
@@ -111,9 +111,12 @@ utils_dijkstra_test : utils_dijkstra.o utils_dijkstra_test.o bornes_graph.o born
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #path
+path_test.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -Isrc/include -c src/test/path_test.c
 path.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/path.c
-
+path_test: path_test.o path.o utils_dijkstra.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o csv_handler.o itineraire_array.o itineraire.o horaire.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 #app
 app.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/app.c

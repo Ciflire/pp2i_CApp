@@ -5,7 +5,7 @@
 #include "itineraire_array.h"
 
 #define NB_VEHICULES 287
-#define BATTERY_MINIMUM 75
+#define BATTERY_MINIMUM 30
 #define MAX_TIME_CHARGING 9999
 #define MAX_TIME_WAITING 9999
 

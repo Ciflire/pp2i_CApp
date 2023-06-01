@@ -11,7 +11,7 @@ int path(itineraire_array *itineraires, unsigned int *seed,
   *seed = rand();
 
   // init variables
-  int car_id = 280;
+  int car_id = rand() % NB_VEHICULES + 1;
   int id_origin = rand() % NB_BORNES + 1;
   int id_destination = rand() % NB_BORNES + 1;
   int battery_minimum = rand() % BATTERY_MINIMUM;
