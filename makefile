@@ -17,7 +17,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test path
+ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test app
 
 all : $(ALL) clean
 
@@ -71,6 +71,18 @@ vehicule_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src
 vehicule_list_test : vehicule_list.o vehicule_list_test.o vehicule.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
+#horaire
+horaire.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/horaire.c
+
+#itineraire
+itineraire.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/itineraire.c
+
+#itineraire_array
+itineraire_array.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c  src/itineraire_array.c
+
 #csv_handler
 csv_handler_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/test/csv_handler_test.c
@@ -95,14 +107,18 @@ utils_dijkstra.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src
 utils_dijkstra_test.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/test/utils_dijkstra_test.c
 
-utils_dijkstra_test : utils_dijkstra.o utils_dijkstra_test.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o
+utils_dijkstra_test : utils_dijkstra.o utils_dijkstra_test.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o csv_handler.o itineraire_array.o itineraire.o horaire.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #path
 path.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/path.c
 
-path: path.o utils_dijkstra.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o csv_handler.o
+#app
+app.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/app.c
+
+app: app.o path.o utils_dijkstra.o bornes_graph.o bornes_list.o borne.o vehicule.o vehicule_list.o csv_handler.o itineraire_array.o itineraire.o horaire.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #clean

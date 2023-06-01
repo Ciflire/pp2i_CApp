@@ -24,6 +24,9 @@ void add_borne(bornes_list *bl, borne *b);
 // Get a borne at a given index
 borne *get_borne(bornes_list *bl, int index);
 
+// Get a borne index by id
+int get_borne_index_by_id(bornes_list *bl, int id);
+
 // Get the length of a bornes_list
 int get_length(bornes_list *bl);
 

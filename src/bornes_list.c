@@ -76,14 +76,12 @@ bool is_borne_in_list(bornes_list *bl, int id) {
 }
 
 borne *get_borne_by_id(bornes_list *bl, int id) {
-  printf("in get_borne_by_id\n");
   if (bl->index == -1) {
     return NULL;
   } else {
     bornes_list *current = bl;
     for (int i = 0; i < get_length(bl); i++) {
       if (current->borne->id == id) {
-        printf("found borne %d\n", id);
         return current->borne;
       }
       current = current->next;
@@ -91,7 +89,21 @@ borne *get_borne_by_id(bornes_list *bl, int id) {
     return NULL;
   }
 }
+int get_borne_index_by_id(bornes_list* bl, int id){
+  if (get_length(bl)==0){
+    return -1;
+  }
+  bornes_list *current = bl;
+    for (int i = 0; i < get_length(bl); i++) {
+      if (current->borne->id == id) {
+        printf("found borne %d\n", id);
+        return current->index;
+      }
+      current = current->next;
+    }
+    return -1;
 
+}
 void print_bornes_list(bornes_list *bl) {
   if (bl->index == -1) {
     printf("Bornes list is empty\n");
