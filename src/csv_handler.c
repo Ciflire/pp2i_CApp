@@ -1,5 +1,6 @@
 #include "include/csv_handler.h"
 
+
 bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_les_bornes, int *distances) {
   FILE *f_adjacence;
 //  printf("in generate_graph_fromCSV\n");
@@ -57,7 +58,7 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
   }
   fclose(fp);
 //  printf("list_de_toutes_les_bornes created\n");
-  for (int i = 0; i < resultSize; i++) {
+  /* for (int i = 0; i < resultSize; i++) {
     if (distances[i] != -1) {
       int borne1;
       int borne2;
@@ -65,6 +66,15 @@ bornes_graph *generate_graph_fromCSV(int autonomie, bornes_list *list_de_toutes_
 
       add_borne_index(bg, borne1, get_borne(list_de_toutes_les_bornes, borne2));
       add_borne_index(bg, borne2, get_borne(list_de_toutes_les_bornes, borne1));
+    }
+  } */
+  for (int i = 1; i<NB_BORNES-1;i++){
+    for (int j =0; j<i; j++){//possible out of range
+      int index =index_of_distance(i,j); //récupère l'indice de distance qui correspond à la distance entre les bornes i et j
+      if (distances[index]>0){  //si la distance est positive, on ajoute les bornes i et j en voisin l'une de l'autre
+        add_borne_index(bg,i,get_borne(list_de_toutes_les_bornes,j)); //ajout de la borne i en voisin de j
+        add_borne_index(bg,j,get_borne(list_de_toutes_les_bornes,i)); //ajout de la borne j en voisin de i
+      }
     }
   }
   free(csvLine);
