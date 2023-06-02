@@ -17,7 +17,7 @@ struct horaire_list {
 typedef struct horaire_list horaire_list;
 
 // Create a horaire_list
-horaire_list *horaire_list_create();
+horaire_list *horaire_list_create(void);
 
 // Destroy a horaire_list
 void destroy_horaire_list(horaire_list *list);
