@@ -1,28 +1,31 @@
-# Made by Xavie Monard
-CC=clang
-CFLAGS=-std=c99 -Wall -Wextra -pedantic -fdiagnostics-color=always
-CFLAGS+=-O0 -g3 -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
-SRC= source/
-OUT= executable/
+CC = clang
+#clang = compiler
+CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O2 -Werror
+#Wall = all warnings
+#Wextra = extra warnings
+#pedantic = all warnings demanded by strict ISO C and ISO C++
+#fdiagnostics-color=always = colorize the output
+#Werror = treat all warnings as errors
+#O0 = no optimization
+#O2 = optimize even more
+LDFLAGS = -fsanitize=address -fsanitize=undefined
+#fsanitize=address = enable address sanitizer
+#fsanitize=undefined = enable undefined behavior sanitizer
 
-# Implicit rules
-%.o: $(SRC)%.c $(SRC)%.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+#ALL = $(wildcard src/*_test.c)
 
-%.o: $(SRC)structure/%.c $(SRC)structure/%.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test path_test app horaire_test itineraire_test itineraire_array_test
 
-%.o: $(SRC)%.c $(SRC)*.h
-	$(CC) $(CFLAGS) -c -o $@ $<
+all : $(ALL) clean
 
-%.o: $(SRC)%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+#Borne
+borne_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/test/borne_test.c
 
-%: %.o
-	$(CC) $(CFLAGS) $^ -o $(OUT)$@
+borne.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/borne.c
 
-%: %.o *.o
-	$(CC) $(CFLAGS) $^ -o $(OUT)$@
+borne_test : borne.o borne_test.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
-%:
-	$(CC) $(CFLAGS) $^ -o $(OUT)$@
+
