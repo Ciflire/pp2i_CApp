@@ -1,9 +1,9 @@
 #include "include/borne.h"
 
-
-
-borne *borne_create(int pdc, int power, double latitude, double longitude) {
+borne *borne_create(int id, int pdc, int power, double latitude,
+                    double longitude) {
   borne *b = malloc(sizeof(borne));
+  b->id = id;
   b->pdc = pdc;
   b->power = power;
   b->latitude = latitude;
@@ -27,7 +27,6 @@ bool borne_equals(borne *b1, borne *b2) {
 }
 
 void borne_print(borne *b) {
-  printf("Borne: pdc=%d, power=%d, latitude=%lf, longitude=%lf\n", b->pdc,
+  printf("Borne: id=%d, pdc=%d, power=%d, latitude=%lf, longitude=%lf\n",b->id, b->pdc,
          b->power, b->latitude, b->longitude);
 }
-

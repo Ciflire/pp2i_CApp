@@ -7,6 +7,7 @@
 #define BORNE_H
 
 struct borne {
+  int id;
   int pdc;
   int power;
   double latitude;
@@ -16,7 +17,7 @@ struct borne {
 typedef struct borne borne;
 
 // Creates a borne
-borne *borne_create(int pdc, int power, double latitude, double longitude);
+borne *borne_create(int id, int pdc, int power, double latitude, double longitude);
 
 // Destroys a borne
 void borne_destroy(borne *b);

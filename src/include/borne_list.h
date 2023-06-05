@@ -37,6 +37,6 @@ void borne_list_append(borne_list *list, borne *borne);
 int borne_list_length(borne_list *list);
 
 // Check if borne is in list
-int borne_list_isBorneInList(borne_list *list, borne *borne);
+bool borne_list_isBorneInList(borne_list *list, borne *borne);
 
 #endif
