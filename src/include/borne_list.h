@@ -39,4 +39,7 @@ int borne_list_length(borne_list *list);
 // Check if borne is in list
 bool borne_list_isBorneInList(borne_list *list, borne *borne);
 
+// Prints a list of bornes
+void borne_list_print(borne_list *list);
+
 #endif

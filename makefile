@@ -14,7 +14,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test bornes_list_test bornes_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test path_test app horaire_test itineraire_test itineraire_array_test
+ALL = borne_test borne_list_test borne_graph_test vehicule_test vehicule_list_test csv_handler_test utils_dijkstra_test path_test app horaire_test itineraire_test itineraire_array_test
 
 all : $(ALL) clean
 
@@ -29,3 +29,12 @@ borne_test : borne.o borne_test.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 
+#Borne_list
+borne_list_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/test/borne_list_test.c
+
+borne_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/borne_list.c	
+
+borne_list_test : borne_list.o borne_list_test.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
