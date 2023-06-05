@@ -1,5 +1,7 @@
 #include "include/borne.h"
 
+
+
 borne *borne_create(int pdc, int power, double latitude, double longitude) {
   borne *b = malloc(sizeof(borne));
   b->pdc = pdc;
@@ -28,3 +30,4 @@ void borne_print(borne *b) {
   printf("Borne: pdc=%d, power=%d, latitude=%lf, longitude=%lf\n", b->pdc,
          b->power, b->latitude, b->longitude);
 }
+
