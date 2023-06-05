@@ -36,5 +36,5 @@ borne_list_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard s
 borne_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/borne_list.c	
 
-borne_list_test : borne_list.o borne_list_test.o
+borne_list_test : borne_list.o borne_list_test.o borne.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^

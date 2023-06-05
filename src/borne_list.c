@@ -1,9 +1,9 @@
-include "include/borne_list.h"
+#include "include/borne_list.h"
 
 borne_list *borne_list_create(void) {
   borne_list *list = malloc(sizeof(borne_list));
-  list->prev = NULL;
-  list->next = NULL;
+  list->prev = list;
+  list->next = list;
   list->borne = NULL;
   list->index = 0;
   return list;
@@ -15,7 +15,7 @@ void borne_list_destroy(borne_list *list) {
     free(list);
     return;
   }
-  for (int i = 0; i < borne_list_length(list->prev); i++) {
+  for (int i = 1; i < borne_list_length(list) - 1; i++) {
     temp = temp->next;
     borne_destroy(temp->prev->borne);
     free(temp->prev);
