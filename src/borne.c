@@ -11,7 +11,7 @@ borne *borne_create(int id, int pdc, int power, double latitude,
   return b;
 }
 
-void borne_delete(borne *b) { free(b); }
+void borne_destroy(borne *b) { free(b); }
 
 int borne_get_pdc(borne *b) { return b->pdc; }
 

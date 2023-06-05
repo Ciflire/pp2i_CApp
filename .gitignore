@@ -10,5 +10,5 @@ data/adjacence.csv
 #ignores object files
 *.o
 #ignores executables
-*test$
+*_test
 
