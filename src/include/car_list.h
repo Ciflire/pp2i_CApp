@@ -37,7 +37,7 @@ void car_list_append(car_list *list, car *car);
 int car_list_length(car_list *list);
 
 // Check if car is in list
-int car_list_iscarInList(car_list *list, car *car);
+bool car_list_iscarInList(car_list *list, car *car);
 
 // Print list of cars
 void car_list_print(car_list *list);
