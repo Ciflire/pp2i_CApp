@@ -13,7 +13,7 @@ struct car_list {
 typedef struct car_list car_list;
 
 // Creates a list of cars
-car_list *car_list_create(car *car);
+car_list *car_list_create(void);
 
 // Destroys a list of cars
 void car_list_destroy(car_list *list);

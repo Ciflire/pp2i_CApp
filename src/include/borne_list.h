@@ -13,7 +13,7 @@ struct borne_list {
 typedef struct borne_list borne_list;
 
 // Creates a list of bornes
-borne_list *borne_list_create(borne *borne);
+borne_list *borne_list_create(void);
 
 // Destroys a list of bornes
 void borne_list_destroy(borne_list *list);
