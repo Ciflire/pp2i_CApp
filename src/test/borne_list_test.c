@@ -1,18 +1,20 @@
 #include "../include/borne_list.h"
+#include <time.h>
+#include "../include/timer.h"
+
 
 int main(){
-    borne_list *list = borne_list_create();
-    borne *b1 = borne_create(1, 2, 25, 3.0, 4.0);
-    borne *b2 = borne_create(2, 2, 25, 3.0, 4.0);
-    borne *b3 = borne_create(3, 2, 55, 5.0, 1.2);
 
-
-    borne_list_print(list);
-    borne_list_append(list, b1);
-    borne_list_append(list, b2);
-    borne_list_append(list, b3);
-    borne_list_print(list);
-
-    borne_list_destroy(list);
+    for (int i = 1; i < 5; i++){
+        timer_start();
+        borne_list *list = borne_list_create();
+        for(int j = 0; j < (1000000 * i); j++){
+            borne* b = borne_create(j, 1, 25, 1.0, 1.0);
+            borne_list_append(list, b);
+        }
+        timer_stop();
+        timer_print();
+        borne_list_destroy(list);
+    }
     return 0;
 }

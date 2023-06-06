@@ -1,4 +1,4 @@
-#include "include/borne.h"
+#include "../include/borne.h"
 
 borne *borne_create(int id, int pdc, int power, double latitude,
                     double longitude) {

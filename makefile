@@ -23,7 +23,7 @@ borne_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/te
 	$(CC) $(CFLAGS) -c src/test/borne_test.c
 
 borne.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
-	$(CC) $(CFLAGS) -c src/borne.c
+	$(CC) $(CFLAGS) -c src/structs/borne.c
 
 borne_test : borne.o borne_test.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
@@ -34,10 +34,15 @@ borne_list_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard s
 	$(CC) $(CFLAGS) -c src/test/borne_list_test.c
 
 borne_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
-	$(CC) $(CFLAGS) -c src/borne_list.c	
+	$(CC) $(CFLAGS) -c src/structs/borne_list.c	
 
-borne_list_test : borne_list.o borne_list_test.o borne.o
+borne_list_test : borne_list.o borne_list_test.o borne.o timer.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
     
+
+#Timer
+timer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/utils/timer.c
+
     clean:
 	rm *.o $(ALL) bin/*
