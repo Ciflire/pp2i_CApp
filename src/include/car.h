@@ -33,7 +33,7 @@ int car_getAutonomy(car *c);
 double car_getPowerCapacity(car *c);
 
 // Check if two cars are equal
-bool car_isEqual(car *c1, car *c2);
+bool car_equals(car *c1, car *c2);
 
 // Print car information
 void car_print(car *c);

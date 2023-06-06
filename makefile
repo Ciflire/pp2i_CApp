@@ -38,6 +38,26 @@ borne_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/te
 
 borne_list_test : borne_list.o borne_list_test.o borne.o timer.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+
+#Car
+car_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/test/car_test.c
+
+car.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/structs/car.c
+
+car_test : car_test.o car.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+
+#Car_list
+car_list_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/test/car_list_test.c
+
+car_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/structs/car_list.c
+
+car_list_test : car_list_test.o car_list.o car.o timer.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
     
 
 #Timer
