@@ -2,8 +2,8 @@
 
 car_list *car_list_create(void) {
   car_list *list = malloc(sizeof(car_list));
-  list->prev = NULL;
-  list->next = NULL;
+  list->prev = list;
+  list->next = list;
   list->car = NULL;
   list->index = 0;
   return list;
@@ -15,7 +15,7 @@ void car_list_destroy(car_list *list) {
     free(list);
     return;
   }
-  for (int i = 0; i < car_list_length(list->prev); i++) {
+  for (int i = 1; i < car_list_length(list); i++) {
     temp = temp->next;
     car_destroy(temp->prev->car);
     free(temp->prev);
@@ -33,7 +33,7 @@ bool car_list_iscarInList(car_list *list, car *car) {
   }
   car_list *temp = list;
   for (int i = 0; i < car_list_length(list); i++) {
-    if (car_isEqual(temp->car, car)) {
+    if (car_equals(temp->car, car)) {
       return true;
     }
     temp = temp->next;
