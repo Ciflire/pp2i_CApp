@@ -11,7 +11,7 @@
 
 struct line {
   int size;
-  char **args[];
+  char *args[];
 };
 
 typedef struct line line;
