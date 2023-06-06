@@ -1,4 +1,8 @@
+<<<<<<< refs/remotes/origin/V2:src/borne_list.c
 #include "include/borne_list.h"
+=======
+include "../include/borne_list.h"
+>>>>>>> Project structure updated [+] makefile now cleans object files, binary:src/structs/borne_list.c
 
 borne_list *borne_list_create(void) {
   borne_list *list = malloc(sizeof(borne_list));
