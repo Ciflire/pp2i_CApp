@@ -23,4 +23,7 @@ struct csv_import {
 
 typedef struct csv_import csv_import;
 
+int csv_import_getSize(csv_import *file);
+
+int line_getSize(line *l);
 #endif
