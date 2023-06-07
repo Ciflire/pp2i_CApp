@@ -1,6 +1,8 @@
 #include "../include/csv_import.h"
 
-void cspParser(char *path, int linesToSkip, csv_import *file) {
+// Use this function with a csv import with the right number of column
+// and the right number of lines to skip
+void csvParser(char *path, int linesToSkip, csv_import *file) {
   FILE *csv = fopen(path, "r");
   // define value to skip lines
   /*  While !(EOF)
@@ -16,16 +18,16 @@ void cspParser(char *path, int linesToSkip, csv_import *file) {
   int indChar = 0;
   char c;
   while ((c = fgetc(csv)) != EOF) {
-    if (c == '\n') {
+    if (c == '\n' && indLigne >= linesToSkip) {
       file->line[indLigne]->info[indCol][indChar] = '\0';
       indLigne++;
       indCol = 0;
       indChar = 0;
-    } else if (c == ',') {
+    } else if (c == ',' && indLigne >= linesToSkip) {
       file->line[indLigne]->info[indCol][indChar] = '\0';
       indCol++;
       indChar = 0;
-    } else {
+    } else if (indLigne >= linesToSkip) {
       file->line[indLigne]->info[indCol][indChar] = c;
       indChar++;
     }
