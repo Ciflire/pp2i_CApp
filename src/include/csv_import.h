@@ -1,29 +1,34 @@
+#include "ligne.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#define LINES 14760
+#define MAX_LINES 14759
 
 #ifndef CSV_IMPORT_H
 
 #define CSV_IMPORT_H
 
-struct line {
-  int size;
-  char *args[];
-};
-
-typedef struct line line;
-
 struct csv_import {
   int size;
-  line **csv[];
+  line *file[];
 };
 
 typedef struct csv_import csv_import;
 
+// Functions
+
+// Creation functions
+
+void *csv_import_create(int sizeOfArray, int sizeOfLine, csv_import *file);
+
+// Destroy functions
+
+void csv_import_destroy(csv_import *file);
+
+// Size functions
+
 int csv_import_getSize(csv_import *file);
 
-int line_getSize(line *l);
 #endif

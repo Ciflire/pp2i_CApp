@@ -1,6 +1,6 @@
 CC = clang
 #clang = compiler
-CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O2 -Werror
+CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O3 -Werror
 #Wall = all warnings
 #Wextra = extra warnings
 #pedantic = all warnings demanded by strict ISO C and ISO C++
@@ -30,7 +30,7 @@ borne_test : borne.o borne_test.o
 
 
 #Borne_list
-borne_list_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+borne_list_test.o : $(wildcard src/structs/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/test/borne_list_test.c
 
 borne_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
