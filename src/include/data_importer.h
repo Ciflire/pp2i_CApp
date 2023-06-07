@@ -1,6 +1,7 @@
-#include "csv_import.h"
 #include "borne_list.h"
 #include "car_list.h"
+#include "csv_import.h"
+#include "line.h"
 
 #ifndef DATA_IMPORTER_H
 #define DATA_IMPORTER_H
