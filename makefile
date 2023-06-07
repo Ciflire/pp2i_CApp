@@ -14,7 +14,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test borne_list_test car_test car_list_test data_importer_test
+ALL = borne_test borne_list_test  data_importer_test car_test car_list_test
 
 all : $(ALL) clean
 
@@ -70,12 +70,12 @@ csvParser.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/tes
 	$(CC) $(CFLAGS) -c src/utils/csvParser.c
 
 csv_import.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
-	$(CC) $(CFLAGS) -c src/utils/csv_import.c
+	$(CC) $(CFLAGS) -c src/structs/csv_import.c
 
 line.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c  src/structs/line.c
 
-data_importer_test : data_importer_test.o data_importer.o timer.o csvParser.o csv_import.o line.o
+data_importer_test : data_importer_test.o data_importer.o timer.o csvParser.o csv_import.o line.o borne_list.o borne.o car_list.o car.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
  
 
