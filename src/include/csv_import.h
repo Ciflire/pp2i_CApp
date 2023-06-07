@@ -4,7 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LINES 14759
+#define MAX_LINES_BORNES 14759
+#define MAX_LINES_CARS 287
 
 #ifndef CSV_IMPORT_H
 
