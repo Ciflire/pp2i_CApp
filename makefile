@@ -83,5 +83,13 @@ data_importer_test : data_importer_test.o data_importer.o timer.o csvParser.o cs
 timer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/utils/timer.c
 
-    clean:
-	rm *.o $(ALL) bin/*
+clean :
+	rm -f *.o
+	rm -f bin/*
+	rm -f src/include/*.gch
+	mv $(ALL) bin/
+
+remake :
+	rm -f $(addprefix bin/, $(ALL))
+	make all
+
