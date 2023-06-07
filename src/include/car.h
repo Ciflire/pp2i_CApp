@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +12,7 @@ struct car {
   int autonomyMax;
   double autonomyAct;
   double autonomyUsable;
-  double Capacity;
+  double capacity;
 };
 
 typedef struct car car;
