@@ -1,4 +1,4 @@
-#include "../include/csv_import.h"
+#include "../include/csvParser.h"
 
 // Use this function with a csv import with the right number of column
 // and the right number of lines to skip
@@ -32,4 +32,5 @@ void csvParser(char *path, int linesToSkip, csv_import *file) {
       indChar++;
     }
   }
+  fclose(csv);
 }
