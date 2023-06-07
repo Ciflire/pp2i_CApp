@@ -64,5 +64,13 @@ car_list_test : car_list_test.o car_list.o car.o timer.o
 timer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/utils/timer.c
 
-    clean:
-	rm *.o $(ALL) bin/*
+clean :
+	rm -f *.o
+	rm -f bin/*
+	rm -f src/include/*.gch
+	mv $(ALL) bin/
+
+remake :
+	rm -f $(addprefix bin/, $(ALL))
+	make all
+
