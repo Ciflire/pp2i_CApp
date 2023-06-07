@@ -3,11 +3,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_STR_LEN 256
+#define MAX_STR_LEN 64
 
-#ifndef LIGNE_H
+#ifndef LINE_H
 
-#define CSV_IMPORT_H
+#define LINE_H
 // Structures creations
 struct line {
   int size;

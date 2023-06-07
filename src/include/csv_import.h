@@ -1,4 +1,4 @@
-#include "ligne.h"
+#include "line.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +12,7 @@
 
 struct csv_import {
   int size;
-  line *file[];
+  line **line;
 };
 
 typedef struct csv_import csv_import;
@@ -21,7 +21,7 @@ typedef struct csv_import csv_import;
 
 // Creation functions
 
-void *csv_import_create(int sizeOfArray, int sizeOfLine, csv_import *file);
+csv_import *csv_import_create(int sizeOfArray, int sizeOfLine);
 
 // Destroy functions
 

@@ -17,16 +17,16 @@ void cspParser(char *path, int linesToSkip, csv_import *file) {
   char c;
   while ((c = fgetc(csv)) != EOF) {
     if (c == '\n') {
-      file->info[indLigne]->info[indCol][indChar] = '\0';
+      file->line[indLigne]->info[indCol][indChar] = '\0';
       indLigne++;
       indCol = 0;
       indChar = 0;
     } else if (c == ',') {
-      file->info[indLigne]->info[indCol][indChar] = '\0';
+      file->line[indLigne]->info[indCol][indChar] = '\0';
       indCol++;
       indChar = 0;
     } else {
-      file->info[indLigne]->info[indCol][indChar] = c;
+      file->line[indLigne]->info[indCol][indChar] = c;
       indChar++;
     }
   }

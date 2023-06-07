@@ -1,4 +1,4 @@
-#include "../include/ligne.h"
+#include "../include/line.h"
 
 line *line_create(int size) {
   line *l = malloc(sizeof(line));
