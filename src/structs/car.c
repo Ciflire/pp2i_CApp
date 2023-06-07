@@ -5,8 +5,10 @@ car *car_create(char *model, int id, int autonomy, double powerCapacity){
     car *c = malloc(sizeof(car));
     c->model = model;
     c->id = id;
-    c->autonomy = autonomy;
-    c->powerCapacity = powerCapacity;
+    c->autonomyMax = autonomy;
+    c->autonomyUsable = autonomy;
+    c->autonomyAct = autonomy;
+    c->capacity = powerCapacity;
     return c;
 }
 
@@ -20,18 +22,22 @@ char *car_getModel(car *c){return c->model;}
 int car_getId(car *c){return c->id;}
 
 // Returns the autonomy of a car
-int car_getAutonomy(car *c){return c->autonomy;}
+int car_getAutonomyMax(car *c) { return c->autonomyMax; }
 
 // Returns the power capacity of a car
-double car_getPowerCapacity(car *c){return c->powerCapacity;}
+double car_getPowerCapacity(car *c) { return c->capacity; }
 
 // Check if two cars are equal
 bool car_equals(car *c1, car *c2){
-    return c1->id == c2->id && c1->autonomy == c2->autonomy && c1->powerCapacity == c2->powerCapacity;
+    return c1->id == c2->id && c1->autonomyMax == c2->autonomyMax &&
+           c1->capacity == c2->capacity;
     }
 
 // Print car information
 void car_print(car *c){
-    printf("Car %d, Model: %s, Autonomy: %d, Power Capacity: %f\n", c->id, c->model, c->autonomy, c->powerCapacity);
+    printf("Car %d, Model: %s, AutonomyMax: %d, Usable autonomy: %lf, Rn "
+           "autonomy: %lf Power Capacity: %f\n",
+           c->id, c->model, c->autonomyMax, c->autonomyUsable, c->autonomyAct,
+           c->capacity);
     return;
     }
