@@ -29,7 +29,7 @@ int main(void){
 
     timer_start();
     char *file_path2 = "data/Vehicules.csv";
-    // import the data i,n car.csv
+    //import the data in car.csv
     csv_import *file2 = csv_import_create(MAX_LINES_CARS, 3);
     csvParser(file_path2, 0, file2);
     timer_stop();
@@ -37,11 +37,11 @@ int main(void){
     timer_print();
     car_list *list_car = car_list_create();
     // import the data to a car_list
-    car_data_importer(file, list_car);
+    car_data_importer(file2, list_car);
     timer_stop();
     printf("Time to import the car data: ");
     timer_print();
-    csv_import_destroy(file);
+    csv_import_destroy(file2);
     // car_list_print(list_car);
     car_list_destroy(list_car);
     timer_stop();

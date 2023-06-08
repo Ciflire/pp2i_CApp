@@ -36,6 +36,6 @@ void csvParser(char *path, int linesToSkip, csv_import *file) {
     }
     fclose(csv);
   };
-  csv_import_print(file);
+  //csv_import_print(file);
   return;
 }
