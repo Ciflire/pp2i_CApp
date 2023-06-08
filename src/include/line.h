@@ -26,6 +26,8 @@ void line_destroy(line *l);
 // Get the size of the structure
 int line_getSize(line *l);
 
+// Print the structure
+void line_print(line *l);
 #endif
 
 

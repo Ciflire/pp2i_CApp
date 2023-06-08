@@ -32,4 +32,8 @@ void csv_import_destroy(csv_import *file);
 
 int csv_import_getSize(csv_import *file);
 
+// print functions
+
+void csv_import_print(csv_import *file);
+
 #endif

@@ -19,3 +19,9 @@ void csv_import_destroy(csv_import *file) {
 }
 
 int csv_import_getSize(csv_import *file) { return file->size; }
+
+void csv_import_print(csv_import *file) {
+  for (int i = 0; i < file->size; i++) {
+    line_print(file->line[i]);
+  }
+}

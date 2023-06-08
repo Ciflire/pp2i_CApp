@@ -19,3 +19,10 @@ void line_destroy(line *l) {
 }
 
 int line_getSize(line *l) { return l->size; }
+
+void line_print(line *l) {
+  for (int i = 0; i < line_getSize(l); i++) {
+    printf("%s ", l->info[i]);
+  }
+  printf("\n");
+}

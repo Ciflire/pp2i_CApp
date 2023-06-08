@@ -1,7 +1,6 @@
 #include "../include/car.h"
 
-
-int main() {
+int main(void) {
   car *b1 = car_create("Volvo", 1, 3.0, 4.0);
   car *b2 = car_create("Opel", 2, 3.0, 4.0);
   car *b3 = car_create("Audi", 3, 5.0, 1.2);
