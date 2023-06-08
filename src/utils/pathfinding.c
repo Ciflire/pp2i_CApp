@@ -1,6 +1,7 @@
 #include "../include/pathfinding.h"
 #include "../include/borne_list.h"
 #include "../include/car_list.h"
+#include <asm-generic/errno-base.h>
 
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 
@@ -44,14 +45,30 @@ int creationZone(borne *actual, borne *ending, double p, car *usedCar,
 }
 
 int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
-                borne_list *allListsBorne, int maxTimeWaiting) {
+                borne_list *allListsBorne, int maxTimeWaiting,
+                int maxTimeCharging) {
+  if (distance(actual->longitude, actual->latitude, ending->longitude,
+               ending->latitude) < usedCar->autonomyAct) {
+    borne_list_append(path, ending);
+    return 0;
+  } else {
+    borne_list *Zone = borne_list_create();
+    creationZone(actual, ending, 0.9, usedCar, allListsBorne, Zone);
+    borne *best;
+    double *bestTime;
+    findBestInZone(Zone, actual, ending, usedCar, maxTimeCharging,
+                   maxTimeWaiting, best, bestTime);
+    borne_list_append(path, best);
+    return pathFinding(usedCar, best, ending, path, allListsBorne,
+                       maxTimeWaiting, maxTimeCharging);
+  }
 
   return 0;
 }
 
 void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
                     int maxTimeCharging, int maxTimeWaiting, borne *best,
-                    double bestTime) {
+                    double *bestTime) {
   best = borne_list_getBorne(Zone);
   bestTime =
       travelTime(actual, goal, best, usedCar, maxTimeCharging, maxTimeWaiting);
