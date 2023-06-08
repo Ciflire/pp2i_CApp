@@ -70,7 +70,7 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
                     int maxTimeCharging, int maxTimeWaiting, borne *best,
                     double *bestTime) {
   best = borne_list_getBorne(Zone);
-  bestTime =
+  *(bestTime) =
       travelTime(actual, goal, best, usedCar, maxTimeCharging, maxTimeWaiting);
   borne_list *borne_listInTest = Zone;
   for (int i = 1; i < borne_list_length(Zone); i++) {
@@ -79,22 +79,22 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
             bestTime, borne_list_getBorne(borne_listInTest), actual, goal,
             usedCar, maxTimeWaiting, maxTimeCharging)) {
       best = borne_list_getBorne(borne_listInTest);
-      bestTime = travelTime(actual, goal, best, usedCar, maxTimeCharging,
-                            maxTimeWaiting);
+      *(bestTime) = travelTime(actual, goal, best, usedCar, maxTimeCharging,
+                               maxTimeWaiting);
     }
   }
 }
 
-bool isBorneBetterThanCurrentBestBorne(int bestTime, borne *borneInTest,
+bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
                                        borne *actual, borne *goal, car *car,
                                        int maxTimeWaiting,
                                        int maxTimeCharging) {
   return travelTime(actual, goal, borneInTest, car, maxTimeCharging,
-                    maxTimeWaiting) < bestTime;
+                    maxTimeWaiting) < *(bestTime);
 }
 
-int travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
-               int maxTimeCharging, int maxTimeWaiting) {
+double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
+                  int maxTimeCharging, int maxTimeWaiting) {
   return (60.0 / 130.0) *
              (distance(actual->latitude, actual->longitude,
                        borneInTest->longitude, borneInTest->latitude) +
