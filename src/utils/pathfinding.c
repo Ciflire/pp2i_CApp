@@ -57,8 +57,7 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
       travelTime(actual, goal, best, usedCar, maxTimeCharging, maxTimeWaiting);
   borne_list *borne_listInTest = Zone;
   for (int i = 1; i < borne_list_length(Zone); i++) {
-    borne_listInTest =
-        borne_list_getBorne(borne_list_getNext(borne_listInTest));
+    borne_listInTest = borne_list_getNext(borne_listInTest);
     if (isBorneBetterThanCurrentBestBorne(
             bestTime, borne_list_getBorne(borne_listInTest), actual, goal,
             usedCar, maxTimeWaiting, maxTimeCharging)) {
