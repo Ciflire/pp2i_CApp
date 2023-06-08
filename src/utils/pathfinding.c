@@ -100,13 +100,16 @@ double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
                        borneInTest->longitude, borneInTest->latitude) +
               distance(borneInTest->longitude, borneInTest->latitude,
                        goal->longitude, goal->latitude)) +
-         timeToCharge(borneInTest, maxTimeCharging,
-                      car); // add waiting time stuff
+         timeToCharge(borneInTest, maxTimeCharging, car,
+                      actual); // add waiting time stuff
 }
 
-int timeToCharge(borne *borne, int maxTimeCharging, car *car) {
+int timeToCharge(borne *borneC, int maxTimeCharging, car *car,
+                 borne *borneActual) {
+  int d = distance(borneC->latitude, borneC->longitude, borneActual->latitude,
+                   borneActual->longitude);
   double timeToFullCharge = 60.0 * car->capacity *
-                            (car->autonomyUsable - car->autonomyAct) /
-                            (borne->power * car->autonomyMax);
+                            (car->autonomyUsable - car->autonomyAct - d) /
+                            (borneC->power * car->autonomyMax);
   return MIN(timeToFullCharge, maxTimeCharging);
 }

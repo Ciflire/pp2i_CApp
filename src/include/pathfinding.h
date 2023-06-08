@@ -17,4 +17,4 @@ bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest, bor
 
 double travelTime(borne *actual, borne *goal, borne* borneInTest, car *car, int maxTimeCharging, int maxTimeWaiting);
 
-int timeToCharge(borne *borne, int maxTimeCharging, car *car);
+int timeToCharge(borne *borneC, int maxTimeCharging, car *car, borne *borneActual);
