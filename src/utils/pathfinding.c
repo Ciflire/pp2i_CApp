@@ -47,6 +47,7 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
                 borne_list *allListsBorne, int maxTimeWaiting) {
 
   return 0;
+}
 
 
 void findBestInZone(borne_list *Zone, borne *actual, borne *goal, int maxTimeCharging, int maxTimeWaiting, borne *best, double bestTime){
