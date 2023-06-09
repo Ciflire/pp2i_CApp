@@ -121,7 +121,10 @@ int main(int argc, char **argv) {
   creationZone(painpol, brest, 0.7, v4, list_borne3, zone3);
   borne *best = malloc(sizeof(borne));
   double *bestTime = malloc(sizeof(double));
-  findBestInZone(zone3, painpol, brest, v4, 6666, 6666, best, bestTime, 0);
+  int actualTime = 1;
+  findBestInZone(zone3, painpol, brest, v4, 6666, 6666, best, bestTime,
+                 &actualTime);
+  borne_print(best);
   assert(borne_equals(best, landivisiau));
 
   printf("      [debug pathFiding_test] test_findBestInZone passed\n");

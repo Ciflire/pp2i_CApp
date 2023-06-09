@@ -104,19 +104,26 @@ double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
                   int maxTimeCharging, int maxTimeWaiting) {
   maxTimeWaiting = 0; // TODO
   maxTimeWaiting++;
-  return (60.0 / 130.0) *
-             (distance(actual->latitude, actual->longitude,
-                       borneInTest->longitude, borneInTest->latitude) +
-              distance(borneInTest->longitude, borneInTest->latitude,
-                       goal->longitude, goal->latitude)) +
-         timeToCharge(borneInTest, maxTimeCharging, car,
-                      actual); // add waiting time stuff
+  double distanceActualBorne =
+      (60.0 / 130.0) * distance(actual->longitude, actual->latitude,
+                                borneInTest->longitude, borneInTest->latitude);
+  double distanceBorneEnd =
+      (60.0 / 130.0) * distance(borneInTest->longitude, borneInTest->latitude,
+                                goal->longitude, goal->latitude);
+  int chargeTime = timeToCharge(borneInTest, maxTimeCharging, car, actual);
+  printf("distanceActualBorne : %lf\n", distanceActualBorne);
+  printf("distanceBorneEnd : %lf\n", distanceBorneEnd);
+  printf("chargeTime : %d\n", chargeTime);
+  double timeToTravel = (distanceActualBorne + distanceBorneEnd) + chargeTime;
+  return timeToTravel;
 }
 
 bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
                                        borne *actual, borne *goal, car *car,
                                        int maxTimeWaiting,
                                        int maxTimeCharging) {
+  printf("travelTime : %lf\n", travelTime(actual, goal, borneInTest, car,
+                                          maxTimeCharging, maxTimeWaiting));
   return travelTime(actual, goal, borneInTest, car, maxTimeCharging,
                     maxTimeWaiting) < *(bestTime);
 }
@@ -124,7 +131,7 @@ bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
 void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
                     int maxTimeCharging, int maxTimeWaiting, borne *best,
                     double *bestTime, int *actualTime) {
-  best = borne_list_getBorne(Zone);
+  *best = *Zone->borne;
   *(bestTime) =
       travelTime(actual, goal, best, usedCar, maxTimeCharging, maxTimeWaiting);
   int pdc = 1;
@@ -137,7 +144,7 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
     if (isBorneBetterThanCurrentBestBorne(
             bestTime, borne_list_getBorne(borne_listInTest), actual, goal,
             usedCar, maxTimeWaiting, maxTimeCharging)) {
-      best = borne_list_getBorne(borne_listInTest);
+      *(best) = *borne_list_getBorne(borne_listInTest);
       *(bestTime) = travelTime(actual, goal, best, usedCar, maxTimeCharging,
                                maxTimeWaiting);
       pdc = *(BestPdc);
@@ -154,7 +161,9 @@ int timeToCharge(borne *borneC, int maxTimeCharging, car *car,
                  borne *borneActual) {
   int d = distance(borneC->latitude, borneC->longitude, borneActual->latitude,
                    borneActual->longitude);
-  double timeToFullCharge = 60.0 * car->capacity * (car->autonomyAct - d) /
-                            (borneC->power * car->autonomyMax);
+  double timeToFullCharge =
+      60.0 * car->capacity *
+      (car->autonomyUsable - (car->autonomyAct - (float)d)) /
+      (float)(borneC->power * car->autonomyMax);
   return MIN(timeToFullCharge, maxTimeCharging);
 }
