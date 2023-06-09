@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "../include/horaire_list.h"
 
 #ifndef BORNE_H
 
@@ -12,6 +13,7 @@ struct borne {
   int power;
   double latitude;
   double longitude;
+  horaire_list **horaires_pdc;
 };
 
 typedef struct borne borne;
