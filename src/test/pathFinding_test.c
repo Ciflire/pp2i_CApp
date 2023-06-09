@@ -34,6 +34,7 @@ int main(int argc, char **argv) {
   // import the data to a bornes_list
   borne_data_importer(file3, list_borne2);
   csv_import_destroy(file3);
+
   char *file_path4 = "data/borne_cleaned.csv";
   csv_import *file4 = csv_import_create(MAX_LINES_BORNES, 4);
   csvParser(file_path4, 1, file4);
@@ -50,7 +51,7 @@ int main(int argc, char **argv) {
   borne *bayonne = borne_list_getBorne(list_borne2->next);
   borne *painpol = borne_list_getBorneById(list_borne3, 474);
   borne *brest = borne_list_getBorneById(list_borne3, 64);
-  borne *landivisiau = borne_list_getBorneById(list_borne3, 178);
+  borne *landivisiau = borne_list_getBorneById(list_borne3, 177);
   borne *calais = borne_create(2000, 2, 7, 50.950, 1.859);
 
   car *v1 = car_list_getCar(list_car);
@@ -94,7 +95,7 @@ int main(int argc, char **argv) {
   // test creationZone
   borne_list *zone1 = borne_list_create();
   creationZone(bretagne, nancy, 0.6, v2, list_borne, zone1);
-  printf("length of zone1 : %d\n", borne_list_length(zone1));
+  // printf("length of zone1 : %d\n", borne_list_length(zone1));
   assert(borne_list_length(zone1) == 1045);
   v1->autonomyAct = 402;
   for (int i = 0; i < borne_list_length(zone1); i++) {
@@ -108,15 +109,15 @@ int main(int argc, char **argv) {
   borne_list *zone2 = borne_list_create();
   creationZone(pont_l_abbe, bayonne, 0.9, v3, list_borne2, zone2);
   assert(borne_list_length(zone2) > 0);
-  printf("zone2 is : \n");
-  borne_list_print(zone2);
-  printf("All points must be near this location : 47.81367071130333, "
-         "-3.8348082559475722\n");
+  // printf("zone2 is : \n");
+  // borne_list_print(zone2);
+  /*   printf("All points must be near this location : 47.81367071130333, "
+           "-3.8348082559475722\n"); */
   printf("      [debug pathFiding_test] test_creationZone2 passed\n");
 
   // test findBestInZone
   borne_list *zone3 = borne_list_create();
-  creationZone(painpol, brest, 0.8, v4, list_borne3, zone3);
+  creationZone(painpol, brest, 0.7, v4, list_borne3, zone3);
   borne *best = malloc(sizeof(borne));
   double *bestTime = malloc(sizeof(double));
   findBestInZone(zone3, painpol, brest, v4, 6666, 6666, best, bestTime, 0);
@@ -133,6 +134,7 @@ int main(int argc, char **argv) {
   assert(error == 0);
   borne_list_printPathLink(path1);
   free(path1);
+  printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
 
   //[pathFinding] Test de chemin impossible
   borne_list *path2 = borne_list_create();
@@ -141,6 +143,7 @@ int main(int argc, char **argv) {
                       120, 0);
   assert(error == 1);
   free(path2);
+  printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
   //[pathFinding] Test sur 10 chemins randoms
   for (int i = 0; i < 10; i++) {
@@ -165,7 +168,7 @@ int main(int argc, char **argv) {
     }
     free(path);
   }
-  printf("      [debug pathFiding_test] test_pathFinding passed\n");
+  printf("      [debug pathFiding_test] test_pathFinding3 passed\n");
 
   borne_list_destroy(list_borne);
   borne_list_destroy(list_borne2);

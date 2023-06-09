@@ -22,6 +22,7 @@
     "vehicule.h": "c",
     "bornes_list.h": "c",
     "utils_dijkstra.h": "c",
-    "random": "c"
+    "random": "c",
+    "iterator": "c"
   }
 }
