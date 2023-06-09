@@ -160,7 +160,10 @@ int main(int argc, char **argv) {
     }
     free(path);
   }
+  printf("      [debug pathFiding_test] test_pathFinding passed\n");
 
+
+  
   borne_list_destroy(list_borne);
   borne_list_destroy(list_borne2);
   borne_list_destroy(list_borne3);
@@ -178,5 +181,5 @@ int main(int argc, char **argv) {
   free(v2);
   free(v3);
   free(v4);
-  
+
 }

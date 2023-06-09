@@ -36,7 +36,7 @@ borne_list_test.o : $(wildcard src/structs/*.c) $(wildcard src/include/*.h) $(wi
 borne_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/structs/borne_list.c	
 
-borne_list_test : borne_list.o borne_list_test.o borne.o timer.o
+borne_list_test : borne_list.o borne_list_test.o borne.o timer.o csvParser.o csv_import.o line.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #Car
@@ -86,6 +86,16 @@ data_importer_test : data_importer_test.o data_importer.o timer.o csvParser.o cs
 #Timer
 timer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/utils/timer.c
+
+#pathFinding
+pathFinding_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c  src/test/pathFinding_test.c
+
+pathFinding.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c  src/utils/pathFinding.c
+
+pathFinding_test : pathFinding_test.o pathFinding.o timer.o csvParser.o csv_import.o line.o borne_list.o borne.o car_list.o car.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 clean :
 	rm -f *.o
