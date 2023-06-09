@@ -1,4 +1,5 @@
 #include "../include/borne.h"
+#include <stdlib.h>
 
 borne *borne_create(int id, int pdc, int power, double latitude,
                     double longitude) {
@@ -8,6 +9,10 @@ borne *borne_create(int id, int pdc, int power, double latitude,
   b->power = power;
   b->latitude = latitude;
   b->longitude = longitude;
+  b->horaires_pdc = calloc(pdc, sizeof(horaire_list *));
+  for (int i = 0; i < pdc; i++) {
+    b->horaires_pdc[i] = horaire_list_create();
+  }
   return b;
 }
 
@@ -27,6 +32,6 @@ bool borne_equals(borne *b1, borne *b2) {
 }
 
 void borne_print(borne *b) {
-  printf("Borne: id=%d, pdc=%d, power=%d, latitude=%lf, longitude=%lf\n",b->id, b->pdc,
-         b->power, b->latitude, b->longitude);
+  printf("Borne: id=%d, pdc=%d, power=%d, latitude=%lf, longitude=%lf\n", b->id,
+         b->pdc, b->power, b->latitude, b->longitude);
 }
