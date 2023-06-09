@@ -57,6 +57,20 @@ void car_list_append(car_list *list, car *car) {
   return;
 }
 
+car *car_list_getCarById(car_list *list, int id) {
+  if (car_list_length(list) == 0) {
+    return NULL;
+  }
+  car_list *temp = list;
+  for (int i = 0; i < car_list_length(list); i++) {
+    if (temp->car->id == id) {
+      return car_list_getCar(temp);
+    }
+    temp = temp->next;
+  }
+  return NULL;
+}
+
 void car_list_print(car_list *list) {
   if (car_list_length(list) == 0) {
     printf("Liste vide\n");

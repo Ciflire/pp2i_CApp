@@ -39,6 +39,9 @@ int car_list_length(car_list *list);
 // Check if car is in list
 bool car_list_iscarInList(car_list *list, car *car);
 
+// Get a car by its id
+car *car_list_getCarById(car_list *list, int id);
+
 // Print list of cars
 void car_list_print(car_list *list);
 

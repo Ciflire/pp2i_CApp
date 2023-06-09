@@ -4,7 +4,7 @@
 //import the data from a csv_importer struct to a borne_list struct
 void borne_data_importer(csv_import *file, borne_list *list_borne) {
   int number_of_line = csv_import_getSize(file);
-  int id = 0;
+  int id = 1;
   for (int i = 0; i < number_of_line; i++) {
     line *current_line = file->line[i]; // get the current line number i
 
@@ -21,7 +21,7 @@ void borne_data_importer(csv_import *file, borne_list *list_borne) {
 //import the data from a csv_importer struct to a car_list struct
 void car_data_importer(csv_import *file, car_list *list_car) {
   int number_of_line = csv_import_getSize(file);
-  int id = 0;
+  int id = 1;
   for (int i = 0; i < number_of_line; i++) {
     line *current_line = file->line[i]; // get the current line number i
 

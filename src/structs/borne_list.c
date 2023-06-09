@@ -1,5 +1,6 @@
 #include "../include/borne_list.h"
 
+
 borne_list *borne_list_create(void) {
   borne_list *list = malloc(sizeof(borne_list));
   list->prev = list;
@@ -57,6 +58,20 @@ void borne_list_append(borne_list *list, borne *borne) {
   return;
 }
 
+borne* borne_list_getBorneById(borne_list *list, int id) {
+  if (borne_list_length(list) == 0) {
+    return NULL;
+  }
+  borne_list *temp = list;
+  for (int i = 0; i < borne_list_length(list); i++) {
+    if (temp->borne->id == id) {
+      return borne_list_getBorne(temp);
+    }
+    temp = temp->next;
+  }
+  return NULL;
+}
+
 void borne_list_print(borne_list *list) {
   if (borne_list_length(list) == 0) {
     printf("Liste vide\n");
@@ -69,5 +84,20 @@ void borne_list_print(borne_list *list) {
     temp = temp->next;
   }
   return;
+}
+
+void borne_list_printPathLink(borne_list* list){
+  char* url = "https://www.google.com/maps/dir/";
+  if (borne_list_length(list) == 0) {
+    printf("Liste vide\n");
+    return;
+  }
+  borne_list *temp = list;
+  printf("%s", url);
+  for (int i = 0; i < borne_list_length(list); i++) {
+    printf("'%lf,%lf'/", temp->borne->latitude, temp->borne->longitude);
+    temp = temp->next;
+  }
+  printf("\n");
 }
   

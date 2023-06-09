@@ -1,4 +1,5 @@
 #include "borne.h"
+#include <string.h>
 
 #ifndef BORNE_LIST_H
 #define BORNE_LIST_H
@@ -39,7 +40,12 @@ int borne_list_length(borne_list *list);
 // Check if borne is in list
 bool borne_list_isBorneInList(borne_list *list, borne *borne);
 
+// Get a borne by its id
+borne* borne_list_getBorneById(borne_list *list, int id);
+
 // Prints a list of bornes
 void borne_list_print(borne_list *list);
+
+void borne_list_printPathLink(borne_list* list);
 
 #endif
