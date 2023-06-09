@@ -1,6 +1,6 @@
 #include "../include/horaire.h"
 
-horaire *horaire_create() {
+horaire *horaire_create(void) {
   horaire *h = (horaire *)malloc(sizeof(horaire));
   h->heure_depart = 0;
   h->heure_arrivee = 0;

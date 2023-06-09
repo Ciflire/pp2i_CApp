@@ -13,7 +13,7 @@ struct horaire {
 
 typedef struct horaire horaire;
 
-horaire *horaire_create();
+horaire *horaire_create(void);
 
 void horaire_destroy(horaire *h);
 

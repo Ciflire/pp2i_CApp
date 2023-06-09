@@ -16,6 +16,8 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test
 
+OBJ = borne_test.o borne.o borne_list.o car.o car_list.o horaire.o horaire_list.o csvParser.o csv_import.o line.o data_importer.o timer.o pathfinding.o
+
 all : $(ALL) clean
 
 #Borne
@@ -25,7 +27,7 @@ borne_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/te
 borne.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/structs/borne.c
 
-borne_test : borne.o borne_test.o
+borne_test : $(OBJ) borne_test.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 
@@ -36,7 +38,7 @@ borne_list_test.o : $(wildcard src/structs/*.c) $(wildcard src/include/*.h) $(wi
 borne_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/structs/borne_list.c	
 
-borne_list_test : borne_list.o borne_list_test.o borne.o timer.o csvParser.o csv_import.o line.o
+borne_list_test : $(OBJ) borne_list_test.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #Car
@@ -46,7 +48,7 @@ car_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test
 car.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/structs/car.c
 
-car_test : car_test.o car.o
+car_test : $(OBJ) car_test.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #Car_list
@@ -56,10 +58,16 @@ car_list_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src
 car_list.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/structs/car_list.c
 
-car_list_test : car_list_test.o car_list.o car.o timer.o
+car_list_test : $(OBJ) car_list_test.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
+#horaire
+horaire.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c  src/structs/horaire.c
 
+#horaire_list
+horaire_list.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS)  -c src/structs/horaire_list.c
 
 #csvParser
 csvParser.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
@@ -79,7 +87,7 @@ data_importer_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcar
 data_importer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/utils/data_importer.c
 
-data_importer_test : data_importer_test.o data_importer.o timer.o csvParser.o csv_import.o line.o borne_list.o borne.o car_list.o car.o
+data_importer_test : data_importer_test.o $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 
@@ -94,7 +102,7 @@ pathFinding_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard 
 pathfinding.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c  src/utils/pathfinding.c
 
-pathFinding_test : pathFinding_test.o pathfinding.o timer.o csvParser.o csv_import.o line.o borne_list.o borne.o car_list.o car.o data_importer.o
+pathFinding_test : pathFinding_test.o $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 clean :

@@ -98,6 +98,7 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
     return pathFinding(usedCar, best, ending, path, pathTime, allListsBorne,
                        maxTimeWaiting, maxTimeCharging, actualTime);
   }
+}
 
 double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
                   int maxTimeCharging, int maxTimeWaiting) {
@@ -122,12 +123,12 @@ bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
 
 void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
                     int maxTimeCharging, int maxTimeWaiting, borne *best,
-                    double *bestTime) {
+                    double *bestTime, int *actualTime) {
   best = borne_list_getBorne(Zone);
   *(bestTime) =
       travelTime(actual, goal, best, usedCar, maxTimeCharging, maxTimeWaiting);
   int pdc = 1;
-  int *BestPdc;
+  int *BestPdc = NULL;
   borne_list *borne_listInTest = Zone;
   for (int i = 1; i < borne_list_length(Zone); i++) {
     borne_listInTest = borne_list_getNext(borne_listInTest);
@@ -147,25 +148,4 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
     newCharge->heure_depart = newTime;
     horaire_list_insert(best->horaires_pdc[pdc], newCharge);
   }
-}
-
-bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
-                                       borne *actual, borne *goal, car *car,
-                                       int maxTimeWaiting,
-                                       int maxTimeCharging) {
-  return travelTime(actual, goal, borneInTest, car, maxTimeCharging,
-                    maxTimeWaiting) < *(bestTime);
-}
-
-double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
-                  int maxTimeCharging, int maxTimeWaiting) {
-  maxTimeWaiting = 0; // TODO
-  maxTimeWaiting++;
-  return (60.0 / 130.0) *
-             (distance(actual->latitude, actual->longitude,
-                       borneInTest->longitude, borneInTest->latitude) +
-              distance(borneInTest->longitude, borneInTest->latitude,
-                       goal->longitude, goal->latitude)) +
-         timeToCharge(borneInTest, maxTimeCharging, car,
-                      actual); // add waiting time stuff
 }

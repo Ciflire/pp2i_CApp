@@ -1,7 +1,7 @@
 #include "../include/horaire_list.h"
 
 // Creates a new list of horaires
-horaire_list *horaire_list_create() {
+horaire_list *horaire_list_create(void) {
   horaire_list *list = (horaire_list *)malloc(sizeof(horaire_list));
   list->horaire = NULL;
   list->next = list;
