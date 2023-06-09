@@ -16,7 +16,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test
 
-OBJ = borne_test.o borne.o borne_list.o car.o car_list.o horaire.o horaire_list.o csvParser.o csv_import.o line.o data_importer.o timer.o pathfinding.o
+OBJ = borne.o borne_list.o car.o car_list.o horaire.o horaire_list.o csvParser.o csv_import.o line.o data_importer.o timer.o pathfinding.o time_wait.o
 
 all : $(ALL) clean
 
@@ -90,6 +90,9 @@ data_importer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src
 data_importer_test : data_importer_test.o $(OBJ)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
+#time_wait
+time_wait.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) -c src/utils/time_wait.c
 
 #Timer
 timer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)

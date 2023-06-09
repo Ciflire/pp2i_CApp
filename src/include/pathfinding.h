@@ -1,5 +1,8 @@
-#include "borne_list.h"
-#include "car_list.h"
+#include "../include/car_list.h"
+#include "../include/borne_list.h"
+#include "../include/horaire_list.h"
+#include "../include/time_wait.h"
+
 
 int distance(double xDep, double yDep, double xArr, double yArr);
 
@@ -20,4 +23,5 @@ bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
 double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
                   int maxTimeCharging, int maxTimeWaiting);
 
-int timeToCharge(borne *borneC, int maxTimeCharging, car *car, borne *borneActual);
+int timeToCharge(borne *borneC, int maxTimeCharging, car *car,
+                 borne *borneActual);

@@ -149,3 +149,12 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
     horaire_list_insert(best->horaires_pdc[pdc], newCharge);
   }
 }
+
+int timeToCharge(borne *borneC, int maxTimeCharging, car *car,
+                 borne *borneActual) {
+  int d = distance(borneC->latitude, borneC->longitude, borneActual->latitude,
+                   borneActual->longitude);
+  double timeToFullCharge = 60.0 * car->capacity * (car->autonomyAct - d) /
+                            (borneC->power * car->autonomyMax);
+  return MIN(timeToFullCharge, maxTimeCharging);
+}
