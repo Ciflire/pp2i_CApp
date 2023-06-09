@@ -119,7 +119,7 @@ int main(int argc, char **argv) {
   creationZone(painpol, brest, 0.8, v4, list_borne3, zone3);
   borne *best = malloc(sizeof(borne));
   double *bestTime = malloc(sizeof(double));
-  findBestInZone(zone3, painpol, brest, v4, 6666, 6666, best, bestTime);
+  findBestInZone(zone3, painpol, brest, v4, 6666, 6666, best, bestTime, 0);
   assert(borne_equals(best, landivisiau));
 
   printf("      [debug pathFiding_test] test_findBestInZone passed\n");
@@ -127,14 +127,18 @@ int main(int argc, char **argv) {
   // test Pathfinding
   //[pathFinding] Test de chemin possible
   borne_list *path1 = borne_list_create();
-  int error = pathFinding(v2, bretagne, nancy, path1, list_borne, 90, 120);
+  horaire_list *pathTime1 = horaire_list_create();
+  int error = pathFinding(v2, bretagne, nancy, path1, pathTime1, list_borne, 90,
+                          120, 0);
   assert(error == 0);
   borne_list_printPathLink(path1);
   free(path1);
 
   //[pathFinding] Test de chemin impossible
   borne_list *path2 = borne_list_create();
-  error = pathFinding(v4, bretagne, nancy, path1, list_borne, 90, 120);
+  horaire_list *pathTime2 = horaire_list_create();
+  error = pathFinding(v4, bretagne, nancy, path1, pathTime2, list_borne, 90,
+                      120, 0);
   assert(error == 1);
   free(path2);
 
@@ -147,14 +151,15 @@ int main(int argc, char **argv) {
     int id_origin = rand() % borne_list_length(list_borne3) + 1;
     int id_destination = rand() % borne_list_length(list_borne3) + 1;
     int battery_minimum = rand() % 30;
-    int max_time_charging = (rand() % 120)+40;
+    int max_time_charging = (rand() % 120) + 40;
     int max_time_waiting = (rand() % 60);
     car *car = car_list_getCarById(list_car, car_id);
     car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
     car->autonomyUsable = car->autonomyAct;
     error = pathFinding(car, borne_list_getBorneById(list_borne3, id_origin),
                         borne_list_getBorneById(list_borne3, id_destination),
-                        path, list_borne3, max_time_waiting, max_time_charging);
+                        path, horaire_list_create(), list_borne3,
+                        max_time_waiting, max_time_charging, 0);
     if (error == 0) {
       borne_list_printPathLink(path);
     }
@@ -162,24 +167,9 @@ int main(int argc, char **argv) {
   }
   printf("      [debug pathFiding_test] test_pathFinding passed\n");
 
-
-  
   borne_list_destroy(list_borne);
   borne_list_destroy(list_borne2);
   borne_list_destroy(list_borne3);
   car_list_destroy(list_car);
-  free(bretagne);
-  free(nancy);
-  free(paris);
-  free(paris2);
-  free(pont_l_abbe);
-  free(bayonne);
-  free(painpol);
-  free(brest);
-  free(landivisiau);
-  free(v1);
-  free(v2);
-  free(v3);
-  free(v4);
-
+  borne_destroy(calais);
 }
