@@ -55,6 +55,8 @@ int|index
 borne_list*|next
 borne_list*|prev
 
+!["Représentation liste chainée"](./images/liste_chainee.png)
+
 ### Fonctions de borne_list.c
 
 Les fonctions de manipulation de listes de bornes sont les suivantes:
