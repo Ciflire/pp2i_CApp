@@ -1,5 +1,5 @@
-#include "../include/borne_list.h"
-#include "../include/horaire_list.h"
+#include "borne_list.h"
+#include "horaire_list.h"
 
 #ifndef TIME_WAIT_H
 

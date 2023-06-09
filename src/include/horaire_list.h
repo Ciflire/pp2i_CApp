@@ -1,5 +1,4 @@
-#include "../include/horaire.h"
-
+#include "horaire.h"
 
 #ifndef __HORAIRE_LIST_H__
 #define __HORAIRE_LIST_H__

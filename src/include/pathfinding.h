@@ -1,5 +1,5 @@
-#include "../include/car_list.h"
-#include "../include/borne_list.h"
+#include "borne_list.h"
+#include "car_list.h"
 
 int distance(double xDep, double yDep, double xArr, double yArr);
 
