@@ -10,6 +10,10 @@ borne_list *borne_list_create(void) {
   return list;
 }
 
+borne_list *borne_list_getNext(borne_list *list) { return list->next; }
+
+borne *borne_list_getBorne(borne_list *list) { return list->borne; }
+
 void borne_list_destroy(borne_list *list) {
   borne_list *temp = list->next;
   if (borne_list_length(list->prev) == 0) {

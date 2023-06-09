@@ -11,8 +11,8 @@ void borne_data_importer(csv_import *file, borne_list *list_borne) {
     //create a new borne with data stored in csv_import(changing its type) and append it to the borne_list
     borne_list_append(list_borne, borne_create(id, atoi(current_line->info[2]),
                                                atoi(current_line->info[3]),
-                                               atof(current_line->info[0]),
-                                               atof(current_line->info[1])));
+                                               atof(current_line->info[1]),
+                                               atof(current_line->info[0])));
     id++;
   }
 }

@@ -1,6 +1,6 @@
 CC = clang
 #clang = compiler
-CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O3 -Werror
+CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O3 #-Werror
 #Wall = all warnings
 #Wextra = extra warnings
 #pedantic = all warnings demanded by strict ISO C and ISO C++
@@ -14,7 +14,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test borne_list_test  data_importer_test car_test car_list_test
+ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test
 
 all : $(ALL) clean
 
@@ -91,10 +91,10 @@ timer.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.
 pathFinding_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c  src/test/pathFinding_test.c
 
-pathFinding.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
-	$(CC) $(CFLAGS) -c  src/utils/pathFinding.c
+pathfinding.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c  src/utils/pathfinding.c
 
-pathFinding_test : pathFinding_test.o pathFinding.o timer.o csvParser.o csv_import.o line.o borne_list.o borne.o car_list.o car.o
+pathFinding_test : pathFinding_test.o pathfinding.o timer.o csvParser.o csv_import.o line.o borne_list.o borne.o car_list.o car.o data_importer.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 clean :

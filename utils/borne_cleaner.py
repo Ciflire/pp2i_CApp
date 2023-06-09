@@ -1,7 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 def main():
   # Reads data, deletes duplicates and saves it
   bornes = pd.read_csv('data/borne_firststep.csv', sep=',').drop_duplicates()

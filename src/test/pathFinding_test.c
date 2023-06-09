@@ -51,6 +51,7 @@ int main(int argc, char **argv) {
   borne *painpol = borne_list_getBorneById(list_borne3, 474);
   borne *brest = borne_list_getBorneById(list_borne3, 64);
   borne *landivisiau = borne_list_getBorneById(list_borne3, 178);
+  borne *calais = borne_create(2000, 2, 7, 50.950, 1.859);
 
   car *v1 = car_list_getCar(list_car);
   car *v2 = car_list_getCarById(list_car, 188);
@@ -58,14 +59,6 @@ int main(int argc, char **argv) {
   car *v4 = car_list_getCarById(list_car, 286);
 
   // test distance
-  int dist_bretagne_nancy = distance(bretagne->latitude, bretagne->longitude,
-                                     nancy->latitude, nancy->longitude);
-  int dist_nancy_bretagne = distance(nancy->latitude, nancy->longitude,
-                                     bretagne->latitude, bretagne->longitude);
-  assert(dist_bretagne_nancy == dist_nancy_bretagne);
-  assert(dist_bretagne_nancy <= 564);
-  assert(dist_bretagne_nancy >= 560);
-
   int dist_nancy_nancy = distance(nancy->latitude, nancy->longitude,
                                   nancy->latitude, nancy->longitude);
   assert(dist_nancy_nancy == 0);
@@ -74,12 +67,18 @@ int main(int argc, char **argv) {
                                   nancy->latitude, nancy->longitude);
   assert(dist_paris_nancy <= 281);
   assert(dist_paris_nancy >= 277);
+  int dist_bretagne_nancy = distance(bretagne->latitude, bretagne->longitude,
+                                     nancy->latitude, nancy->longitude);
+  int dist_nancy_bretagne = distance(nancy->latitude, nancy->longitude,
+                                     bretagne->latitude, bretagne->longitude);
+  assert(dist_bretagne_nancy == dist_nancy_bretagne);
+  assert(dist_bretagne_nancy <= 564);
+  assert(dist_bretagne_nancy >= 560);
 
   printf("      [debug pathFiding_test] test_distance passed\n");
 
   // test travelTime
 
-  borne *calais = borne_create(2000, 2, 22, 50.950, 1.859);
   int t1 = travelTime(bretagne, nancy, paris, v1, 666, 666);
   int t2 = travelTime(bretagne, nancy, calais, v1, 666, 666);
   assert(t2 > t1);
@@ -90,12 +89,12 @@ int main(int argc, char **argv) {
   int t3 = timeToCharge(paris, 666, v2, bretagne);
   int t4 = timeToCharge(paris2, 666, v2, bretagne);
   assert(t3 > t4);
-  printf("charging_time is : %d\n", t3);
   printf("      [debug pathFiding_test] test_timeToCharge passed\n");
 
   // test creationZone
   borne_list *zone1 = borne_list_create();
   creationZone(bretagne, nancy, 0.6, v2, list_borne, zone1);
+  printf("length of zone1 : %d\n", borne_list_length(zone1));
   assert(borne_list_length(zone1) == 1045);
   v1->autonomyAct = 402;
   for (int i = 0; i < borne_list_length(zone1); i++) {
@@ -150,11 +149,12 @@ int main(int argc, char **argv) {
     int battery_minimum = rand() % 30;
     int max_time_charging = (rand() % 120)+40;
     int max_time_waiting = (rand() % 60);
-
-    error = pathFinding(car_list_getCarById(list_car, car_id),
-                        borne_list_getBorneById(list_borne3, id_origin),
+    car *car = car_list_getCarById(list_car, car_id);
+    car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
+    car->autonomyUsable = car->autonomyAct;
+    error = pathFinding(car, borne_list_getBorneById(list_borne3, id_origin),
                         borne_list_getBorneById(list_borne3, id_destination),
-                        path, list_borne3, battery_minimum, max_time_charging);
+                        path, list_borne3, max_time_waiting, max_time_charging);
     if (error == 0) {
       borne_list_printPathLink(path);
     }

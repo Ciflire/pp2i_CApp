@@ -9,6 +9,8 @@ car_list *car_list_create(void) {
   return list;
 }
 
+car *car_list_getCar(car_list *list) { return list->car; }
+
 void car_list_destroy(car_list *list) {
   car_list *temp = list->next;
   if (car_list_length(list->prev) == 0) {
