@@ -13,15 +13,19 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path, ho
                 int maxTimeCharging, int *actualTime);
 
 void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
-                    int maxTimeCharging, int maxTimeWaiting, borne *best,
-                    double *bestTime, int *actualTime);
+                    borne *best, double *bestTime, int *actualTime,
+                    int *waitingTime, int *travelTimeToGoal,
+                    int *travelTimeToBorneInTest, int *chargeTime,
+                    int *maxTimeCharging);
 
-bool isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
-                                       borne *actual, borne *goal, car *car,
-                                       int maxTimeWaiting, int maxTimeCharging, int *BestPdc);
+void isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
+                                       borne *actual, borne *goal,
+                                       int *bestPdcIndex, int *chargeTime,
+                                       int *waitingTime, int *actualTime,
+                                       int *travelTimeToGoal,
+                                       int *travelTimeToBorneInTest);
 
-double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
-                  int maxTimeCharging, int maxTimeWaiting);
+double travelTime(borne *actual, borne *goal);
 
 int timeToCharge(borne *borneC, int maxTimeCharging, car *car,
                  borne *borneActual);

@@ -23,6 +23,7 @@
     "bornes_list.h": "c",
     "utils_dijkstra.h": "c",
     "random": "c",
-    "iterator": "c"
+    "iterator": "c",
+    "time_wait.h": "c"
   }
 }
