@@ -9,7 +9,7 @@ borne *borne_create(int id, int pdc, int power, double latitude,
   b->power = power;
   b->latitude = latitude;
   b->longitude = longitude;
-  b->horaires_pdc = calloc(pdc, sizeof(horaire_list *));
+  b->horaires_pdc = calloc(pdc, sizeof(horaire_list));
   for (int i = 0; i < pdc; i++) {
     b->horaires_pdc[i] = horaire_list_create();
   }

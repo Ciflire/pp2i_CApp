@@ -4,7 +4,7 @@
 
 int main(void) {
 
-  for (int i = 1; i < 5; i++) {
+  for (int i = 1; i < 10; i++) {
     timer_start();
     horaire_list *list = horaire_list_create();
     for (int j = 0; j < (1000000 * i); j++) {

@@ -14,7 +14,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test horaire_test #horaire_list_test
+ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test horaire_test horaire_list_test
 
 OBJ = borne.o borne_list.o car.o car_list.o horaire.o horaire_list.o csvParser.o csv_import.o line.o data_importer.o timer.o pathfinding.o time_wait.o
 

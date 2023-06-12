@@ -74,34 +74,15 @@ int creationZone(borne *actual, borne *ending, double p, car *usedCar,
   return 0;
 }
 
-int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
-                horaire_list *pathTime, borne_list *allListsBorne,
-                int maxTimeWaiting, int maxTimeCharging, int *actualTime) {
-  if (distance(actual->longitude, actual->latitude, ending->longitude,
-               ending->latitude) < usedCar->autonomyAct) {
-    borne_list_append(path, ending);
-    return 0;
-  } else {
-    borne_list *Zone = borne_list_create();
-    creationZone(actual, ending, 0.9, usedCar, allListsBorne, Zone);
-    borne *best =
-        borne_create(Zone->borne->id, Zone->borne->pdc, Zone->borne->power,
-                     Zone->borne->latitude, Zone->borne->longitude);
-    double *bestTime = malloc(sizeof(double));
-    /* printf("actual : %d\n", *actualTime); */
-    findBestInZone(Zone, actual, ending, usedCar, maxTimeCharging,
-                   maxTimeWaiting, best, bestTime, actualTime);
-    free(Zone);
-
-    borne_list_append(path, best);
-    horaire *newTravel = horaire_create();
-    newTravel->heure_depart = *(actualTime);
-    newTravel->heure_arrivee = *(bestTime);
-    *(actualTime) += *(bestTime);
-    horaire_list_append(pathTime, newTravel);
-    return pathFinding(usedCar, best, ending, path, pathTime, allListsBorne,
-                       maxTimeWaiting, maxTimeCharging, actualTime);
-  }
+int timeToCharge(borne *borneC, int maxTimeCharging, car *car,
+                 borne *borneActual) {
+  int d = distance(borneC->latitude, borneC->longitude, borneActual->latitude,
+                   borneActual->longitude);
+  double timeToFullCharge =
+      60.0 * car->capacity *
+      (car->autonomyUsable - (car->autonomyAct - (float)d)) /
+      (float)(borneC->power * car->autonomyMax);
+  return MIN(timeToFullCharge, maxTimeCharging);
 }
 
 double travelTime(borne *actual, borne *goal, borne *borneInTest, car *car,
@@ -155,22 +136,44 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
       *(bestTime) = travelTime(actual, goal, best, usedCar, maxTimeCharging,
                                maxTimeWaiting);
       pdc = *(BestPdc);
+      printf("pdc : %d\n", pdc);
     }
     int newTime = *(actualTime) + chargeTime;
     horaire *newCharge = horaire_create();
     newCharge->heure_arrivee = *(actualTime);
     newCharge->heure_depart = newTime;
+    printf("%p\n", best->horaires_pdc[pdc]);
+    printf("%d\n", best->pdc);
     horaire_list_insert(best->horaires_pdc[pdc], newCharge);
   }
 }
 
-int timeToCharge(borne *borneC, int maxTimeCharging, car *car,
-                 borne *borneActual) {
-  int d = distance(borneC->latitude, borneC->longitude, borneActual->latitude,
-                   borneActual->longitude);
-  double timeToFullCharge =
-      60.0 * car->capacity *
-      (car->autonomyUsable - (car->autonomyAct - (float)d)) /
-      (float)(borneC->power * car->autonomyMax);
-  return MIN(timeToFullCharge, maxTimeCharging);
+int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
+                horaire_list *pathTime, borne_list *allListsBorne,
+                int maxTimeWaiting, int maxTimeCharging, int *actualTime) {
+  if (distance(actual->longitude, actual->latitude, ending->longitude,
+               ending->latitude) < usedCar->autonomyAct) {
+    borne_list_append(path, ending);
+    return 0;
+  } else {
+    borne_list *Zone = borne_list_create();
+    creationZone(actual, ending, 0.9, usedCar, allListsBorne, Zone);
+    borne *best =
+        borne_create(Zone->borne->id, Zone->borne->pdc, Zone->borne->power,
+                     Zone->borne->latitude, Zone->borne->longitude);
+    double *bestTime = malloc(sizeof(double));
+    /* printf("actual : %d\n", *actualTime); */
+    findBestInZone(Zone, actual, ending, usedCar, maxTimeCharging,
+                   maxTimeWaiting, best, bestTime, actualTime);
+    free(Zone);
+
+    borne_list_append(path, best);
+    horaire *newTravel = horaire_create();
+    newTravel->heure_depart = *(actualTime);
+    newTravel->heure_arrivee = *(bestTime);
+    *(actualTime) += *(bestTime);
+    horaire_list_append(pathTime, newTravel);
+    return pathFinding(usedCar, best, ending, path, pathTime, allListsBorne,
+                       maxTimeWaiting, maxTimeCharging, actualTime);
+  }
 }

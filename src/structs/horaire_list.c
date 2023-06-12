@@ -17,7 +17,7 @@ void horaire_list_destroy(horaire_list *list) {
     free(list);
     return;
   }
-  for (int i = 1; i < horaire_list_length(list); i++) {
+  for (int i = 1; i < horaire_list_length(list) + 1; i++) {
     temp = temp->next;
     horaire_destroy(temp->prev->horaire);
     free(temp->prev);
