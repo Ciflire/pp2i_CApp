@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
   csvParser(file_path, 0, file);
   borne_list *list_borne = borne_list_create();
   // import the data to a bornes_list
-  borne_data_importer(file, list_borne);
+  borne_list_dataImporter(file, list_borne);
   csv_import_destroy(file);
 
   char *file_path2 = "data/Vehicules.csv";
@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
   csvParser(file_path2, 0, file2);
   car_list *list_car = car_list_create();
   // import the data to a bornes_list
-  car_data_importer(file2, list_car);
+  car_list_dataImporter(file2, list_car);
   csv_import_destroy(file2);
 
   char *file_path3 = "data/borne-test2.csv";
@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
   csvParser(file_path3, 0, file3);
   borne_list *list_borne2 = borne_list_create();
   // import the data to a bornes_list
-  borne_data_importer(file3, list_borne2);
+  borne_list_dataImporter(file3, list_borne2);
   csv_import_destroy(file3);
 
   char *file_path4 = "data/borne_cleaned.csv";
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
   csvParser(file_path4, 1, file4);
   borne_list *list_borne3 = borne_list_create();
   // import the data to a bornes_list
-  borne_data_importer(file4, list_borne3);
+  borne_list_dataImporter(file4, list_borne3);
   csv_import_destroy(file4);
 
   borne *bretagne = borne_list_getBorne(list_borne);
