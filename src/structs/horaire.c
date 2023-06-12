@@ -7,6 +7,13 @@ horaire *horaire_create(void) {
   return h;
 }
 
+horaire *horaire_createWithValues(int heure_depart, int heure_arrivee) {
+  horaire *h = (horaire *)malloc(sizeof(horaire));
+  h->heure_depart = heure_depart;
+  h->heure_arrivee = heure_arrivee;
+  return h;
+}
+
 void horaire_destroy(horaire *h) { free(h); }
 
 int horaire_getDepart(horaire *h) { return h->heure_depart; }

@@ -39,8 +39,9 @@ bool betterWaitTime(borne *borne, int *watingTimeAct,
                                          possibleBetterPdcIndex, currentTime,
                                          chargeTime);
   }
-  if (waitingTime < *(watingTimeAct)) {
+  bool b = waitingTime < *(watingTimeAct);
+  if (b) {
     *(watingTimeAct) = waitingTime;
   }
-  return waitingTime < *(watingTimeAct);
+  return b;
 }

@@ -15,6 +15,8 @@ typedef struct horaire horaire;
 
 horaire *horaire_create(void);
 
+horaire *horaire_createWithValues(int heure_depart, int heure_arrivee);
+
 void horaire_destroy(horaire *h);
 
 int horaire_getDepart(horaire *h);
