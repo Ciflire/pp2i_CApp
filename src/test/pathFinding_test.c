@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
 
   // test travelTime
 
-  int t1 = travelTime(bretagne, nancy, paris, v1, 666, 666);
+  int t1 = travelTime(bretagne, nancy) + travelTime(nancy, paris);
   int t2 = travelTime(bretagne, nancy, calais, v1, 666, 666);
   assert(t2 > t1);
 
