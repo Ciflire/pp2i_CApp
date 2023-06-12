@@ -6,6 +6,7 @@ horaire_list *horaire_list_create(void) {
   list->horaire = NULL;
   list->next = list;
   list->prev = list;
+  list->index = 0;
   return list;
 }
 
