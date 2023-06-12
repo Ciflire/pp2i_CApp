@@ -131,26 +131,29 @@ int main(int argc, char **argv) {
 
   // test Pathfinding
   //[pathFinding] Test de chemin possible
+  int actualTime2 = 1;
   borne_list *path1 = borne_list_create();
   horaire_list *pathTime1 = horaire_list_create();
   int error = pathFinding(v2, bretagne, nancy, path1, pathTime1, list_borne, 90,
-                          120, 0);
+                          120, &actualTime2);
   assert(error == 0);
   borne_list_printPathLink(path1);
   free(path1);
   printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
 
   //[pathFinding] Test de chemin impossible
+  int acutalTime = 0;
   borne_list *path2 = borne_list_create();
   horaire_list *pathTime2 = horaire_list_create();
   error = pathFinding(v4, bretagne, nancy, path1, pathTime2, list_borne, 90,
-                      120, 0);
+                      120, &actualTime);
   assert(error == 1);
   free(path2);
   printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
   //[pathFinding] Test sur 10 chemins randoms
   for (int i = 0; i < 10; i++) {
+    int actualTime = 0;
     borne_list *path = borne_list_create();
     srand(seed);
     seed = rand();
@@ -166,7 +169,7 @@ int main(int argc, char **argv) {
     error = pathFinding(car, borne_list_getBorneById(list_borne3, id_origin),
                         borne_list_getBorneById(list_borne3, id_destination),
                         path, horaire_list_create(), list_borne3,
-                        max_time_waiting, max_time_charging, 0);
+                        max_time_waiting, max_time_charging, &actualTime);
     if (error == 0) {
       borne_list_printPathLink(path);
     }
