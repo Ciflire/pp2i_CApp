@@ -6,7 +6,7 @@
 #ifndef DATA_IMPORTER_H
 #define DATA_IMPORTER_H
 
-void borne_data_importer(csv_import *file, borne_list *list_borne);
-void car_data_importer(csv_import *file, car_list *list_car);
+void borne_list_dataImporter(csv_import *file, borne_list *list_borne);
+void car_list_dataImporter(csv_import *file, car_list *list_car);
 
 #endif

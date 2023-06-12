@@ -13,7 +13,7 @@ int main(void){
     timer_print();
     borne_list *list_borne = borne_list_create();
     //import the data to a bornes_list
-    borne_data_importer(file, list_borne);
+    borne_list_dataImporter(file, list_borne);
     timer_stop();
     printf("Time to import the bornes data: ");
     timer_print();
@@ -36,7 +36,7 @@ int main(void){
     timer_print();
     car_list *list_car = car_list_create();
     // import the data to a car_list
-    car_data_importer(file, list_car);
+    car_list_dataImporter(file, list_car);
     timer_stop();
     printf("Time to import the car data: ");
     timer_print();
