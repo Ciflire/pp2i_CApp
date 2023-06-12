@@ -14,7 +14,7 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test
+ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test horaire_test #horaire_list_test
 
 OBJ = borne.o borne_list.o car.o car_list.o horaire.o horaire_list.o csvParser.o csv_import.o line.o data_importer.o timer.o pathfinding.o time_wait.o
 
@@ -65,9 +65,21 @@ car_list_test : $(OBJ) car_list_test.o
 horaire.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c  src/structs/horaire.c
 
+horaire_test.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c src/test/horaire_test.c
+
+horaire_test: $(OBJ) horaire_test.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+
 #horaire_list
 horaire_list.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS)  -c src/structs/horaire_list.c
+
+horaire_list_test.o: $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS)  -c src/test/horaire_list_test.c
+
+horaire_list_test: $(OBJ) horaire_list_test.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #csvParser
 csvParser.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
