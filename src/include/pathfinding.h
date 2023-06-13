@@ -18,12 +18,13 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
                     int *travelTimeToBorneInTest, int *chargeTime,
                     int *maxTimeCharging);
 
-void isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
-                                       borne *actual, borne *goal,
-                                       int *bestPdcIndex, int *chargeTime,
-                                       int *waitingTime, int *actualTime,
-                                       int *travelTimeToGoal,
-                                       int *travelTimeToBorneInTest);
+void isBorneBetterThanCurrentBestBorne(borne *best, double *bestTime,
+                                       borne *borneInTest, borne *actual,
+                                       borne *goal, int *bestPdcIndex,
+                                       int *chargeTime, int *waitingTime,
+                                       int *actualTime, int *travelTimeToGoal,
+                                       int *travelTimeToBorneInTest,
+                                       int *maxTimeCharging, car *car);
 
 double travelTime(borne *actual, borne *goal);
 

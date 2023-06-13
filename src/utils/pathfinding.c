@@ -4,6 +4,7 @@
 #include "../include/time_wait.h"
 #include <asm-generic/errno-base.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #define M_PI 3.14159265358979323846
@@ -96,17 +97,15 @@ double travelTime(borne *actual, borne *goal) {
   return time;
 }
 
-void isBorneBetterThanCurrentBestBorne(double *bestTime, borne *borneInTest,
-                                       borne *actual, borne *goal,
-                                       int *bestPdcIndex, int *chargeTime,
-                                       int *waitingTime, int *actualTime,
-                                       int *travelTimeToGoal,
-                                       int *travelTimeToBorneInTest) { /*
-printf("travelTime : %lf\n", travelTime(actual, goal, borneInTest, car,
-maxTimeCharging, maxTimeWaiting)); */
-  // initialize variable for travel time and waiting time here, compare to those
-  // given in parameter and return 1 if better
-  int chargeTimeTemp = *chargeTime;
+void isBorneBetterThanCurrentBestBorne(borne *best, double *bestTime,
+                                       borne *borneInTest, borne *actual,
+                                       borne *goal, int *bestPdcIndex,
+                                       int *chargeTime, int *waitingTime,
+                                       int *actualTime, int *travelTimeToGoal,
+                                       int *travelTimeToBorneInTest,
+                                       int *maxTimeCharging, car *car) {
+
+  int chargeTimeTemp = timeToCharge(borneInTest, *maxTimeCharging, car, actual);
   int waitingTimeTemp = *waitingTime;
   int travelTimeToGoalTemp = *travelTimeToGoal;
   int travelTimeToBorneInTestTemp = *travelTimeToBorneInTest;
@@ -117,16 +116,33 @@ maxTimeCharging, maxTimeWaiting)); */
   travelTimeToBorneInTestTemp = travelTime(actual, borneInTest);
   travelTimeToGoalTemp = travelTime(borneInTest, goal);
 
+  // printf("New totalTime : %d, Current totalTime : %d     Borne:%d  \n",
+  //        waitingTimeTemp + chargeTimeTemp + travelTimeToBorneInTestTemp +
+  //            travelTimeToGoalTemp,
+  //        *waitingTime + *chargeTime + *travelTimeToBorneInTest +
+  //            *travelTimeToGoal,
+  //        borneInTest->id);
+
+  // printf("%d %d %d %d\n", waitingTimeTemp, chargeTimeTemp,
+  //        travelTimeToBorneInTestTemp, travelTimeToGoalTemp);
+  // printf("%d %d %d %d\n", *waitingTime, *chargeTime,
+  // *travelTimeToBorneInTest,
+  //        *travelTimeToGoal);
+
   if (waitingTimeTemp + chargeTimeTemp + travelTimeToBorneInTestTemp +
           travelTimeToGoalTemp <
       *waitingTime + *chargeTime + *travelTimeToBorneInTest +
           *travelTimeToGoal) {
+    // printf("it's better\n");
+
     *bestTime = waitingTimeTemp + chargeTimeTemp + travelTimeToBorneInTestTemp +
                 travelTimeToGoalTemp;
     *chargeTime = chargeTimeTemp;
     *waitingTime = waitingTimeTemp;
     *travelTimeToGoal = travelTimeToGoalTemp;
     *travelTimeToBorneInTest = travelTimeToBorneInTestTemp;
+    *best = *borneInTest;
+    // printf("Best ID: %d\n", best->id);
   }
 }
 
@@ -139,22 +155,24 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
     borne_print(Zone->borne);
     borne_print(best); */
 
-  *best = *Zone->borne;
   *bestTime = travelTime(actual, best) + travelTime(best, goal);
   int bestPdc = 0;
   borne_list *borne_listInTest = Zone;
+
   for (int i = 1; i < borne_list_length(Zone); i++) {
     // get the first borne
     borne *borneInTest = borne_list_getBorne(borne_listInTest);
     // get the time to charge at the borne in test
-    int chargeTime =
-        timeToCharge(borneInTest, *maxTimeCharging, usedCar, actual);
-    // if the borne in test better than the current best borne then changes the
-    // best borne __ changes the best travel time __
-    // changes the best pdc
+
+    // if the borne in test better than the current best borne then
+    // changes the best borne __ changes the best travel time __ changes
+    // the best pdc
     isBorneBetterThanCurrentBestBorne(
-        bestTime, borneInTest, actual, goal, &bestPdc, &chargeTime, waitingTime,
-        actualTime, travelTimeToGoal, travelTimeToBorneInTest);
+        best, bestTime, borneInTest, actual, goal, &bestPdc, chargeTime,
+        waitingTime, actualTime, travelTimeToGoal, travelTimeToBorneInTest,
+        maxTimeCharging, usedCar);
+    borne_listInTest = borne_list_getNext(borne_listInTest);
+    // printf("%lf;%lf\n", borneInTest->latitude, borneInTest->longitude);
 
     /*     best = borneInTest;
 
@@ -163,14 +181,12 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
        maxTimeCharging, maxTimeWaiting); */
     // printf("pdc : %d\n", bestPdc);
     // actualize the borne list in test
-    borne_listInTest = borne_list_getNext(borne_listInTest);
   }
 
   horaire *newCharge = horaire_createWithValues(
       *actualTime + *travelTimeToBorneInTest,
       *actualTime + *travelTimeToBorneInTest + *chargeTime);
   // printf("%p\n", best->horaires_pdc[bestPdc]);
-  printf("%d\n", best->pdc);
   horaire_list_insert(best->horaires_pdc[bestPdc], newCharge);
 }
 
@@ -178,9 +194,9 @@ int pathFinding(car *usedCar, borne *actual, borne *goal, borne_list *path,
                 horaire_list *pathTime, borne_list *allListsBorne,
                 int maxTimeWaiting, int maxTimeCharging, int *actualTime) {
   int waitingTime = maxTimeWaiting;
+  int chargeTime = maxTimeCharging;
   int travelTimeToGoal = INT16_MAX;
   int travelTimeToBorneInTest = INT16_MAX;
-  int chargeTime = maxTimeCharging;
   int pdcOptimal = 0;
 
   if (distance(actual->longitude, actual->latitude, goal->longitude,
@@ -195,7 +211,8 @@ int pathFinding(car *usedCar, borne *actual, borne *goal, borne_list *path,
     borne_list *Zone = borne_list_create();
     creationZone(actual, goal, 0.9, usedCar, allListsBorne, Zone);
     borne *best = borne_list_getBorne(Zone);
-    // borne_create(Zone->borne->id, Zone->borne->pdc, Zone->borne->power,
+    // borne_create(Zone->borne->id, Zone->borne->pdc,
+    // Zone->borne->power,
     //              Zone->borne->latitude, Zone->borne->longitude);
     double *bestTime = malloc(sizeof(double));
     *bestTime =
@@ -204,6 +221,7 @@ int pathFinding(car *usedCar, borne *actual, borne *goal, borne_list *path,
     findBestInZone(Zone, actual, goal, usedCar, best, bestTime, actualTime,
                    &waitingTime, &travelTimeToGoal, &travelTimeToBorneInTest,
                    &pdcOptimal, &chargeTime);
+    printf("best in zone is %d\n", best->id);
 
     free(Zone);
 
@@ -213,6 +231,7 @@ int pathFinding(car *usedCar, borne *actual, borne *goal, borne_list *path,
         *actualTime + travelTimeToBorneInTest + chargeTime + waitingTime);
     horaire_list_append(pathTime, newTravel);
     *actualTime += travelTimeToBorneInTest + chargeTime + waitingTime;
+
     return pathFinding(usedCar, best, goal, path, pathTime, allListsBorne,
                        maxTimeWaiting, maxTimeCharging, actualTime);
   }

@@ -1,5 +1,6 @@
 #include "../include/time_wait.h"
 #include <stdint.h>
+#include <stdio.h>
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
@@ -8,7 +9,8 @@ void getWaitingTimeAndPotentialChargeTime(horaire_list *list, int *waitingTime,
                                           int *currentTime, int *chargeTime) {
   // If list is empty, there is no waiting time
   if (horaire_list_length(list) == 0) {
-    waitingTime = 0;
+    *waitingTime = 0;
+
     return;
   }
 
@@ -19,23 +21,23 @@ void getWaitingTimeAndPotentialChargeTime(horaire_list *list, int *waitingTime,
         temp->horaire
             ->heure_arrivee; // Retreives arrival time at borne for usage i
     // if the next usage is after the car arrival then
-    if (usageStart > *(currentTime)) {
+    if (usageStart > *currentTime) {
       int usageEnd =
           temp->prev->horaire
               ->heure_depart; // get the previous car's departure time
       // ensures we have not looped to the end of the horaire_list
       if (usageEnd > usageStart) {
-        usageEnd = *(currentTime);
+        usageEnd = *currentTime;
       }
       // checks if there is enough time to charge and that it's the shortest
       // waiting time before charge
-      if (usageStart - *(currentTime) >= *(chargeTime) &&
-          *(waitingTime) > MAX((*currentTime), usageStart) - *(currentTime) +
-                               *(chargeTime)) {
+      if (usageStart - *(currentTime) >= *chargeTime &&
+          *waitingTime >
+              MAX(*currentTime, usageStart) - *currentTime + *chargeTime) {
         // if it's the case, set the pdc to the currrent tested and the waiting
         // time associated
-        *(possibleBetterPdcIndex) = i;
-        *(waitingTime) =
+        *possibleBetterPdcIndex = i;
+        *waitingTime =
             MAX(*currentTime, usageStart) - *(currentTime) + *(chargeTime);
         return;
       }
@@ -50,10 +52,14 @@ bool betterWaitTime(borne *borne, int *watingTimeAct, int *betterPdcIndex,
     getWaitingTimeAndPotentialChargeTime(borne->horaires_pdc[i], &waitingTime,
                                          betterPdcIndex, currentTime,
                                          chargeTime);
+    if (waitingTime == 0) {
+      *betterPdcIndex = i;
+    }
   }
-  bool b = waitingTime < *(watingTimeAct);
+  bool b = waitingTime < *watingTimeAct;
   if (b) {
-    *(watingTimeAct) = waitingTime;
+    *watingTimeAct = waitingTime;
+    // printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
   }
   return b;
 }
