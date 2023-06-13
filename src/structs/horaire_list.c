@@ -2,7 +2,7 @@
 
 // Creates a new list of horaires
 horaire_list *horaire_list_create(void) {
-  horaire_list *list = (horaire_list *)malloc(sizeof(horaire_list));
+  horaire_list *list = malloc(sizeof(horaire_list));
   list->horaire = NULL;
   list->next = list;
   list->prev = list;
@@ -12,18 +12,16 @@ horaire_list *horaire_list_create(void) {
 
 // Destroys a list of horaires
 void horaire_list_destroy(horaire_list *list) {
-  horaire_list *temp = list->next;
   if (horaire_list_length(list->prev) == 0) {
     free(list);
     return;
   }
-  for (int i = 1; i < horaire_list_length(list) + 1; i++) {
+  horaire_list *temp = list;
+  for (int i = 0; i < horaire_list_length(list); i++) {
     temp = temp->next;
     horaire_destroy(temp->prev->horaire);
     free(temp->prev);
   }
-  horaire_destroy(temp->horaire);
-  free(temp);
   return;
 }
 
@@ -65,6 +63,7 @@ void horaire_list_insert(horaire_list *list, horaire *horaire) {
     }
     current = current->next;
   }
+  horaire_list_print(list);
 }
 
 // Get the length of a list of horaires

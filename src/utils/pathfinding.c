@@ -223,7 +223,7 @@ int pathFinding(car *usedCar, borne *actual, borne *goal, borne_list *path,
                    &pdcOptimal, &chargeTime);
     printf("best in zone is %d\n", best->id);
 
-    free(Zone);
+    // free(Zone);
 
     borne_list_append(path, best);
     horaire *newTravel = horaire_createWithValues(

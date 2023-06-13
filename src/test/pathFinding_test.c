@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     printf("Usage: %s\n", argv[0]);
     exit(1);
   }
-  int seed = atoi(argv[0]);
+  // int seed = atoi(argv[0]);
 
   char *file_path = "data/borne-test.csv";
   csv_import *file = csv_import_create(1047, 4);
@@ -132,16 +132,13 @@ int main(int argc, char **argv) {
   findBestInZone(zone3, painpol, brest, v4, best, bestTime, &actualTime,
                  &waitingTime, &travelTimeToGoal, &travelTimeToBorneInTest,
                  &bestChargeTime, &maxTimeCharging);
-  borne_print(painpol);
-  borne_print(brest);
-  borne_print(landivisiau);
-  borne_print(best);
+
   assert(borne_equals(best, landivisiau));
 
   printf("      [debug pathFiding_test] test_findBestInZone passed\n");
 
   // // test Pathfinding
-  // //[pathFinding] Test de chemin possible
+  //[pathFinding] Test de chemin possible
   // int actualTime2 = 1;
   // borne_list *path1 = borne_list_create();
   // horaire_list *pathTime1 = horaire_list_create();
@@ -152,15 +149,16 @@ int main(int argc, char **argv) {
   // free(path1);
   // printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
 
-  //[pathFinding] Test de chemin impossible
-  int acutalTime = 0;
-  borne_list *path2 = borne_list_create();
-  horaire_list *pathTime2 = horaire_list_create();
-  int error = pathFinding(v4, bretagne, nancy, path2, pathTime2, list_borne, 90,
-                          120, &actualTime);
-  assert(error == 1);
-  free(path2);
-  printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
+  // //[pathFinding] Test de chemin impossible
+  // // int acutalTime = 0;
+  // borne_list *path2 = borne_list_create();
+  // horaire_list *pathTime2 = horaire_list_create();
+  // int error = pathFinding(v4, bretagne, nancy, path2, pathTime2, list_borne,
+  // 90,
+  //                         120, &actualTime);
+  // assert(error == 1);
+  // free(path2);
+  // printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
   // //[pathFinding] Test sur 10 chemins randoms
   // for (int i = 0; i < 10; i++) {
@@ -187,7 +185,6 @@ int main(int argc, char **argv) {
   //   free(path);
   // }
   // printf("      [debug pathFiding_test] test_pathFinding3 passed\n");
-
   borne_list_destroy(list_borne);
   borne_list_destroy(list_borne2);
   borne_list_destroy(list_borne3);

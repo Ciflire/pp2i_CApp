@@ -3,7 +3,7 @@
 csv_import *csv_import_create(int sizeOfArray, int sizeOfLine) {
   csv_import *file = malloc(sizeof(csv_import));
   file->size = sizeOfArray;
-  file->line = malloc(sizeof(line *) * sizeOfArray);
+  file->line = calloc(sizeOfArray, sizeof(line));
   for (int i = 0; i < sizeOfArray; i++) {
     file->line[i] = line_create(sizeOfLine);
   }
