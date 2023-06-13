@@ -1,6 +1,6 @@
 CC = clang
 #clang = compiler
-CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O3 #-Werror
+CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -O3 -Werror
 #Wall = all warnings
 #Wextra = extra warnings
 #pedantic = all warnings demanded by strict ISO C and ISO C++
