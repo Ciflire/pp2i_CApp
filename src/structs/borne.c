@@ -17,9 +17,9 @@ borne *borne_create(int id, int pdc, int power, double latitude,
 }
 
 void borne_destroy(borne *b) {
-  printf("Destroying borne %d\n", b->id);
+  // printf("Destroying borne %d\n", b->id);
   for (int i = 0; i < b->pdc; i++) {
-    printf("    Destroying horaire_list %d\n", i);
+    // printf("    Destroying horaire_list %d\n", i);
     horaire_list_destroy(b->horaires_pdc[i]);
   }
   free(b);

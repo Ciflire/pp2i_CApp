@@ -24,6 +24,10 @@
     "utils_dijkstra.h": "c",
     "random": "c",
     "iterator": "c",
-    "time_wait.h": "c"
+    "time_wait.h": "c",
+    "csvparser.h": "c",
+    "*.tcc": "c",
+    "algorithm": "c",
+    "functional": "c"
   }
 }
