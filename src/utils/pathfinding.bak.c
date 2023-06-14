@@ -227,8 +227,8 @@ void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
   // printf("test : %d", best->pdc);
 
   // printf("test : %d", bestPdc);
-  // printf("test : %p\n", (void *)best->horaires_pdc[bestPdc]);
-  horaire_list_insert(best->horaires_pdc[bestPdc], newCharge);
+  // printf("test : %p\n", (void *)best->horairePdc[bestPdc]);
+  horaire_list_insert(best->horairePdc[bestPdc], newCharge);
 }
 
 int pathFinding(car *usedCar, borne *actual, borne *goal, borne_list *path,
@@ -268,7 +268,7 @@ int pathFinding(car *usedCar, borne *actual, borne *goal, borne_list *path,
     // borne_list_print(Zone);
     borne *best = borne_list_getBorne(Zone);
     /* for (int i = 0; i < borne_list_length(Zone); i++) {
-      printf("pdc borne pointer : %p\n", (void *)best->horaires_pdc[i]);
+      printf("pdc borne pointer : %p\n", (void *)best->horairePdc[i]);
     } */
     // borne_create(Zone->borne->id, Zone->borne->pdc,
     // Zone->borne->power,

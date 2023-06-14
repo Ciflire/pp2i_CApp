@@ -184,7 +184,7 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
         pathTime,
         horaire_createWithValues(*actualTime + travelTimeToBorneInTest,
                                  *actualTime + bestTime - travelTimeToGoal));
-    horaire_list_insert(best->horaires_pdc[bestPdcIndex],
+    horaire_list_insert(best->horairePdc[bestPdcIndex],
                         horaire_createWithValues(
                             *actualTime + travelTimeToGoal + waitingTime,
                             *actualTime + bestTime - travelTimeToBorneInTest));

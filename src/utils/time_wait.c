@@ -49,7 +49,7 @@ bool betterWaitTime(borne *borne, int *watingTimeAct, int *betterPdcIndex,
                     int *currentTime, int *chargeTime) {
   int waitingTime = INT16_MAX;
   for (int i = 0; i < borne->pdc; i++) {
-    getWaitingTimeAndPotentialChargeTime(borne->horaires_pdc[i], &waitingTime,
+    getWaitingTimeAndPotentialChargeTime(borne->horairePdc[i], &waitingTime,
                                          betterPdcIndex, currentTime,
                                          chargeTime);
     if (waitingTime == 0) {

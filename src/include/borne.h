@@ -13,7 +13,7 @@ struct borne {
   int power;
   double latitude;
   double longitude;
-  horaire_list **horaires_pdc;
+  horaire_list **horairePdc;
 };
 
 typedef struct borne borne;

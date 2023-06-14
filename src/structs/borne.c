@@ -9,9 +9,9 @@ borne *borne_create(int id, int pdc, int power, double latitude,
   b->power = power;
   b->latitude = latitude;
   b->longitude = longitude;
-  b->horaires_pdc = calloc(pdc, sizeof(horaire_list));
+  b->horairePdc = calloc(pdc, sizeof(horaire_list));
   for (int i = 0; i < pdc; i++) {
-    b->horaires_pdc[i] = horaire_list_create();
+    b->horairePdc[i] = horaire_list_create();
   }
   return b;
 }
@@ -20,7 +20,7 @@ void borne_destroy(borne *b) {
   // printf("Destroying borne %d\n", b->id);
   for (int i = 0; i < b->pdc; i++) {
     // printf("    Destroying horaire_list %d\n", i);
-    horaire_list_destroy(b->horaires_pdc[i]);
+    horaire_list_destroy(b->horairePdc[i]);
   }
   free(b);
 }
