@@ -2,7 +2,7 @@
 
 // Use this function with a csv import with the right number of column
 // and the right number of lines to skip
-void csvParser(char *path, int linesToSkip, csv_import *file) {
+void csvParser(char *path, int linesToSkip, line_array *file) {
   // if we can open the file then we proceed
   if ((fopen(path, "r"))) {
     printf("File opened\n");

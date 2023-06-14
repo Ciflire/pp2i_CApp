@@ -6,7 +6,7 @@ int main(void){
     //test the import of bornes.csv and vehicules.csv
     timer_start();
     char *file_path = "data/borne_cleaned.csv";
-    csv_import *file = csv_import_create(MAX_LINES_BORNES, 4);
+    line_array *file = line_array_create(MAX_LINES_BORNES, 4);
     csvParser(file_path,  1, file);
     timer_stop();
     printf("Time to parse the bornes file : ");
@@ -17,7 +17,7 @@ int main(void){
     timer_stop();
     printf("Time to import the bornes data: ");
     timer_print();
-    csv_import_destroy(file);
+    line_array_destroy(file);
     /* borne_list_print(list_borne); */
     borne_list_destroy(list_borne);
     timer_stop();
@@ -29,7 +29,7 @@ int main(void){
     timer_start();
     char *file_path2 = "data/Vehicules.csv";
     // import the data i,n car.csv
-    csv_import *file2 = csv_import_create(MAX_LINES_CARS, 3);
+    line_array *file2 = line_array_create(MAX_LINES_CARS, 3);
     csvParser(file_path2, 0, file2);
     timer_stop();
     printf("Time to parse the car file : ");
@@ -40,7 +40,7 @@ int main(void){
     timer_stop();
     printf("Time to import the car data: ");
     timer_print();
-    csv_import_destroy(file);
+    line_array_destroy(file);
     // car_list_print(list_car);
     car_list_destroy(list_car);
     timer_stop();

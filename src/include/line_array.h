@@ -7,33 +7,33 @@
 #define MAX_LINES_BORNES 14759
 #define MAX_LINES_CARS 287
 
-#ifndef CSV_IMPORT_H
+#ifndef line_array_H
 
-#define CSV_IMPORT_H
+#define line_array_H
 
-struct csv_import {
+struct line_array {
   int size;
   line **line;
 };
 
-typedef struct csv_import csv_import;
+typedef struct line_array line_array;
 
 // Functions
 
 // Creation functions
 
-csv_import *csv_import_create(int sizeOfArray, int sizeOfLine);
+line_array *line_array_create(int sizeOfArray, int sizeOfLine);
 
 // Destroy functions
 
-void csv_import_destroy(csv_import *file);
+void line_array_destroy(line_array *file);
 
 // Size functions
 
-int csv_import_getSize(csv_import *file);
+int line_array_getSize(line_array *file);
 
 // print functions
 
-void csv_import_print(csv_import *file);
+void line_array_print(line_array *file);
 
 #endif
