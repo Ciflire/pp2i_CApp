@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+<div>
+    {% block body %}
+
+    <div class="search-container">
+        <form action="/search" method="POST">
+            <input type="number" placeholder="Borne de départ" name="departure" min="1" max="3858">
+            <input type="number" placeholder="Borne d'arrivée" name="arrival" min="1" max="3858">
+            <input type="number" placeholder="Type de voiture" name="car" min="1" max="287">
+            <input type="number" placeholder="Heure du départ" name="heure_depart" min="0" max="3600" value = "0">
+            <input type="number" placeholder="Temps de charge max (en minutes)" min="0" max="9999" value = "9999" name="max_charging_time">
+            <input type="number" placeholder="Temps d'attente max (en minutes)" min="0" max="9999" value = "9999" name="max_waiting_time">
+            <input type="number" placeholder="Batterie minimum en %" min="0" max="50" value = "0" name="battery_minimum">
+            <button type="submit" name="start_a_path">Rechercher</button>
+        </form>
+    </div>
+
+    {% endblock %}
+</div>

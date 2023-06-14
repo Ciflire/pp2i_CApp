@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+<div>
+    {% block body %}
+
+    <div class="test">
+        {{departure}}
+        {{arrival}}
+        {{car}}
+        {{heure_depart}}
+        {{max_charging_time}}
+        {{max_waiting_time}}
+        {{battery_minimum}}
+        <iframe
+        width="1450"
+        height="850"
+        frameborder="0" style="border:0"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=48.868000,2.402000&destination=43.023000,1.468000&waypoints=43.381000,0.839000&mode=driving&units=metric"
+        allowfullscreen>
+      </iframe>
+    {% endblock %}
+</div>
