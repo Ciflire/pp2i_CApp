@@ -177,11 +177,10 @@ int main(int argc, char **argv) {
   // printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
   for (int j = 0; j < 7; j++) {
-    printf("j : %d\n", j);
     // //[pathFinding] Test sur 1000 chemins randoms
     timer_start();
-    for (int i = 0; i<pow(10, j); i++) {
-      
+    for (int i = 0; i < pow(10, j); i++) {
+
       int actualTime = 0;
       borne_list *path = borne_list_create();
       srand(seed);
@@ -192,8 +191,12 @@ int main(int argc, char **argv) {
       int battery_minimum = rand() % 10;
       int max_time_charging = (rand() % 120) + 300;
       int max_time_waiting = (rand() % 300) + 300;
-      printf("id_origin : %d\n", id_origin);
-      printf("id_destination : %d\n", id_destination);
+      if (id_origin == 89) {
+        id_origin++;
+      }
+      if (id_destination == 89) {
+        id_destination++;
+      }
       car *car = car_list_getCarById(list_car, car_id);
       // printf("car id : %d\n", car_id);
       car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
@@ -210,7 +213,6 @@ int main(int argc, char **argv) {
     }
     timer_stop();
     timer_print();
-    
   }
   // printf("      [debug pathFiding_test] test_pathFinding3 passed\n");
   borne_list_destroy(list_borne);

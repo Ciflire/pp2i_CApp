@@ -13,10 +13,6 @@ void borne_list_dataImporter(line_array *file, borne_list *list_borne) {
                                                atoi(current_line->info[3]),
                                                atof(current_line->info[1]),
                                                atof(current_line->info[0])));
-    if(id==89){
-      printf("id: %d\n", id);
-      borne_print(borne_list_getBorneById(list_borne, 89));
-    }
     id++;
   }
 }
