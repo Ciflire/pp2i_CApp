@@ -1,4 +1,4 @@
-#include "../include/csv_import.h"
+#include "../include/line_array.h"
 
 csv_import *csv_import_create(int sizeOfArray, int sizeOfLine) {
   csv_import *file = malloc(sizeof(csv_import));
