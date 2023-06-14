@@ -37,7 +37,7 @@ void horaire_list_destroy(horaire_list *list) {
 int horaire_list_getIndex(horaire_list *list) { return list->index; }
 
 // Returns the horaire of the link
-horaire *horaire_list_gethoraire(horaire_list *list) { return list->horaire; }
+horaire *horaire_list_getHoraire(horaire_list *list) { return list->horaire; }
 
 // Get the next horaire in a list
 horaire_list *horaire_list_getNext(horaire_list *list) { return list->next; }
@@ -91,7 +91,6 @@ int horaire_list_length(horaire_list *list) { return list->prev->index; }
 // Prints a list of horaires
 void horaire_list_print(horaire_list *list) {
   if (horaire_list_length(list) == 0) {
-    printf("Horaire Liste vide\n");
     return;
   }
   horaire_list *temp = list;

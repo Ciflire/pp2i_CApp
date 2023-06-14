@@ -4,6 +4,7 @@
 #ifndef BORNE_LIST_H
 #define BORNE_LIST_H
 
+// Define a structure for a list of bornes
 struct borne_list {
   int index;
   borne *borne;
@@ -11,6 +12,7 @@ struct borne_list {
   struct borne_list *prev;
 };
 
+// Define the type borne_list : a double linked cyclic list of borne type
 typedef struct borne_list borne_list;
 
 // Creates a list of bornes
@@ -41,11 +43,12 @@ int borne_list_length(borne_list *list);
 bool borne_list_isBorneInList(borne_list *list, borne *borne);
 
 // Get a borne by its id
-borne* borne_list_getBorneById(borne_list *list, int id);
+borne *borne_list_getBorneById(borne_list *list, int id);
 
 // Prints a list of bornes
 void borne_list_print(borne_list *list);
 
-void borne_list_printPathLink(borne_list* list);
+// Prints the URL to display a path in Google Maps
+void borne_list_printPathLink(borne_list *list);
 
 #endif

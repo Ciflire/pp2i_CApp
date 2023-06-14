@@ -5,7 +5,6 @@
 void csvParser(char *path, int linesToSkip, line_array *file) {
   // if we can open the file then we proceed
   if ((fopen(path, "r"))) {
-    // printf("File opened\n");
     int indLigne = 0;
     int indCol = 0;
     int indChar = 0;
@@ -35,7 +34,6 @@ void csvParser(char *path, int linesToSkip, line_array *file) {
       }
     }
     fclose(csv);
-  };
-  //csv_import_print(file);
+  }
   return;
 }

@@ -6,6 +6,7 @@
 #ifndef CAR_H
 #define CAR_H
 
+// Define a structure for a car
 struct car {
   char *model;
   int id;
@@ -15,6 +16,7 @@ struct car {
   double capacity;
 };
 
+// Define the type car containing all data about a car
 typedef struct car car;
 
 // Creates a new car
@@ -29,10 +31,10 @@ char *car_getModel(car *c);
 // Returns the id of a car
 int car_getId(car *c);
 
-// Returns the autonomy of a car
-int car_getAutonomy(car *c);
+// Returns the autonomy max of a car
+int car_getAutonomyMax(car *c);
 
-// Returns the  capacity of a car
+// Returns the power capacity of a car
 double car_getCapacity(car *c);
 
 // Check if two cars are equal

@@ -1,5 +1,6 @@
 #include "../include/borne_list.h"
 
+// Creates a borne_list
 borne_list *borne_list_create(void) {
   borne_list *list = malloc(sizeof(borne_list));
   list->prev = list;
@@ -9,10 +10,7 @@ borne_list *borne_list_create(void) {
   return list;
 }
 
-borne_list *borne_list_getNext(borne_list *list) { return list->next; }
-
-borne *borne_list_getBorne(borne_list *list) { return list->borne; }
-
+// Destroys a borne_list
 void borne_list_destroy(borne_list *list) {
   borne_list *temp = list->next;
   if (borne_list_length(list->prev) == 0) {
@@ -34,22 +32,19 @@ void borne_list_destroy(borne_list *list) {
   return;
 }
 
-int borne_list_length(borne_list *list) { return list->prev->index; }
+// Get the index of a borne in a list
+int borne_list_getIndex(borne_list *list) { return list->index; }
 
-bool borne_list_isBorneInList(borne_list *list, borne *borne) {
-  if (borne_list_length(list) == 0) {
-    return false;
-  }
-  borne_list *temp = list;
-  for (int i = 0; i < borne_list_length(list); i++) {
-    if (borne_equals(temp->borne, borne)) {
-      return true;
-    }
-    temp = temp->next;
-  }
-  return false;
-}
+// Gets the previous borne_list
+borne *borne_list_getBorne(borne_list *list) { return list->borne; }
 
+// Gets the next borne_list
+borne_list *borne_list_getNext(borne_list *list) { return list->next; }
+
+// Get the previous borne in a list
+borne_list *borne_list_getPrev(borne_list *list) { return list->prev; }
+
+// Appends a borne to a borne_list
 void borne_list_append(borne_list *list, borne *borne) {
   if (borne_list_length(list) == 0) {
     list->borne = borne;
@@ -66,6 +61,25 @@ void borne_list_append(borne_list *list, borne *borne) {
   return;
 }
 
+// Gets the length of a borne_list
+int borne_list_length(borne_list *list) { return list->prev->index; }
+
+// Tells if a borne is in a borne_list
+bool borne_list_isBorneInList(borne_list *list, borne *borne) {
+  if (borne_list_length(list) == 0) {
+    return false;
+  }
+  borne_list *temp = list;
+  for (int i = 0; i < borne_list_length(list); i++) {
+    if (borne_equals(temp->borne, borne)) {
+      return true;
+    }
+    temp = temp->next;
+  }
+  return false;
+}
+
+// Removes a borne from a borne_list
 borne *borne_list_getBorneById(borne_list *list, int id) {
   if (borne_list_length(list) == 0) {
     return NULL;
@@ -80,9 +94,9 @@ borne *borne_list_getBorneById(borne_list *list, int id) {
   return NULL;
 }
 
+// Removes a borne from a borne_list
 void borne_list_print(borne_list *list) {
   if (borne_list_length(list) == 0) {
-    // printf("Liste vide\n");
     return;
   }
   borne_list *temp = list;
@@ -94,10 +108,10 @@ void borne_list_print(borne_list *list) {
   return;
 }
 
+// Removes a borne from a borne_list
 void borne_list_printPathLink(borne_list *list) {
   char *url = "https://www.google.com/maps/dir/";
   if (borne_list_length(list) == 0) {
-    // printf("Liste vide\n");
     return;
   }
   borne_list *temp = list;

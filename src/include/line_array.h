@@ -11,29 +11,25 @@
 
 #define line_array_H
 
+// Define a structure for a line_array
 struct line_array {
   int size;
   line **line;
 };
 
+// Define the type line_array : a list of lines
 typedef struct line_array line_array;
 
-// Functions
-
-// Creation functions
-
+// Creates a line_array
 line_array *line_array_create(int sizeOfArray, int sizeOfLine);
 
-// Destroy functions
-
+// Destroys a line_array
 void line_array_destroy(line_array *file);
 
-// Size functions
-
+// Get the size of a line_array
 int line_array_getSize(line_array *file);
 
-// print functions
-
+// Prints a line_array
 void line_array_print(line_array *file);
 
 #endif
