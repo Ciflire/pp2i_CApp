@@ -22,6 +22,7 @@ void borne_destroy(borne *b) {
     // printf("    Destroying horaire_list %d\n", i);
     horaire_list_destroy(b->horairePdc[i]);
   }
+  free(b->horairePdc);
   free(b);
 }
 

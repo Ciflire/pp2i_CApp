@@ -180,6 +180,7 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
                    &waitingTime, &travelTimeToGoal, &travelTimeToBorneInTest,
                    &chargeTime, &maxTimeCharging, &maxTimeWaiting,
                    &bestPdcIndex);
+    free(Zone);
     horaire_list_append(
         pathTime,
         horaire_createWithValues(*actualTime + travelTimeToBorneInTest,

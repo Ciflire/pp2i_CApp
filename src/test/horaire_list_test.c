@@ -1,5 +1,6 @@
 #include "../include/horaire_list.h"
 #include "../include/timer.h"
+#include <stdio.h>
 #include <time.h>
 
 int main(void) {
@@ -19,10 +20,16 @@ int main(void) {
   //   horaire_list_destroy(list);
   // }
   horaire_list *list = horaire_list_create();
-  for (int i = 0; i < 100000; i++) {
-    horaire *b = horaire_createWithValues(i, i + 1);
-    horaire_list_append(list, b);
-  }
+  // for (int i = 0; i < 100000; i++) {
+  //   horaire *b = horaire_createWithValues(i, i + 1);
+  //   horaire_list_append(list, b);
+  // }
+  printf("%d\n", horaire_list_length(list));
+  horaire_list_print(list);
+  printf("Making new horaire\n");
+  horaire *a = horaire_createWithValues(1, 2);
+  horaire_list_insert(list, a);
+  horaire_list_print(list);
   printf("%d\n", horaire_list_length(list));
   horaire_list_destroy(list);
 
