@@ -78,7 +78,7 @@ borne* borne_list_getBorneById(borne_list *list, int id) {
 
 void borne_list_print(borne_list *list) {
   if (borne_list_length(list) == 0) {
-    printf("Liste vide\n");
+    // printf("Liste vide\n");
     return;
   }
   borne_list *temp = list;
@@ -93,7 +93,7 @@ void borne_list_print(borne_list *list) {
 void borne_list_printPathLink(borne_list* list){
   char* url = "https://www.google.com/maps/dir/";
   if (borne_list_length(list) == 0) {
-    printf("Liste vide\n");
+    // printf("Liste vide\n");
     return;
   }
   borne_list *temp = list;

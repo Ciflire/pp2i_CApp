@@ -72,7 +72,7 @@ int horaire_list_length(horaire_list *list) { return list->prev->index; }
 // Prints a list of horaires
 void horaire_list_print(horaire_list *list) {
   if (horaire_list_length(list) == 0) {
-    printf("Liste vide\n");
+    // printf("Liste vide\n");
     return;
   }
   horaire_list *current = list->next;

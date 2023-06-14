@@ -1,7 +1,7 @@
 #include "../include/csvParser.h"
 #include "../include/data_importer.h"
 #include "../include/pathfinding.h"
-
+#include "../include/timer.h"
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -79,7 +79,7 @@ int main(int argc, char **argv) {
   assert(dist_bretagne_nancy <= 564);
   assert(dist_bretagne_nancy >= 560);
 
-  printf("      [debug pathFiding_test] test_distance passed\n");
+  // printf("      [debug pathFiding_test] test_distance passed\n");
 
   // test travelTime
 
@@ -89,13 +89,13 @@ int main(int argc, char **argv) {
   // printf("t2 : %d\n", t2);
   assert(t1 < t2);
 
-  printf("      [debug pathFiding_test] test_travelTime passed\n");
+  // printf("      [debug pathFiding_test] test_travelTime passed\n");
 
   // test timeToCharge
   int t3 = timeToCharge(paris, 666, v2, bretagne);
   int t4 = timeToCharge(paris2, 666, v2, bretagne);
   assert(t3 > t4);
-  printf("      [debug pathFiding_test] test_timeToCharge passed\n");
+  // printf("      [debug pathFiding_test] test_timeToCharge passed\n");
 
   // test creationZone
   borne_list *zone1 = borne_list_create();
@@ -112,7 +112,7 @@ int main(int argc, char **argv) {
                     zone1->borne->longitude) <= v1->autonomyAct);
     zone1 = zone1->next;
   }
-  printf("      [debug pathFiding_test] test_creationZone1 passed\n");
+  // printf("      [debug pathFiding_test] test_creationZone1 passed\n");
 
   borne_list *zone2 = borne_list_create();
   creationZone(pont_l_abbe, bayonne, 0.9, v3, list_borne2, zone2,
@@ -122,7 +122,7 @@ int main(int argc, char **argv) {
   // borne_list_print(zone2);
   /*   printf("All points must be near this location : 47.81367071130333, "
            "-3.8348082559475722\n"); */
-  printf("      [debug pathFiding_test] test_creationZone2 passed\n");
+  // printf("      [debug pathFiding_test] test_creationZone2 passed\n");
 
   // test findBestInZone
   borne_list *zone3 = borne_list_create();
@@ -147,7 +147,7 @@ int main(int argc, char **argv) {
   // borne_print(landivisiau);
   assert(borne_equals(best, landivisiau));
 
-  printf("      [debug pathFiding_test] test_findBestInZone passed\n");
+  // printf("      [debug pathFiding_test] test_findBestInZone passed\n");
 
   // // test Pathfinding
   //[pathFinding] Test de chemin possible
@@ -161,9 +161,9 @@ int main(int argc, char **argv) {
   // borne_print(bretagne);
   // borne_list_print(path1);
   // borne_list_printPathLink(path1);
-  borne_list_printPathLink(path1);
+  // borne_list_printPathLink(path1);
   free(path1);
-  printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
+  // printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
 
   // //[pathFinding] Test de chemin impossible
   // // int acutalTime = 0;
@@ -174,35 +174,45 @@ int main(int argc, char **argv) {
   // borne_list_print(path2);
   assert(error == 1);
   free(path2);
-  printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
+  // printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
-  // //[pathFinding] Test sur 10 chemins randoms
-  for (int i = 0; i < 1000; i++) {
-    int actualTime = 0;
-    borne_list *path = borne_list_create();
-    srand(seed);
-    seed = rand();
-    int car_id = rand() % (287) + 1;
-    int id_origin = rand() % borne_list_length(list_borne3) + 1;
-    int id_destination = rand() % borne_list_length(list_borne3) + 1;
-    int battery_minimum = rand() % 10;
-    int max_time_charging = (rand() % 120) + 300;
-    int max_time_waiting = (rand() % 300) + 300;
-    car *car = car_list_getCarById(list_car, car_id);
-    // printf("car id : %d\n", car_id);
-    car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
-    car->autonomyUsable = car->autonomyAct;
-    error = pathFinding(car, borne_list_getBorneById(list_borne3, id_origin),
-                        borne_list_getBorneById(list_borne3, id_destination),
-                        path, horaire_list_create(), list_borne3,
-                        max_time_waiting, max_time_charging, &actualTime);
-    if (error == 0) {
-      // borne_list_print(path);
-      borne_list_printPathLink(path);
+  for (int j = 0; j < 7; j++) {
+    printf("j : %d\n", j);
+    // //[pathFinding] Test sur 1000 chemins randoms
+    timer_start();
+    for (int i = 0; i<pow(10, j); i++) {
+      
+      int actualTime = 0;
+      borne_list *path = borne_list_create();
+      srand(seed);
+      seed = rand();
+      int car_id = rand() % (287) + 1;
+      int id_origin = rand() % (14759) + 1;
+      int id_destination = rand() % (14759) + 1;
+      int battery_minimum = rand() % 10;
+      int max_time_charging = (rand() % 120) + 300;
+      int max_time_waiting = (rand() % 300) + 300;
+      printf("id_origin : %d\n", id_origin);
+      printf("id_destination : %d\n", id_destination);
+      car *car = car_list_getCarById(list_car, car_id);
+      // printf("car id : %d\n", car_id);
+      car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
+      car->autonomyUsable = car->autonomyAct;
+      error = pathFinding(car, borne_list_getBorneById(list_borne3, id_origin),
+                          borne_list_getBorneById(list_borne3, id_destination),
+                          path, horaire_list_create(), list_borne3,
+                          max_time_waiting, max_time_charging, &actualTime);
+      if (error == 0) {
+        // borne_list_print(path);
+        // borne_list_printPathLink(path);
+      }
+      free(path);
     }
-    free(path);
+    timer_stop();
+    timer_print();
+    
   }
-  printf("      [debug pathFiding_test] test_pathFinding3 passed\n");
+  // printf("      [debug pathFiding_test] test_pathFinding3 passed\n");
   borne_list_destroy(list_borne);
   borne_list_destroy(list_borne2);
   borne_list_destroy(list_borne3);

@@ -75,7 +75,7 @@ car *car_list_getCarById(car_list *list, int id) {
 
 void car_list_print(car_list *list) {
   if (car_list_length(list) == 0) {
-    printf("Liste vide\n");
+    // printf("Liste vide\n");
     return;
   }
   car_list *temp = list;
