@@ -9,8 +9,8 @@ int main(void) {
   //   horaire_list *list = horaire_list_create();
   //   for (int j = 0; j < (1000000 * i); j++) {
   //     horaire *b = horaire_create();
-  //     b->heure_depart = j;
-  //     b->heure_arrivee = j + 1;
+  //     b->departureTime = j;
+  //     b->arrivalTime = j + 1;
 
   //     horaire_list_append(list, b);
   //   }

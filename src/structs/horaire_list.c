@@ -53,7 +53,7 @@ void horaire_list_insert(horaire_list *list, horaire *horaire) {
   horaire_list *current = list;
   bool beenInserted = false;
   for (int i = 0; i < horaire_list_length(list); i++) {
-    if (current->horaire->heure_depart < horaire->heure_arrivee &&
+    if (current->horaire->departureTime < horaire->arrivalTime &&
         !(beenInserted)) {
       horaire_list_append(current, horaire);
       beenInserted = true;

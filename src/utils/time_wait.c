@@ -19,12 +19,12 @@ void getWaitingTimeAndPotentialChargeTime(horaire_list *list, int *waitingTime,
   for (int i = 0; i < horaire_list_length(list); i++) {
     int usageStart =
         temp->horaire
-            ->heure_arrivee; // Retreives arrival time at borne for usage i
+            ->arrivalTime; // Retreives arrival time at borne for usage i
     // if the next usage is after the car arrival then
     if (usageStart > *currentTime) {
       int usageEnd =
           temp->prev->horaire
-              ->heure_depart; // get the previous car's departure time
+              ->departureTime; // get the previous car's departure time
       // ensures we have not looped to the end of the horaire_list
       if (usageEnd > usageStart) {
         usageEnd = *currentTime;

@@ -7,15 +7,15 @@
 #define __HORAIRE_H__
 
 struct horaire {
-  int heure_depart;
-  int heure_arrivee;
+  int departureTime;
+  int arrivalTime;
 };
 
 typedef struct horaire horaire;
 
 horaire *horaire_create(void);
 
-horaire *horaire_createWithValues(int heure_depart, int heure_arrivee);
+horaire *horaire_createWithValues(int departureTime, int arrivalTime);
 
 void horaire_destroy(horaire *h);
 
@@ -23,9 +23,9 @@ int horaire_getDepart(horaire *h);
 
 int horaire_getArrivee(horaire *h);
 
-void horaire_setDepart(horaire *h, int heure_depart);
+void horaire_setDepart(horaire *h, int departureTime);
 
-void horaire_setArrivee(horaire *h, int heure_arrivee);
+void horaire_setArrivee(horaire *h, int arrivalTime);
 
 void horaire_print(horaire *h);
 

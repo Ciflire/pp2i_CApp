@@ -182,7 +182,7 @@ int main(int argc, char **argv) {
     borne_list *path = borne_list_create();
     srand(seed);
     seed = rand();
-    int car_id = rand() % (1) + 1;
+    int car_id = rand() % (287) + 1;
     int id_origin = rand() % borne_list_length(list_borne3) + 1;
     int id_destination = rand() % borne_list_length(list_borne3) + 1;
     int battery_minimum = rand() % 10;

@@ -2,16 +2,16 @@
 
 int main(void) {
   horaire *h1 = horaire_create();
-  h1->heure_depart = 1;
-  h1->heure_arrivee = 2;
+  h1->departureTime = 1;
+  h1->arrivalTime = 2;
 
   horaire *h2 = horaire_create();
-  h2->heure_depart = 3;
-  h2->heure_arrivee = 4;
+  h2->departureTime = 3;
+  h2->arrivalTime = 4;
 
   horaire *h3 = horaire_create();
-  h3->heure_depart = 134;
-  h3->heure_arrivee = 2398;
+  h3->departureTime = 134;
+  h3->arrivalTime = 2398;
 
   horaire_print(h1);
   horaire_print(h2);
