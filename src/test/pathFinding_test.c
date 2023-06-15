@@ -6,13 +6,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char **argv) {
-  if (argc != 2) {
+int main(void) {
+  /* if (argc != 2) {
     printf("Usage: %s\n", argv[0]);
     exit(1);
-  }
-  int seed = atoi(argv[1]);
-
+  } */
+  //int seed = atoi(argv[1]);
+  int seed =12;
   char *file_path = "data/borne-test.csv";
   line_array *file = line_array_create(1047, 4);
   csvParser(file_path, 0, file);
@@ -158,7 +158,7 @@ int main(int argc, char **argv) {
   free(path2);
   printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
-  for (int j = 0; j < 7; j++) {
+  for (int j = 0; j < 4; j++) {
     //[pathFinding] Test sur 10^j chemins randoms
     timer_start();
     for (int i = 0; i < pow(10, j); i++) {

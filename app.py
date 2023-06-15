@@ -2,15 +2,31 @@ from flask import Flask, render_template, request, redirect
 import requests
 import sys
 import os
+from random import *
 app = Flask(__name__)
+
+
+#read the file path and return the string stored in the fist line
+def read_response_file(path):
+    file = open(path, "r")
+    response = file.read().strip()
+    file.close()
+    return response
+
+def read_data_file(path):
+    file = open(path, "r")
+    list = file.read().split("\n")
+    file.close()
+    response = eval(response[-1])
+    return response
 
 @app.route('/')
 def index():
-    return redirect('/menu')
+    return redirect('/home')
 
-@app.route('/menu')
+@app.route('/home')
 def home():
-    return render_template('menu.html')
+    return render_template('home.html')
 
 @app.route('/search', methods=['POST'])
 def search():
@@ -26,10 +42,35 @@ def search():
     
 @app.route('/search/<departure>/<arrival>/<car>/<heure_depart>/<max_charging_time>/<max_waiting_time>/<battery_minimum>')
 def search_result(departure, arrival, car, heure_depart, max_charging_time, max_waiting_time, battery_minimum):
-    """
-    os.system("command")
-    """
-    return render_template('search.html', departure=departure, arrival=arrival, car=car, heure_depart=heure_depart, max_charging_time=max_charging_time, max_waiting_time=max_waiting_time, battery_minimum=battery_minimum)
+    os.system("./bin/app " + car +" "+departure+" "+heure_depart+" "+arrival+" "+battery_minimum+" "+max_charging_time+" "+max_waiting_time)
+    link = read_response_file("response_link.txt")
+    list_borne = read_data_file("response_borne.txt")
+    list_horaires = read_data_file("response_horaires.txt")
+    return render_template('search.html', departure=departure, arrival=arrival, car=car, heure_depart=heure_depart, max_charging_time=max_charging_time, max_waiting_time=max_waiting_time, battery_minimum=battery_minimum, link=link, list_borne=list_borne, list_horaires=list_horaires)
+
+@app.route('/simulation', methods=['GET'])
+def simulation():
+    return render_template('simul.html', nb_cars=-1)
+
+@app.route('/simul', methods=['POST'])
+def simul():
+    if request.method == 'POST':
+        nb_cars = request.form['nb_cars']
+        seed = randint(0, 1000000)
+        return redirect('/simul/' + str(nb_cars) + '/' + str(seed))
+    
+@app.route('/simul/<nb_cars>/<seed>')
+def simul_result(nb_cars, seed):
+    os.system("./bin/app " + str(nb_cars) +" "+str(seed))
+    return render_template('simul.html', nb_cars=nb_cars)
+    
+@app.route('/reset', methods=['GET'])
+def reset():
+    f = open("response_link.txt","w")
+    f.write("")
+    f.close()
+    return redirect('/home')
+
 
 
 if __name__ == '__main__':

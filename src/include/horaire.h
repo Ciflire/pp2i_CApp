@@ -19,7 +19,7 @@ typedef struct horaire horaire;
 horaire *horaire_create(void);
 
 // Creates a new horaire with values
-horaire *horaire_createWithValues(int departureTime, int arrivalTime);
+horaire *horaire_createWithValues(int arrivalTime, int dpartureTime);
 
 // Destroys an horaire
 void horaire_destroy(horaire *h);

@@ -7,10 +7,13 @@ int main(void) {
 
   horaire_list *list = horaire_list_create();
   horaire_list_print(list);
-  horaire *a = horaire_createWithValues(1, 2);
-  horaire_list_insert(list, a);
+  
+  for(int i = 0; i < 1000; i++) {
+    horaire *a = horaire_createWithValues(i, i+1);
+    horaire_list_insert(list, a);
+    horaire_list_print(list);
+  }
   horaire_list_print(list);
   horaire_list_destroy(list);
-
   return 0;
 }

@@ -9,7 +9,7 @@ horaire *horaire_create(void) {
 }
 
 // Creates a new horaire with values
-horaire *horaire_createWithValues(int departureTime, int arrivalTime) {
+horaire *horaire_createWithValues(int arrivalTime, int departureTime) {
   horaire *h = (horaire *)malloc(sizeof(horaire));
   h->departureTime = departureTime;
   h->arrivalTime = arrivalTime;
@@ -37,5 +37,5 @@ void horaire_setArrivee(horaire *h, int arrivalTime) {
 
 // Prints a horaire
 void horaire_print(horaire *h) {
-  printf("Horaire: %d - %d\n", h->departureTime, h->arrivalTime);
+  printf("Horaire: %d - %d\n", h->arrivalTime, h->departureTime);
 }

@@ -22,13 +22,22 @@ void borne_list_destroy(borne_list *list) {
     free(list);
     return;
   }
-  for (int i = 0; i < borne_list_length(list); i++) {
+  printf("foidjsbcpojqbndscfojdencvfdojvnfdf\n");
+  horaire_list_print(borne_list_getBorneById(temp, 1575)->horairePdc[0]);
+  for (int i = 0; i < borne_list_length(list) - 1; i++) {
+    /* printf("i = %d\n", i);
+    printf("in destroy borne : ");
+    horaire_list_print(
+        borne_list_getBorneById(temp, 1761)->horairePdc[0]);
+    printf("yes\n"); */
     temp = temp->next;
+    horaire_list_print(temp->prev->borne->horairePdc[0]);
     borne_destroy(temp->prev->borne);
     free(temp->prev);
   }
   borne_destroy(temp->borne);
   free(temp);
+  printf("list destroyed\n");
   return;
 }
 
@@ -81,12 +90,19 @@ bool borne_list_isBorneInList(borne_list *list, borne *borne) {
 
 // Removes a borne from a borne_list
 borne *borne_list_getBorneById(borne_list *list, int id) {
+
+  printf("\n zoubi %p\n", (void *)list);
+  printf("la mouche %d\n", borne_list_length(list));
   if (borne_list_length(list) == 0) {
     return NULL;
   }
   borne_list *temp = list;
   for (int i = 0; i < borne_list_length(list); i++) {
+    if (id == 1576 && temp->borne->id >1500 && temp->borne->id<1600) {
+      printf("id : %d\n", temp->borne->id);
+    }
     if (temp->borne->id == id) {
+      printf("jlvghkbhjijkhbjvghjk\n");
       return borne_list_getBorne(temp);
     }
     temp = temp->next;
@@ -121,4 +137,59 @@ void borne_list_printPathLink(borne_list *list) {
     temp = temp->next;
   }
   printf("\n");
+}
+
+// Prints a url to print a path in Maps integrator
+void borne_list_printPathMapsIntegrator(borne_list *list) {
+  FILE *f = fopen("response_link.txt", "w");
+  printf(
+      "https://www.google.com/maps/embed/v1/"
+      "directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=%lf,%lf",
+      list->borne->latitude, list->borne->longitude);
+  fprintf(
+      f,
+      "https://www.google.com/maps/embed/v1/"
+      "directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=%lf,%lf",
+      list->borne->latitude, list->borne->longitude);
+  if (borne_list_length(list) == 2) {
+    printf("&destination=%lf,%lf", list->next->borne->latitude,
+           list->next->borne->longitude);
+    fprintf(f, "&destination=%lf,%lf", list->next->borne->latitude,
+            list->next->borne->longitude);
+  } else {
+    printf("&waypoints=");
+    fprintf(f, "&waypoints=");
+    borne_list *temp = list->next;
+    for (int i = 0; i < borne_list_length(list) - 2; i++) {
+      if (i != 0) {
+        printf("|");
+        fprintf(f, "|");
+      }
+      printf("%lf,%lf", temp->borne->latitude, temp->borne->longitude);
+      fprintf(f, "%lf,%lf", temp->borne->latitude, temp->borne->longitude);
+      temp = temp->next;
+    }
+    printf("&destination=%lf,%lf", list->next->borne->latitude,
+           list->next->borne->longitude);
+    fprintf(f, "&destination=%lf,%lf", list->next->borne->latitude,
+            list->next->borne->longitude);
+  }
+  printf("&mode=driving&units=metric\n");
+  fprintf(f, "&mode=driving&units=metric\n");
+  fclose(f);
+}
+
+void borne_list_savePathInPythonListFormat(borne_list *list, char *filename) {
+  FILE *f = fopen(filename, "a");
+  fprintf(f, "[");
+  borne_list *temp = list;
+  for (int i = 0; i < borne_list_length(list); i++) {
+    if (i != 0) {
+      fprintf(f, ",");
+    }
+    fprintf(f, "%d", temp->borne->id);
+    temp = temp->next;
+  }
+  fprintf(f, "]\n");
+  fclose(f);
 }

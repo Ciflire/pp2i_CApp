@@ -19,7 +19,7 @@ int main(void) {
 
     // Testing borne_list_length
     assert(borne_list_length(list) == (1000000 * i));
-
+    horaire_list_insert(list->borne->horairePdc[0], horaire_createWithValues(1, 2));
     printf("    [Debug borne_list] : Test borne_list_length %d passed\n",i);
 
     // Testing borne_list_destroy
