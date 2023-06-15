@@ -56,6 +56,9 @@ int main(int argc, char *argv[]) {
           list_borne, max_time_waiting, max_time_charging, &actualTime);
       if (error == 0) {
         borne_list_printPathLink(path);
+        borne_list_savePathInPythonListFormat(path, "response_borne.txt");
+      horaire_list_saveHorairePathInPythonListFormat(pathTime,
+                                                     "response_horaires.txt");
       }
       free(path);
       horaire_list_destroy(pathTime);
@@ -95,25 +98,25 @@ int main(int argc, char *argv[]) {
 
     horaire_list_append(pathTime,
                         horaire_createWithValues(actualTime, actualTime));
-    for (int i = 1; i<14760;i++){
-      if( horaire_list_length(borne_list_getBorneById(list_borne, i)->horairePdc[0])>0){
+    for (int i = 1; i < 14760; i++) {
+      if (horaire_list_length(
+              borne_list_getBorneById(list_borne, i)->horairePdc[0]) > 0) {
         printf("PATRAUDYZESGDIUZBHEFPUH\n");
       }
     }
-    int error = pathFinding(car, borne_list_getBorneById(list_borne, id_origin),
-                            borne_list_getBorneById(list_borne, id_destination),
-                            path, pathTime, list_borne, max_time_waiting,
-                            max_time_charging, &actualTime);
-    printf("out of pathFinding : ");
-    borne_print(borne_list_getBorneById(list_borne, 1576));
-    for (int i = 1; i<14760;i++){
-      
-      printf("%d\n",i);
-      if( horaire_list_length(borne_list_getBorneById(list_borne, i)->horairePdc[0])>0){
-        printf("PATRAUDYZESGDIUZBHEFPUH\n");
-        
-      }
-    }
+    printf("before pathFinding : \n");
+    debug_merde(list_borne);
+    printf("\n\n\n\n");
+    borne *actual = borne_list_getBorneById(list_borne, id_origin);
+    debug_merde(list_borne);
+    printf("\n\nxijedbnvoĵnhsopfuedhfoiuhs\n\n");
+    borne *dest = borne_list_getBorneById(list_borne, id_destination);
+    debug_merde(list_borne);
+    int error = pathFinding(car, actual, dest, path, pathTime, list_borne,
+                            max_time_waiting, max_time_charging, &actualTime);
+    debug_merde(list_borne);
+    printf("out of pathFinding : \n");
+    // borne_print(borne_list_getBorneById(list_borne, 1576));
     horaire_list_print(
         borne_list_getBorneById(list_borne, 1761)->horairePdc[0]);
     printf("yes\n");

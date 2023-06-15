@@ -4,7 +4,7 @@
     {% block body %}
     test
     <!-- Uncomment to start rendering the map -->
-    <!-- <div class="test">
+    <div class="test">
         <iframe
         width="1450"
         height="850"
@@ -13,7 +13,7 @@
         src="{{link}}"
         allowfullscreen>
       </iframe>
-    </div> -->
+    </div>
     {% for i in range (list_borne|length) %}
     <div class="borne">
         <p>Borne : {{list_borne[i]}} </p>

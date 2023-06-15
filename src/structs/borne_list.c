@@ -90,9 +90,6 @@ bool borne_list_isBorneInList(borne_list *list, borne *borne) {
 
 // Removes a borne from a borne_list
 borne *borne_list_getBorneById(borne_list *list, int id) {
-
-  printf("\n zoubi %p\n", (void *)list);
-  printf("la mouche %d\n", borne_list_length(list));
   if (borne_list_length(list) == 0) {
     return NULL;
   }
@@ -102,7 +99,6 @@ borne *borne_list_getBorneById(borne_list *list, int id) {
       printf("id : %d\n", temp->borne->id);
     }
     if (temp->borne->id == id) {
-      printf("jlvghkbhjijkhbjvghjk\n");
       return borne_list_getBorne(temp);
     }
     temp = temp->next;
@@ -192,4 +188,15 @@ void borne_list_savePathInPythonListFormat(borne_list *list, char *filename) {
   }
   fprintf(f, "]\n");
   fclose(f);
+}
+
+
+void debug_merde(borne_list *list){
+  borne_list *temp = list;
+  for (int i=0; i< borne_list_length(list);i++){
+    if (temp->borne->id >1570 && temp->borne->id<1585) {
+      printf("id : %d\n", temp->borne->id);
+    }
+    temp = temp->next;
+  }
 }

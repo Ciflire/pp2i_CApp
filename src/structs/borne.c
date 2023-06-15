@@ -14,7 +14,6 @@ borne *borne_create(int id, int pdc, int power, double latitude,
   for (int i = 0; i < pdc; i++) {
     b->horairePdc[i] = horaire_list_create();
     if (id==1761){
-      printf("i %d\n", i);
       horaire_list_print(b->horairePdc[i]);
     }
   }
@@ -56,7 +55,6 @@ bool borne_equals(borne *b1, borne *b2) {
 
 // Prints a borne
 void borne_print(borne *b) {
-  printf("tartempion %p \n",(void*)b);
   printf("Borne: id=%d, pdc=%d, power=%d, latitude=%lf, longitude=%lf\n", b->id,
          b->pdc, b->power, b->latitude, b->longitude);
 }

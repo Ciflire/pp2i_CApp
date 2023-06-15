@@ -120,17 +120,16 @@ int main(void) {
   borne_list *zone3 = borne_list_create();
   creationZone(painpol, brest, 0.6, v4, list_borne3, zone3,
                borne_list_create());
-  borne *best = borne_list_getBorne(zone3);
   double *bestTime = malloc(sizeof(double));
   int actualTime = 1;
   int waitingTime = 99999;
-  int travelTimeToGoal = travelTime(best, brest);
-  int travelTimeToBorneInTest = travelTime(painpol, best);
+  int travelTimeToGoal = 99999;
+  int travelTimeToBorneInTest = 999999;
   int maxTimeCharging = 999999;
-  int bestChargeTime = timeToCharge(zone3->borne, maxTimeCharging, v4, painpol);
+  int bestChargeTime = 99999;
   int bestPdcIndex = 0;
 
-  findBestInZone(zone3, painpol, brest, v4, best, bestTime, &actualTime,
+  borne* best=findBestInZone(zone3, painpol, brest, v4, bestTime, &actualTime,
                  &waitingTime, &travelTimeToGoal, &travelTimeToBorneInTest,
                  &bestChargeTime, &maxTimeCharging, &waitingTime,
                  &bestPdcIndex);

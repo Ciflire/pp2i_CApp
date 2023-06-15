@@ -112,18 +112,19 @@ void horaire_list_print(horaire_list *list) {
 }
 
 void horaire_list_saveHorairePathInPythonListFormat(horaire_list *list,
-                                                    char *path) {
-  FILE *file = fopen(path, "a");
+                                                    char *filePath) {
+  FILE *file = fopen(filePath, "a");
   horaire_list *temp = list;
   fprintf(file, "[");
-  horaire_list_print(list);
   for (int i = 0; i < horaire_list_length(list); i++) {
     fprintf(file, "(%d,%d)", temp->horaire->arrivalTime,
             temp->horaire->departureTime);
+    printf("test?\n");
     if (i != horaire_list_length(list) - 1) {
       fprintf(file, ", ");
     }
     temp = temp->next;
   }
   fprintf(file, "]\n");
+  fclose(file);
 }

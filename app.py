@@ -17,7 +17,7 @@ def read_data_file(path):
     file = open(path, "r")
     list = file.read().split("\n")
     file.close()
-    response = eval(response[-1])
+    response = eval(list[-2])
     return response
 
 @app.route('/')
