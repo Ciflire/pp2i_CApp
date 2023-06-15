@@ -51,4 +51,10 @@ void borne_list_print(borne_list *list);
 // Prints the URL to display a path in Google Maps
 void borne_list_printPathLink(borne_list *list);
 
+// Prints a url to print a path in Maps integrator
+void borne_list_printPathMapsIntegrator(borne_list *list);
+
+void borne_list_savePathInPythonListFormat(borne_list *list, char *filename);
+
+
 #endif

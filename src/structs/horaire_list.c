@@ -80,8 +80,8 @@ void horaire_list_insert(horaire_list *list, horaire *horaire) {
         !(beenInserted)) {
       horaire_list *next = current->next;
       horaire_list_append(current, horaire);
-      /* current->next->next = next;
-      next->prev = current->next; */
+      current->next->next = next;
+      next->prev = current->next;
       beenInserted = true;
     }
     if (beenInserted) {
@@ -116,7 +116,7 @@ void horaire_list_saveHorairePathInPythonListFormat(horaire_list *list,
   for (int i = 0; i < horaire_list_length(list); i++) {
     fprintf(file, "(%d,%d)", temp->horaire->arrivalTime,
             temp->horaire->departureTime);
-    printf("test?\n");
+    // printf("test?\n");
     if (i != horaire_list_length(list) - 1) {
       fprintf(file, ", ");
     }

@@ -44,4 +44,7 @@ int horaire_list_length(horaire_list *list);
 // Prints a list of horaires
 void horaire_list_print(horaire_list *list);
 
+void horaire_list_saveHorairePathInPythonListFormat(horaire_list *list,
+                                                    char *path);
+
 #endif
