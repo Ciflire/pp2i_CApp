@@ -98,28 +98,10 @@ int main(int argc, char *argv[]) {
 
     horaire_list_append(pathTime,
                         horaire_createWithValues(actualTime, actualTime));
-    for (int i = 1; i < 14760; i++) {
-      if (horaire_list_length(
-              borne_list_getBorneById(list_borne, i)->horairePdc[0]) > 0) {
-        printf("PATRAUDYZESGDIUZBHEFPUH\n");
-      }
-    }
-    printf("before pathFinding : \n");
-    debug_merde(list_borne);
-    printf("\n\n\n\n");
     borne *actual = borne_list_getBorneById(list_borne, id_origin);
-    debug_merde(list_borne);
-    printf("\n\nxijedbnvoĵnhsopfuedhfoiuhs\n\n");
     borne *dest = borne_list_getBorneById(list_borne, id_destination);
-    debug_merde(list_borne);
     int error = pathFinding(car, actual, dest, path, pathTime, list_borne,
                             max_time_waiting, max_time_charging, &actualTime);
-    debug_merde(list_borne);
-    printf("out of pathFinding : \n");
-    // borne_print(borne_list_getBorneById(list_borne, 1576));
-    horaire_list_print(
-        borne_list_getBorneById(list_borne, 1761)->horairePdc[0]);
-    printf("yes\n");
     if (error == 0) {
       borne_list_printPathLink(path);
       borne_list_printPathMapsIntegrator(path);
@@ -127,10 +109,6 @@ int main(int argc, char *argv[]) {
       horaire_list_saveHorairePathInPythonListFormat(pathTime,
                                                      "response_horaires.txt");
     }
-    printf("out of pathFinding 2 : ");
-    horaire_list_print(
-        borne_list_getBorneById(list_borne, 1761)->horairePdc[0]);
-    printf("yes\n");
     free(path);
     borne_list_destroy(list_borne);
     car_list_destroy(list_car);

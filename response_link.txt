@@ -1,1 +1,1 @@
-https://www.google.com/maps/embed/v1/directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=48.406000,-2.084000&destination=48.675000,-1.914000&mode=driving&units=metric
+https://www.google.com/maps/embed/v1/directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=47.871000,-4.225000&waypoints=48.529000,-2.264000|49.227000,-0.367000&destination=48.529000,-2.264000&mode=driving&units=metric

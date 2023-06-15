@@ -84,8 +84,8 @@ void horaire_list_insert(horaire_list *list, horaire *horaire) {
         !(beenInserted)) {
       horaire_list *next = current->next;
       horaire_list_append(current, horaire);
-      current->next->next = next;
-      next->prev = current->next;
+      /* current->next->next = next;
+      next->prev = current->next; */
       beenInserted = true;
     }
     if (beenInserted) {

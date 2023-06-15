@@ -56,6 +56,5 @@ void borne_list_printPathMapsIntegrator(borne_list *list);
 
 void borne_list_savePathInPythonListFormat(borne_list *list, char *filename);
 
-void debug_merde(borne_list *list);
 
 #endif

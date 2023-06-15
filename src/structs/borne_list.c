@@ -22,9 +22,8 @@ void borne_list_destroy(borne_list *list) {
     free(list);
     return;
   }
-  printf("foidjsbcpojqbndscfojdencvfdojvnfdf\n");
   horaire_list_print(borne_list_getBorneById(temp, 1575)->horairePdc[0]);
-  for (int i = 0; i < borne_list_length(list) - 1; i++) {
+  for (int i = 0; i < borne_list_length(list); i++) {
     /* printf("i = %d\n", i);
     printf("in destroy borne : ");
     horaire_list_print(
@@ -37,7 +36,6 @@ void borne_list_destroy(borne_list *list) {
   }
   borne_destroy(temp->borne);
   free(temp);
-  printf("list destroyed\n");
   return;
 }
 
@@ -190,13 +188,3 @@ void borne_list_savePathInPythonListFormat(borne_list *list, char *filename) {
   fclose(f);
 }
 
-
-void debug_merde(borne_list *list){
-  borne_list *temp = list;
-  for (int i=0; i< borne_list_length(list);i++){
-    if (temp->borne->id >1570 && temp->borne->id<1585) {
-      printf("id : %d\n", temp->borne->id);
-    }
-    temp = temp->next;
-  }
-}

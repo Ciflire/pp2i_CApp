@@ -169,17 +169,8 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
                 horaire_list *pathTime, borne_list *allListsBorne,
                 int maxTimeWaiting, int maxTimeCharging, int *actualTime) {
   // add the actual borne to the path
-  printf("11111 \n");
-  debug_merde(allListsBorne);
   borne_list_append(path, actual);
-  printf("actual : ");
-  borne_print(actual);
 
-  horaire_list_print(
-      borne_list_getBorneById(allListsBorne, 1761)->horairePdc[0]);
-  printf("2222222\n");
-  debug_merde(allListsBorne);
-  printf("yes\n");
   if (distance(actual->latitude, actual->longitude, ending->latitude,
                ending->longitude) <= usedCar->autonomyAct) {
     // if ending borne is reachable from actual, add ending to path and the
@@ -193,8 +184,6 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
   } else {
     borne_list *Zone = borne_list_create();
     creationZone(actual, ending, 1, usedCar, allListsBorne, Zone, path);
-    printf("3333333\n");
-    debug_merde(allListsBorne);
     // find a zone to find the best
     if (borne_list_length(Zone) == 0) { // if the zone is empty, no borne is
                                         // reachable and the patj is impossible
@@ -218,8 +207,6 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
                    &waitingTime, &travelTimeToGoal, &travelTimeToBorneInTest,
                    &chargeTime, &maxTimeCharging, &maxTimeWaiting,
                    &bestPdcIndex);
-    printf("4444444\n");
-    debug_merde(allListsBorne);
     // add to pathTime arrivalTime and departureTime at the best borne
 
     horaire_list_append(
@@ -232,10 +219,6 @@ int pathFinding(car *usedCar, borne *actual, borne *ending, borne_list *path,
                         horaire_createWithValues(
                             *actualTime + travelTimeToBorneInTest + waitingTime,
                             *actualTime + bestTime - travelTimeToGoal));
-    printf("bestPdcIndex : %d\n", bestPdcIndex);
-    horaire_list_print(best->horairePdc[bestPdcIndex]);
-    horaire_list_print(best->horairePdc[bestPdcIndex]->next);
-    horaire_list_print(best->horairePdc[bestPdcIndex]->prev);
     // Update the actual time to the departure time from best (after waiting and
     // charging)
     *actualTime += (int)bestTime - travelTimeToGoal;
