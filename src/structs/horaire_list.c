@@ -23,7 +23,7 @@ void horaire_list_destroy(horaire_list *list) {
     return;
   }
   horaire_list *temp = list;
-  for (int i = 1; i < horaire_list_length(list); i++) {
+  for (int i = 1; i < horaire_list_length(list) - 1; i++) {
     temp = temp->next;
     horaire_destroy(temp->prev->horaire);
     free(temp->prev);
@@ -47,6 +47,7 @@ horaire_list *horaire_list_getPrev(horaire_list *list) { return list->prev; }
 
 // Appends a horaire to a list of horaires
 void horaire_list_append(horaire_list *list, horaire *horaire) {
+
   if (horaire_list_length(list) == 0) {
     list->horaire = horaire;
     list->index = 1;
@@ -66,6 +67,8 @@ void horaire_list_append(horaire_list *list, horaire *horaire) {
 void horaire_list_insert(horaire_list *list, horaire *horaire) {
   if (horaire_list_length(list) == 0) {
     list->horaire = horaire;
+    list->prev = list;
+    list->next = list;
     list->index = 1;
     return;
   }
@@ -73,8 +76,12 @@ void horaire_list_insert(horaire_list *list, horaire *horaire) {
   bool beenInserted = false;
   for (int i = 0; i < horaire_list_length(list); i++) {
     if (current->horaire->departureTime < horaire->arrivalTime &&
+        current->next->horaire->departureTime > horaire->arrivalTime &&
         !(beenInserted)) {
+      horaire_list *next = current->next;
       horaire_list_append(current, horaire);
+      /* current->next->next = next;
+      next->prev = current->next; */
       beenInserted = true;
     }
     if (beenInserted) {
@@ -99,4 +106,22 @@ void horaire_list_print(horaire_list *list) {
     horaire_print(temp->horaire);
     temp = temp->next;
   }
+}
+
+void horaire_list_saveHorairePathInPythonListFormat(horaire_list *list,
+                                                    char *filePath) {
+  FILE *file = fopen(filePath, "a");
+  horaire_list *temp = list;
+  fprintf(file, "[");
+  for (int i = 0; i < horaire_list_length(list); i++) {
+    fprintf(file, "(%d,%d)", temp->horaire->arrivalTime,
+            temp->horaire->departureTime);
+    printf("test?\n");
+    if (i != horaire_list_length(list) - 1) {
+      fprintf(file, ", ");
+    }
+    temp = temp->next;
+  }
+  fprintf(file, "]\n");
+  fclose(file);
 }

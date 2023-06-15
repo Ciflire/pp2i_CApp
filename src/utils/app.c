@@ -33,11 +33,12 @@ int main(int argc, char *argv[]) {
     line_array_destroy(file2);
 
     for (int i = 0; i < nbSimu; i++) {
-      int actualTime = 0;
+
       borne_list *path = borne_list_create();
       horaire_list *pathTime = horaire_list_create();
       srand(seed);
       seed = rand();
+      int actualTime = rand() % 1800;
       int car_id = rand() % (287) + 1;
       int id_origin = rand() % borne_list_length(list_borne) + 1;
       int id_destination = rand() % borne_list_length(list_borne) + 1;
@@ -47,12 +48,17 @@ int main(int argc, char *argv[]) {
       car *car = car_list_getCarById(list_car, car_id);
       car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
       car->autonomyUsable = car->autonomyAct;
+      horaire_list_append(pathTime,
+                          horaire_createWithValues(actualTime, actualTime));
       int error = pathFinding(
           car, borne_list_getBorneById(list_borne, id_origin),
           borne_list_getBorneById(list_borne, id_destination), path, pathTime,
           list_borne, max_time_waiting, max_time_charging, &actualTime);
       if (error == 0) {
         borne_list_printPathLink(path);
+        borne_list_savePathInPythonListFormat(path, "response_borne.txt");
+      horaire_list_saveHorairePathInPythonListFormat(pathTime,
+                                                     "response_horaires.txt");
       }
       free(path);
       horaire_list_destroy(pathTime);
@@ -90,12 +96,18 @@ int main(int argc, char *argv[]) {
     car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
     car->autonomyUsable = car->autonomyAct;
 
-    int error = pathFinding(car, borne_list_getBorneById(list_borne, id_origin),
-                            borne_list_getBorneById(list_borne, id_destination),
-                            path, pathTime, list_borne, max_time_waiting,
-                            max_time_charging, &actualTime);
+    horaire_list_append(pathTime,
+                        horaire_createWithValues(actualTime, actualTime));
+    borne *actual = borne_list_getBorneById(list_borne, id_origin);
+    borne *dest = borne_list_getBorneById(list_borne, id_destination);
+    int error = pathFinding(car, actual, dest, path, pathTime, list_borne,
+                            max_time_waiting, max_time_charging, &actualTime);
     if (error == 0) {
       borne_list_printPathLink(path);
+      borne_list_printPathMapsIntegrator(path);
+      borne_list_savePathInPythonListFormat(path, "response_borne.txt");
+      horaire_list_saveHorairePathInPythonListFormat(pathTime,
+                                                     "response_horaires.txt");
     }
     free(path);
     borne_list_destroy(list_borne);

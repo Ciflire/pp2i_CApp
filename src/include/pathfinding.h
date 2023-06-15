@@ -28,17 +28,16 @@ double travelTime(borne *actual, borne *goal);
 // If the borneInTest is better than the bestBorne, we change the bestBorne and
 // actualize the bestTime, charge time, waiting time, travelTimeToGoal,
 // travelTimeToBorneInTest, and bestPdcIndex
-void updateBestBorne(borne *actual, borne *goal, borne *borneInTest,
-                     borne *bestBorne, double *bestTime, int *chargeTime,
-                     int *waitingTime, int *travelTimeToGoal,
-                     int *travelTimeToBorneInTest, int *bestPdcIndex,
-                     car *usedCar, int maxTimeCharging, int maxTimeWaiting,
-                     int currentTime);
+borne * updateBestBorne(borne *actual, borne *goal, borne *borneInTest,
+                     double *bestTime, int *chargeTime, int *waitingTime,
+                     int *travelTimeToGoal, int *travelTimeToBorneInTest,
+                     int *bestPdcIndex, car *usedCar, int maxTimeCharging,
+                     int maxTimeWaiting, int currentTime);
 
 // returns the best borne to go to according to the goal borne and the actual in
 // a zone
-void findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
-                    borne *best, double *bestTime, int *actualTime,
+borne *findBestInZone(borne_list *Zone, borne *actual, borne *goal, car *usedCar,
+                    double *bestTime, int *actualTime,
                     int *waitingTime, int *travelTimeToGoal,
                     int *travelTimeToBorneInTest, int *chargeTime,
                     int *maxTimeCharging, int *maxTimeWaiting,

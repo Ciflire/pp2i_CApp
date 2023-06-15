@@ -19,7 +19,7 @@ int main(void) {
 
   // Testing horaire_createWithValues
 
-  horaire *h4 = horaire_createWithValues(1, 2);
+  horaire *h4 = horaire_createWithValues(2, 1);
 
   printf("    [Debug horaire] : Test horaire_createWithValues passed\n");
 

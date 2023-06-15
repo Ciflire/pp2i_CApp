@@ -51,7 +51,7 @@ bool betterWaitTime(borne *borne, int *watingTimeAct, int *betterPdcIndex,
                     int *currentTime, int *chargeTime) {
   int waitingTime = INT16_MAX;
   for (int i = 0; i < borne->pdc; i++) {
-    // Check the waiting time and save only the lower
+    // check the waiting time and save only the lower
     getWaitingTimeAndPotentialChargeTime(borne->horairePdc[i], &waitingTime,
                                          betterPdcIndex, currentTime,
                                          chargeTime);
