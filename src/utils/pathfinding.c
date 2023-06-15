@@ -160,6 +160,7 @@ borne *findBestInZone(borne_list *Zone, borne *actual, borne *goal,
     }
     spot = spot->next;
   }
+
   return temp;
 }
 

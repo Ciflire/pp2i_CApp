@@ -13,10 +13,6 @@ horaire_list *horaire_list_create(void) {
 
 // Destroys a list of horaires
 void horaire_list_destroy(horaire_list *list) {
-  if (list == NULL) {
-    free(list);
-    return;
-  }
   if (horaire_list_length(list) == 0) {
     free(list);
     return;
@@ -27,7 +23,7 @@ void horaire_list_destroy(horaire_list *list) {
     return;
   }
   horaire_list *temp = list;
-  for (int i = 1; i < horaire_list_length(list) - 1; i++) {
+  for (int i = 0; i < horaire_list_length(list) - 1; i++) {
     temp = temp->next;
     horaire_destroy(temp->prev->horaire);
     free(temp->prev);
@@ -57,43 +53,58 @@ void horaire_list_append(horaire_list *list, horaire *horaire) {
     list->index = 1;
     return;
   }
+
   horaire_list *new_horaire = horaire_list_create();
   new_horaire->horaire = horaire;
   new_horaire->index = horaire_list_length(list) + 1;
-  new_horaire->prev = list->prev;
-  new_horaire->next = list;
-  list->prev->next = new_horaire;
-  list->prev = new_horaire;
+
+  horaire_list *first = list;
+  horaire_list *last = list->prev;
+
+  new_horaire->prev = last;
+  new_horaire->next = first;
+  first->prev = new_horaire;
+  last->next = new_horaire;
   return;
 }
 
 // Inserts a horaire in a list of horaires
-void horaire_list_insert(horaire_list *list, horaire *horaire) {
+void horaire_list_insert(horaire_list *list, horaire *new_horaire) {
   if (horaire_list_length(list) == 0) {
-    list->horaire = horaire;
-    list->prev = list;
-    list->next = list;
+    list->horaire = new_horaire;
     list->index = 1;
     return;
   }
-  horaire_list *current = list;
   bool beenInserted = false;
-  for (int i = 0; i < horaire_list_length(list); i++) {
-    if (current->horaire->departureTime < horaire->arrivalTime &&
-        current->next->horaire->departureTime > horaire->arrivalTime &&
+  horaire_list *temp = list;
+  for (int i = 0; i > horaire_list_length(list); i++) {
+    if (temp->horaire->departureTime < new_horaire->arrivalTime &&
         !(beenInserted)) {
-      horaire_list *next = current->next;
-      horaire_list_append(current, horaire);
-      /* current->next->next = next;
-      next->prev = current->next; */
+      horaire_list *previous = temp;
+      horaire_list *nextOne = temp->next;
+
+      horaire_list *new_horaire_list = horaire_list_create();
+      new_horaire_list->horaire = new_horaire;
+      new_horaire_list->index = nextOne->index;
+      new_horaire_list->prev = previous;
+      new_horaire_list->next = nextOne;
+
+      previous->next = new_horaire_list;
+      nextOne->prev = new_horaire_list;
+
       beenInserted = true;
+      temp = temp->next;
     }
+    temp = temp->next;
     if (beenInserted) {
-      current->index = current->index + 1;
+      temp->index = temp->index + 1;
     }
-    current = current->next;
+  }
+  if (!beenInserted) {
+    horaire_list_append(list, new_horaire);
   }
 }
+// horaire_list_print(list);
 
 // Get the length of a list of horaires
 int horaire_list_length(horaire_list *list) { return list->prev->index; }
@@ -119,7 +130,7 @@ void horaire_list_saveHorairePathInPythonListFormat(horaire_list *list,
   for (int i = 0; i < horaire_list_length(list); i++) {
     fprintf(file, "(%d,%d)", temp->horaire->arrivalTime,
             temp->horaire->departureTime);
-    printf("test?\n");
+    // printf("test?\n");
     if (i != horaire_list_length(list) - 1) {
       fprintf(file, ", ");
     }
