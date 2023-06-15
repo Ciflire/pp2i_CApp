@@ -22,7 +22,7 @@ void borne_list_destroy(borne_list *list) {
     free(list);
     return;
   }
-  horaire_list_print(borne_list_getBorneById(temp, 1575)->horairePdc[0]);
+  // horaire_list_print(borne_list_getBorneById(temp, 1575)->horairePdc[0]);
   for (int i = 0; i < borne_list_length(list); i++) {
     /* printf("i = %d\n", i);
     printf("in destroy borne : ");
