@@ -32,3 +32,14 @@ void car_list_dataImporter(line_array *file, car_list *list_car) {
     id++;
   }
 }
+
+/* void borne_list_memoryImporter(line_array* pdcList,borne_list* list_borne){
+  borne_list *bl = list_borne;
+  for (int i = 0; i<line_array_getSize(pdcList); i++){
+    line* current_line = pdcList->line[i];
+    for (int j =0;j<bl->borne->pdc; j++){
+      char * 
+    }
+  }
+    
+} */

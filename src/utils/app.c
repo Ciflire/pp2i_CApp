@@ -56,15 +56,15 @@ int main(int argc, char *argv[]) {
           list_borne, max_time_waiting, max_time_charging, &actualTime);
       if (error == 0) {
         borne_list_printPathLink(path);
-                 /*        borne_list_savePathInPythonListFormat(path,
-                    "response_borne.txt");
-                       horaire_list_saveHorairePathInPythonListFormat(pathTime,
-                                                                      "response_horaires.txt");
-                  */
+        borne_list_savePathInPythonListFormat(path, "response_borne.txt");
+        horaire_list_saveHorairePathInPythonListFormat(pathTime,
+                                                       "response_horaires.txt");
       }
       free(path);
       horaire_list_destroy(pathTime);
     }
+    borne_list_saveHorairesPdcInPythonListFormat(list_borne,
+                                                   "response_pdc.txt");
     borne_list_destroy(list_borne);
     car_list_destroy(list_car);
   } else if (argc == 8) {
@@ -106,11 +106,12 @@ int main(int argc, char *argv[]) {
                             max_time_waiting, max_time_charging, &actualTime);
     if (error == 0) {
       borne_list_printPathLink(path);
-      /* borne_list_printPathMapsIntegrator(path);
-               borne_list_savePathInPythonListFormat(path,
-         "response_borne.txt"); horaire_list_saveHorairePathInPythonListFormat(
-                   pathTime, "response_horaires.txt");
-               */
+      borne_list_printPathMapsIntegrator(path);
+      borne_list_savePathInPythonListFormat(path, "response_borne.txt");
+      horaire_list_saveHorairePathInPythonListFormat(pathTime,
+                                                     "response_horaires.txt");
+      borne_list_saveHorairesPdcInPythonListFormat(list_borne,
+                                                   "response_pdc.txt");
     }
     free(path);
     borne_list_destroy(list_borne);
