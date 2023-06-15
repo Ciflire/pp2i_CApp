@@ -45,7 +45,6 @@ int main(int argc, char *argv[]) {
       int max_time_charging = (rand() % 120) + 300;
       int max_time_waiting = (rand() % 300) + 300;
       car *car = car_list_getCarById(list_car, car_id);
-      // printf("car id : %d\n", car_id);
       car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
       car->autonomyUsable = car->autonomyAct;
       int error = pathFinding(
@@ -53,7 +52,6 @@ int main(int argc, char *argv[]) {
           borne_list_getBorneById(list_borne, id_destination), path, pathTime,
           list_borne, max_time_waiting, max_time_charging, &actualTime);
       if (error == 0) {
-        // borne_list_print(path);
         borne_list_printPathLink(path);
       }
       free(path);
@@ -89,7 +87,6 @@ int main(int argc, char *argv[]) {
     line_array_destroy(file2);
 
     car *car = car_list_getCarById(list_car, car_id);
-    // printf("car id : %d\n", car_id);
     car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
     car->autonomyUsable = car->autonomyAct;
 
@@ -98,7 +95,6 @@ int main(int argc, char *argv[]) {
                             path, pathTime, list_borne, max_time_waiting,
                             max_time_charging, &actualTime);
     if (error == 0) {
-      // borne_list_print(path);
       borne_list_printPathLink(path);
     }
     free(path);

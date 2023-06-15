@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
   line_array *file = line_array_create(1047, 4);
   csvParser(file_path, 0, file);
   borne_list *list_borne = borne_list_create();
+
   // import the data to a bornes_list
   borne_list_dataImporter(file, list_borne);
   line_array_destroy(file);
@@ -25,6 +26,7 @@ int main(int argc, char **argv) {
   line_array *file2 = line_array_create(MAX_LINES_CARS, 3);
   csvParser(file_path2, 0, file2);
   car_list *list_car = car_list_create();
+
   // import the data to a bornes_list
   car_list_dataImporter(file2, list_car);
   line_array_destroy(file2);
@@ -33,6 +35,7 @@ int main(int argc, char **argv) {
   line_array *file3 = line_array_create(3625, 4);
   csvParser(file_path3, 0, file3);
   borne_list *list_borne2 = borne_list_create();
+
   // import the data to a bornes_list
   borne_list_dataImporter(file3, list_borne2);
   line_array_destroy(file3);
@@ -68,7 +71,6 @@ int main(int argc, char **argv) {
 
   int dist_paris_nancy = distance(paris->latitude, paris->longitude,
                                   nancy->latitude, nancy->longitude);
-  // printf("dist_paris_nancy : %d\n", dist_paris_nancy);
   assert(dist_paris_nancy <= 281);
   assert(dist_paris_nancy >= 277);
   int dist_bretagne_nancy = distance(bretagne->latitude, bretagne->longitude,
@@ -79,31 +81,26 @@ int main(int argc, char **argv) {
   assert(dist_bretagne_nancy <= 564);
   assert(dist_bretagne_nancy >= 560);
 
-  // printf("      [debug pathFiding_test] test_distance passed\n");
+  printf("      [debug pathFiding_test] test_distance passed\n");
 
   // test travelTime
 
   int t1 = travelTime(bretagne, paris) + travelTime(nancy, paris);
   int t2 = travelTime(bretagne, calais) + travelTime(calais, nancy);
-  // printf("t1 : %d\n", t1);
-  // printf("t2 : %d\n", t2);
   assert(t1 < t2);
 
-  // printf("      [debug pathFiding_test] test_travelTime passed\n");
+  printf("      [debug pathFiding_test] test_travelTime passed\n");
 
   // test timeToCharge
   int t3 = timeToCharge(paris, 666, v2, bretagne);
   int t4 = timeToCharge(paris2, 666, v2, bretagne);
   assert(t3 > t4);
-  // printf("      [debug pathFiding_test] test_timeToCharge passed\n");
+  printf("      [debug pathFiding_test] test_timeToCharge passed\n");
 
   // test creationZone
   borne_list *zone1 = borne_list_create();
   creationZone(bretagne, nancy, 0.9, v2, list_borne, zone1,
                borne_list_create());
-  // printf("length of zone1 : %d\n", borne_list_length(zone1));
-  // printf("list length : %d\n", borne_list_length(zone1));
-  // borne_print(borne_list_getBorne(zone1));
   assert(borne_list_length(zone1) == 1045);
   v1->autonomyAct = 402;
   for (int i = 0; i < borne_list_length(zone1); i++) {
@@ -112,17 +109,12 @@ int main(int argc, char **argv) {
                     zone1->borne->longitude) <= v1->autonomyAct);
     zone1 = zone1->next;
   }
-  // printf("      [debug pathFiding_test] test_creationZone1 passed\n");
+  printf("      [debug pathFiding_test] test_creationZone1 passed\n");
 
   borne_list *zone2 = borne_list_create();
   creationZone(pont_l_abbe, bayonne, 0.9, v3, list_borne2, zone2,
                borne_list_create());
   assert(borne_list_length(zone2) > 0);
-  // printf("zone2 is : \n");
-  // borne_list_print(zone2);
-  /*   printf("All points must be near this location : 47.81367071130333, "
-           "-3.8348082559475722\n"); */
-  // printf("      [debug pathFiding_test] test_creationZone2 passed\n");
 
   // test findBestInZone
   borne_list *zone3 = borne_list_create();
@@ -142,12 +134,9 @@ int main(int argc, char **argv) {
                  &waitingTime, &travelTimeToGoal, &travelTimeToBorneInTest,
                  &bestChargeTime, &maxTimeCharging, &waitingTime,
                  &bestPdcIndex);
-  // borne_list_print(zone3);
-  // borne_print(best);
-  // borne_print(landivisiau);
   assert(borne_equals(best, landivisiau));
 
-  // printf("      [debug pathFiding_test] test_findBestInZone passed\n");
+  printf("      [debug pathFiding_test] test_findBestInZone passed\n");
 
   // // test Pathfinding
   //[pathFinding] Test de chemin possible
@@ -157,27 +146,20 @@ int main(int argc, char **argv) {
   int error = pathFinding(v1, bretagne, nancy, path1, pathTime1, list_borne, 90,
                           120, &actualTime2);
   assert(error == 0);
-  // printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
-  // borne_print(bretagne);
-  // borne_list_print(path1);
-  // borne_list_printPathLink(path1);
-  // borne_list_printPathLink(path1);
   free(path1);
-  // printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
+  printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
 
-  // //[pathFinding] Test de chemin impossible
-  // // int acutalTime = 0;
+  //[pathFinding] Test de chemin impossible
   borne_list *path2 = borne_list_create();
   horaire_list *pathTime2 = horaire_list_create();
   error = pathFinding(v4, bretagne, nancy, path2, pathTime2, list_borne, 90,
                       120, &actualTime);
-  // borne_list_print(path2);
   assert(error == 1);
   free(path2);
-  // printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
+  printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
   for (int j = 0; j < 7; j++) {
-    // //[pathFinding] Test sur 1000 chemins randoms
+    //[pathFinding] Test sur 10^j chemins randoms
     timer_start();
     for (int i = 0; i < pow(10, j); i++) {
 
@@ -198,23 +180,18 @@ int main(int argc, char **argv) {
         id_destination++;
       }
       car *car = car_list_getCarById(list_car, car_id);
-      // printf("car id : %d\n", car_id);
       car->autonomyAct = car->autonomyMax * (1 - battery_minimum / 100.0);
       car->autonomyUsable = car->autonomyAct;
       error = pathFinding(car, borne_list_getBorneById(list_borne3, id_origin),
                           borne_list_getBorneById(list_borne3, id_destination),
                           path, horaire_list_create(), list_borne3,
                           max_time_waiting, max_time_charging, &actualTime);
-      if (error == 0) {
-        // borne_list_print(path);
-        // borne_list_printPathLink(path);
-      }
       free(path);
     }
     timer_stop();
     timer_print();
   }
-  // printf("      [debug pathFiding_test] test_pathFinding3 passed\n");
+  printf("      [debug pathFiding_test] test_pathFinding3 passed\n");
   borne_list_destroy(list_borne);
   borne_list_destroy(list_borne2);
   borne_list_destroy(list_borne3);

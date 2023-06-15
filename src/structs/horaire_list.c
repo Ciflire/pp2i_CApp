@@ -82,7 +82,6 @@ void horaire_list_insert(horaire_list *list, horaire *horaire) {
     }
     current = current->next;
   }
-  horaire_list_print(list);
 }
 
 // Get the length of a list of horaires
