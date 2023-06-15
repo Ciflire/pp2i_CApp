@@ -1,4 +1,5 @@
 #include "../include/pathfinding.h"
+#include <stdlib.h>
 
 // harversine distance in km
 int distance(double lat1, double lon1, double lat2, double lon2) {
@@ -103,7 +104,7 @@ borne *updateBestBorne(borne *actual, borne *goal, borne *borneInTest,
                        int *travelTimeToGoal, int *travelTimeToBorneInTest,
                        int *bestPdcIndex, car *usedCar, int maxTimeCharging,
                        int maxTimeWaiting, int currentTime) {
-  borne *temp = malloc(sizeof(borne));
+  borne *temp = borneInTest;
   double timeToGoal = travelTime(borneInTest, goal);
   double timeToBorneInTest = travelTime(actual, borneInTest);
   int timeToChargeCar =
@@ -122,14 +123,15 @@ borne *updateBestBorne(borne *actual, borne *goal, borne *borneInTest,
           maxTimeWaiting) { // and if the waiting time is
                             // lower than the max waiting time authorized
     // update the best borne and actualize the parameters
-    temp = borneInTest;
+    //
+    // borne *temp = borneInTest;
     *bestTime =
         timeToGoal + timeToBorneInTest + timeToChargeCar + waitingTimeInTest;
     *chargeTime = timeToChargeCar;
     *waitingTime = waitingTimeInTest;
     *travelTimeToGoal = timeToGoal;
     *travelTimeToBorneInTest = timeToBorneInTest;
-    *bestPdcIndex = bestPdcIndexInTest;
+    *bestPdcIndex =bestPdcIndexInTest;
     return temp;
   }
   return NULL;
@@ -143,12 +145,15 @@ borne *findBestInZone(borne_list *Zone, borne *actual, borne *goal,
                       int *travelTimeToBorneInTest, int *chargeTime,
                       int *maxTimeCharging, int *maxTimeWaiting,
                       int *bestPdcIndex) {
-                        borne * temp = malloc(sizeof(borne));
+  borne *temp = updateBestBorne(
+      actual, goal, goal, bestTime, chargeTime, waitingTime, travelTimeToGoal,
+      travelTimeToBorneInTest, bestPdcIndex, usedCar, *maxTimeCharging,
+      *maxTimeWaiting, *actualTime);
   int n = borne_list_length(Zone);
   borne_list *spot = Zone;
 
   // we test every borne of the zone if is better than the best borne
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n-1; i++) {
     borne *borneInTest = borne_list_getBorne(spot);
 
     borne *test = updateBestBorne(

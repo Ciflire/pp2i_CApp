@@ -2,7 +2,7 @@
 
 // Creates a borne_list
 borne_list *borne_list_create(void) {
-  borne_list *list = malloc(sizeof(borne_list));
+  borne_list *list = calloc(1,sizeof(borne_list));
   list->prev = list;
   list->next = list;
   list->borne = NULL;
@@ -127,7 +127,7 @@ void borne_list_printPathLink(borne_list *list) {
   borne_list *temp = list;
   printf("%s", url);
   for (int i = 0; i < borne_list_length(list); i++) {
-    printf("'%lf,%lf'/", temp->borne->latitude, temp->borne->longitude);
+    printf("%lf,%lf/", temp->borne->latitude, temp->borne->longitude);
     temp = temp->next;
   }
   printf("\n");
