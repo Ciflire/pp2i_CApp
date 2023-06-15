@@ -13,7 +13,7 @@ horaire_list *horaire_list_create(void) {
 
 // Destroys a list of horaires
 void horaire_list_destroy(horaire_list *list) {
-  if (list->index == 0) {
+  if (horaire_list_length(list) == 0) {
     free(list);
     return;
   }
@@ -82,6 +82,7 @@ void horaire_list_insert(horaire_list *list, horaire *horaire) {
     }
     current = current->next;
   }
+  // horaire_list_print(list);
 }
 
 // Get the length of a list of horaires

@@ -51,7 +51,7 @@ void borne_list_append(borne_list *list, borne *borne) {
     list->index = 1;
     return;
   }
-  borne_list *b_l_new = malloc(sizeof(borne_list));
+  borne_list *b_l_new = borne_list_create();
   b_l_new->index = borne_list_length(list) + 1;
   b_l_new->borne = borne;
   b_l_new->next = list;
