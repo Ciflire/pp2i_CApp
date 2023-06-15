@@ -1,5 +1,6 @@
 #include "../include/car_list.h"
 
+// Creates a car_list
 car_list *car_list_create(void) {
   car_list *list = malloc(sizeof(car_list));
   list->prev = list;
@@ -9,8 +10,7 @@ car_list *car_list_create(void) {
   return list;
 }
 
-car *car_list_getCar(car_list *list) { return list->car; }
-
+// Destroys a car_list
 void car_list_destroy(car_list *list) {
   car_list *temp = list->next;
   if (car_list_length(list->prev) == 0) {
@@ -27,22 +27,19 @@ void car_list_destroy(car_list *list) {
   return;
 }
 
-int car_list_length(car_list *list) { return list->prev->index; }
+// Get the index of a car in a list
+int car_list_getIndex(car_list *list) { return list->index; }
 
-bool car_list_iscarInList(car_list *list, car *car) {
-  if (car_list_length(list) == 0) {
-    return false;
-  }
-  car_list *temp = list;
-  for (int i = 0; i < car_list_length(list); i++) {
-    if (car_equals(temp->car, car)) {
-      return true;
-    }
-    temp = temp->next;
-  }
-  return false;
-}
+//Returns the car in a list
+car *car_list_getCar(car_list *list) { return list->car; }
 
+// Gets the next car_list
+car_list *car_list_getNext(car_list *list) { return list->next; }
+
+// Gets the previous car_list
+car_list *car_list_getPrev(car_list *list) { return list->prev; }
+
+// Adds a car to a car_list
 void car_list_append(car_list *list, car *car) {
   if (car_list_length(list) == 0) {
     list->car = car;
@@ -59,6 +56,25 @@ void car_list_append(car_list *list, car *car) {
   return;
 }
 
+// Gets the length of a car_list
+int car_list_length(car_list *list) { return list->prev->index; }
+
+// Check if a car is in a list
+bool car_list_iscarInList(car_list *list, car *car) {
+  if (car_list_length(list) == 0) {
+    return false;
+  }
+  car_list *temp = list;
+  for (int i = 0; i < car_list_length(list); i++) {
+    if (car_equals(temp->car, car)) {
+      return true;
+    }
+    temp = temp->next;
+  }
+  return false;
+}
+
+// Get a car by its id
 car *car_list_getCarById(car_list *list, int id) {
   if (car_list_length(list) == 0) {
     return NULL;
@@ -73,9 +89,9 @@ car *car_list_getCarById(car_list *list, int id) {
   return NULL;
 }
 
+//Prints a list of cars
 void car_list_print(car_list *list) {
   if (car_list_length(list) == 0) {
-    printf("Liste vide\n");
     return;
   }
   car_list *temp = list;

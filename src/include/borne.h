@@ -7,6 +7,7 @@
 
 #define BORNE_H
 
+// Define a borne structure
 struct borne {
   int id;
   int pdc;
@@ -16,10 +17,12 @@ struct borne {
   horaire_list **horairePdc;
 };
 
+// Define a borne type containing all data about a borne
 typedef struct borne borne;
 
 // Creates a borne
-borne *borne_create(int id, int pdc, int power, double latitude, double longitude);
+borne *borne_create(int id, int pdc, int power, double latitude,
+                    double longitude);
 
 // Destroys a borne
 void borne_destroy(borne *b);

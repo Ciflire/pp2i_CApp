@@ -1,6 +1,6 @@
 #include "../include/borne_list.h"
 
-
+// Creates a borne_list
 borne_list *borne_list_create(void) {
   borne_list *list = malloc(sizeof(borne_list));
   list->prev = list;
@@ -10,17 +10,19 @@ borne_list *borne_list_create(void) {
   return list;
 }
 
-borne_list *borne_list_getNext(borne_list *list) { return list->next; }
-
-borne *borne_list_getBorne(borne_list *list) { return list->borne; }
-
+// Destroys a borne_list
 void borne_list_destroy(borne_list *list) {
   borne_list *temp = list->next;
   if (borne_list_length(list->prev) == 0) {
     free(list);
     return;
   }
-  for (int i = 1; i < borne_list_length(list); i++) {
+  if (borne_list_length(list) == 1) {
+    borne_destroy(list->borne);
+    free(list);
+    return;
+  }
+  for (int i = 0; i < borne_list_length(list); i++) {
     temp = temp->next;
     borne_destroy(temp->prev->borne);
     free(temp->prev);
@@ -30,8 +32,39 @@ void borne_list_destroy(borne_list *list) {
   return;
 }
 
+// Get the index of a borne in a list
+int borne_list_getIndex(borne_list *list) { return list->index; }
+
+// Gets the previous borne_list
+borne *borne_list_getBorne(borne_list *list) { return list->borne; }
+
+// Gets the next borne_list
+borne_list *borne_list_getNext(borne_list *list) { return list->next; }
+
+// Get the previous borne in a list
+borne_list *borne_list_getPrev(borne_list *list) { return list->prev; }
+
+// Appends a borne to a borne_list
+void borne_list_append(borne_list *list, borne *borne) {
+  if (borne_list_length(list) == 0) {
+    list->borne = borne;
+    list->index = 1;
+    return;
+  }
+  borne_list *b_l_new = malloc(sizeof(borne_list));
+  b_l_new->index = borne_list_length(list) + 1;
+  b_l_new->borne = borne;
+  b_l_new->next = list;
+  b_l_new->prev = list->prev;
+  list->prev = b_l_new;
+  b_l_new->prev->next = b_l_new;
+  return;
+}
+
+// Gets the length of a borne_list
 int borne_list_length(borne_list *list) { return list->prev->index; }
 
+// Tells if a borne is in a borne_list
 bool borne_list_isBorneInList(borne_list *list, borne *borne) {
   if (borne_list_length(list) == 0) {
     return false;
@@ -46,23 +79,8 @@ bool borne_list_isBorneInList(borne_list *list, borne *borne) {
   return false;
 }
 
-void borne_list_append(borne_list *list, borne *borne) {
-  if (borne_list_length(list) == 0) {
-    list->borne = borne;
-    list->index = 1;
-    return;
-  }
-  borne_list *b_l_new = malloc(sizeof(borne_list));
-  b_l_new->borne = borne;
-  b_l_new->next = list;
-  b_l_new->prev = list->prev;
-  list->prev = b_l_new;
-  b_l_new->prev->next = b_l_new;
-  b_l_new->index = b_l_new->prev->index + 1;
-  return;
-}
-
-borne* borne_list_getBorneById(borne_list *list, int id) {
+// Removes a borne from a borne_list
+borne *borne_list_getBorneById(borne_list *list, int id) {
   if (borne_list_length(list) == 0) {
     return NULL;
   }
@@ -76,24 +94,24 @@ borne* borne_list_getBorneById(borne_list *list, int id) {
   return NULL;
 }
 
+// Removes a borne from a borne_list
 void borne_list_print(borne_list *list) {
   if (borne_list_length(list) == 0) {
-    printf("Liste vide\n");
     return;
   }
   borne_list *temp = list;
   for (int i = 0; i < borne_list_length(list); i++) {
-    printf("Borne %d :\n", temp -> index);
+    printf("Borne %d :\n", temp->index);
     borne_print(temp->borne);
     temp = temp->next;
   }
   return;
 }
 
-void borne_list_printPathLink(borne_list* list){
-  char* url = "https://www.google.com/maps/dir/";
+// Removes a borne from a borne_list
+void borne_list_printPathLink(borne_list *list) {
+  char *url = "https://www.google.com/maps/dir/";
   if (borne_list_length(list) == 0) {
-    printf("Liste vide\n");
     return;
   }
   borne_list *temp = list;
@@ -104,4 +122,3 @@ void borne_list_printPathLink(borne_list* list){
   }
   printf("\n");
 }
-  

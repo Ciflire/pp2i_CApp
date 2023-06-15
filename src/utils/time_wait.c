@@ -4,6 +4,7 @@
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 
+// Get the waiting time and the potential charge time of a car
 void getWaitingTimeAndPotentialChargeTime(horaire_list *list, int *waitingTime,
                                           int *possibleBetterPdcIndex,
                                           int *currentTime, int *chargeTime) {
@@ -45,10 +46,12 @@ void getWaitingTimeAndPotentialChargeTime(horaire_list *list, int *waitingTime,
   };
 }
 
+// Get the waiting time of a car
 bool betterWaitTime(borne *borne, int *watingTimeAct, int *betterPdcIndex,
                     int *currentTime, int *chargeTime) {
   int waitingTime = INT16_MAX;
   for (int i = 0; i < borne->pdc; i++) {
+    // Check the waiting time and save only the lower
     getWaitingTimeAndPotentialChargeTime(borne->horairePdc[i], &waitingTime,
                                          betterPdcIndex, currentTime,
                                          chargeTime);
@@ -59,7 +62,6 @@ bool betterWaitTime(borne *borne, int *watingTimeAct, int *betterPdcIndex,
   bool b = waitingTime < *watingTimeAct;
   if (b) {
     *watingTimeAct = waitingTime;
-    // printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n");
   }
   return b;
 }

@@ -1,6 +1,6 @@
 #include "../include/data_importer.h"
 
-// import the data from a line_arrayer struct to a borne_list struct
+// Import the data from a line_array struct to a borne_list struct
 void borne_list_dataImporter(line_array *file, borne_list *list_borne) {
   int number_of_line = line_array_getSize(file);
   int id = 1;
@@ -17,7 +17,7 @@ void borne_list_dataImporter(line_array *file, borne_list *list_borne) {
   }
 }
 
-// import the data from a line_arrayer struct to a car_list struct
+// Import the data from a line_array struct to a car_list struct
 void car_list_dataImporter(line_array *file, car_list *list_car) {
   int number_of_line = line_array_getSize(file);
   int id = 1;

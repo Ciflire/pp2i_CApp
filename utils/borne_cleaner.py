@@ -10,10 +10,11 @@ def main():
     # Arrondi des coordonnées pour regrouper les bornes très proches (75m)
     bornes = bornes.round(
         {'consolidated_longitude': 3, 'consolidated_latitude': 3})
-
+    
     # Regroupement des bornes par coordonnées en sommant le nombre de bornes et en prenant la puissance maximale
     bornes = bornes.groupby(['consolidated_longitude', 'consolidated_latitude']).agg(
         {'nbre_pdc': 'sum', 'puissance_nominale': 'max'}).reset_index()
+    
     # Export to csv
     bornes.to_csv('data/borne_cleaned.csv', sep=',', index=False)
 

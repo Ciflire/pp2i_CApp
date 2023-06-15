@@ -14,11 +14,17 @@ LDFLAGS = -fsanitize=address -fsanitize=undefined
 
 #ALL = $(wildcard src/*_test.c)
 
-ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test horaire_test horaire_list_test
+ALL = borne_test borne_list_test  data_importer_test car_test car_list_test pathFinding_test horaire_test horaire_list_test app
 
 OBJ = borne.o borne_list.o car.o car_list.o horaire.o horaire_list.o csvParser.o line_array.o line.o data_importer.o timer.o pathfinding.o time_wait.o
 
 all : $(ALL) clean
+
+#App
+app.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
+	$(CC) $(CFLAGS) -c  src/utils/app.c
+app : $(OBJ) app.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
 #Borne
 borne_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)

@@ -3,13 +3,15 @@
 #ifndef __HORAIRE_LIST_H__
 #define __HORAIRE_LIST_H__
 
+// Define a structure for a list of horaires
 struct horaire_list {
-    int index;
-    struct horaire_list *next;
-    struct horaire_list *prev;
-    horaire *horaire;
+  int index;
+  struct horaire_list *next;
+  struct horaire_list *prev;
+  horaire *horaire;
 };
 
+// Define the type horaire_list : a double linked cyclic list of horaire type
 typedef struct horaire_list horaire_list;
 
 // Creates a list of horaires
@@ -22,7 +24,7 @@ void horaire_list_destroy(horaire_list *list);
 int horaire_list_getIndex(horaire_list *list);
 
 // Returns the horaire of the link
-horaire *horaire_list_gethoraire(horaire_list *list);
+horaire *horaire_list_getHoraire(horaire_list *list);
 
 // Get the next horaire in a list
 horaire_list *horaire_list_getNext(horaire_list *list);
@@ -39,9 +41,7 @@ void horaire_list_insert(horaire_list *list, horaire *horaire);
 // Get the length of a list of horaires
 int horaire_list_length(horaire_list *list);
 
-
 // Prints a list of horaires
 void horaire_list_print(horaire_list *list);
-
 
 #endif
