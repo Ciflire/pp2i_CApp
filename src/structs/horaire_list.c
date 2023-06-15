@@ -23,11 +23,7 @@ void horaire_list_destroy(horaire_list *list) {
     return;
   }
   horaire_list *temp = list;
-<<<<<<< HEAD
-  for (int i = 0; i < horaire_list_length(list); i++) {
-=======
   for (int i = 0; i < horaire_list_length(list) - 1; i++) {
->>>>>>> f445576 (Fixed horaire_list)
     temp = temp->next;
     horaire_destroy(temp->prev->horaire);
     free(temp->prev);

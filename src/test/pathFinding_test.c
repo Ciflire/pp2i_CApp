@@ -11,8 +11,8 @@ int main(void) {
     printf("Usage: %s\n", argv[0]);
     exit(1);
   } */
-  //int seed = atoi(argv[1]);
-  int seed =12;
+  // int seed = atoi(argv[1]);
+  int seed = 12;
   char *file_path = "data/borne-test.csv";
   line_array *file = line_array_create(1047, 4);
   csvParser(file_path, 0, file);
@@ -129,10 +129,10 @@ int main(void) {
   int bestChargeTime = 99999;
   int bestPdcIndex = 0;
 
-  borne* best=findBestInZone(zone3, painpol, brest, v4, bestTime, &actualTime,
-                 &waitingTime, &travelTimeToGoal, &travelTimeToBorneInTest,
-                 &bestChargeTime, &maxTimeCharging, &waitingTime,
-                 &bestPdcIndex);
+  borne *best = findBestInZone(zone3, painpol, brest, v4, bestTime, &actualTime,
+                               &waitingTime, &travelTimeToGoal,
+                               &travelTimeToBorneInTest, &bestChargeTime,
+                               &maxTimeCharging, &waitingTime, &bestPdcIndex);
   assert(borne_equals(best, landivisiau));
 
   printf("      [debug pathFiding_test] test_findBestInZone passed\n");
@@ -146,6 +146,7 @@ int main(void) {
                           120, &actualTime2);
   assert(error == 0);
   free(path1);
+  horaire_list_destroy(pathTime1);
   printf("      [debug pathFiding_test] test_pathFinding1 passed\n");
 
   //[pathFinding] Test de chemin impossible
@@ -155,6 +156,7 @@ int main(void) {
                       120, &actualTime);
   assert(error == 1);
   free(path2);
+  horaire_list_destroy(pathTime2);
   printf("      [debug pathFiding_test] test_pathFinding2 passed\n");
 
   for (int j = 0; j < 4; j++) {
@@ -164,6 +166,7 @@ int main(void) {
 
       int actualTime = 0;
       borne_list *path = borne_list_create();
+      horaire_list *pathTime = horaire_list_create();
       srand(seed);
       seed = rand();
       int car_id = rand() % (287) + 1;
@@ -183,9 +186,10 @@ int main(void) {
       car->autonomyUsable = car->autonomyAct;
       error = pathFinding(car, borne_list_getBorneById(list_borne3, id_origin),
                           borne_list_getBorneById(list_borne3, id_destination),
-                          path, horaire_list_create(), list_borne3,
-                          max_time_waiting, max_time_charging, &actualTime);
+                          path, pathTime, list_borne3, max_time_waiting,
+                          max_time_charging, &actualTime);
       free(path);
+      horaire_list_destroy(pathTime);
     }
     timer_stop();
     timer_print();

@@ -11,10 +11,6 @@ int main(void) {
   for (int i = 0; i < 1000; i++) {
     horaire *a = horaire_createWithValues(i, i + 1);
     horaire_list_insert(list, a);
-<<<<<<< HEAD
-    // horaire_list_print(list);
-=======
->>>>>>> f445576 (Fixed horaire_list)
   }
 
   horaire_list_print(list);
