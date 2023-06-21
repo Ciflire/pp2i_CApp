@@ -52,7 +52,6 @@ void parser_pdcList(char *path, line_array *file) {
     char c;
     FILE *f = fopen(path, "r");
     while ((c = fgetc(f)) != EOF) {
-      printf("%c ",c);
       // The test of line is made after to avoid to increment the line until we
       // skip enough
       if (c == '\n') {
@@ -88,8 +87,8 @@ void parser_pdcList(char *path, line_array *file) {
         file->line[indLigne]->info[indCol][indChar] = c;
         indChar++;
       }
-      fclose(f);
     }
+    fclose(f);
     return;
   }
 }

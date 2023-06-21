@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     line_array_destroy(file4);
 
     char *file_path5 = "response_pdc.txt";
-    line_array *file5 = line_array_create(MAX_LINES_BORNES, 1000);
+    line_array *file5 = line_array_create(MAX_LINES_BORNES, 1600);
     parser_pdcList(file_path5, file5);
     printf("yes \n");
     borne_list_memoryImporter(file5, list_borne);
