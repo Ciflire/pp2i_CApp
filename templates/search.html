@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+<div>
+    {% block body %}
+    test
+    <!-- Uncomment to start rendering the map -->
+    <div class="test">
+        <iframe
+        width="1450"
+        height="850"
+        frameborder="0" style="border:0"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="{{link}}"
+        allowfullscreen>
+      </iframe>
+    </div>
+    {% for i in range (list_borne|length) %}
+    <div class="borne">
+        <p>Borne : {{list_borne[i]}} </p>
+        Heure_d'arrivée : {{list_horaires[i][0]}} 
+        Heure_de_départ : {{list_horaires[i][1]}}
+    </div>
+    {% endfor %}
+    {% endblock %}
+</div>

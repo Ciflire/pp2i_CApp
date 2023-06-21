@@ -147,27 +147,27 @@ void borne_list_printPathMapsIntegrator(borne_list *list) {
       "https://www.google.com/maps/embed/v1/"
       "directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=%lf,%lf",
       temp->borne->latitude, temp->borne->longitude);
+  temp = temp->next;
   if (borne_list_length(list) > 2) {
     printf("&waypoints=");
     fprintf(f, "&waypoints=");
-    temp = temp->next;
+
     for (int i = 0; i < borne_list_length(list) - 2; i++) {
       if (i != 0) {
         printf("|");
-        /* fprintf(f, "|"); */
+        fprintf(f, "|");
       }
       printf("%lf,%lf", temp->borne->latitude, temp->borne->longitude);
-      /* fprintf(f, "%lf,%lf", temp->borne->latitude, temp->borne->longitude);
-      temp = temp->next; */
+      fprintf(f, "%lf,%lf", temp->borne->latitude, temp->borne->longitude);
+      temp = temp->next;
     }
   }
-  printf("&destination=%lf,%lf", temp->borne->latitude,
-         temp->borne->longitude);
+  printf("&destination=%lf,%lf", temp->borne->latitude, temp->borne->longitude);
   fprintf(f, "&destination=%lf,%lf", temp->borne->latitude,
           temp->borne->longitude);
 
   printf("&mode=driving&units=metric\n");
-  /* fprintf(f, "&mode=driving&units=metric\n"); */
+  fprintf(f, "&mode=driving&units=metric\n");
   fclose(f);
 }
 
@@ -185,7 +185,7 @@ void borne_list_savePathInPythonListFormat(borne_list *list, char *filename) {
   }
   fprintf(f, "]\n");
   fclose(f);
-} */
+}
 
 // Saves the bornes horaires_pdc in responses_memory.txt
 void borne_list_saveHorairesPdcInPythonListFormat(borne_list *list,

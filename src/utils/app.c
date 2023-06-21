@@ -19,10 +19,18 @@ int main(int argc, char *argv[]) {
     line_array *file4 = line_array_create(MAX_LINES_BORNES, 4);
     csvParser(file_path4, 1, file4);
     borne_list *list_borne = borne_list_create();
+
     // import the data to a bornes_list
     borne_list_dataImporter(file4, list_borne);
     line_array_destroy(file4);
 
+    char *file_path5 = "response_pdc.txt";
+    line_array *file5 = line_array_create(MAX_LINES_BORNES, 1000);
+    parser_pdcList(file_path5, file5);
+    printf("yes \n");
+    borne_list_memoryImporter(file5, list_borne);
+    printf("double yes\n");
+    line_array_destroy(file5);
     // importing the cars from Vehicules.csv
     char *file_path2 = "data/Vehicules.csv";
     line_array *file2 = line_array_create(MAX_LINES_CARS, 3);
@@ -64,7 +72,7 @@ int main(int argc, char *argv[]) {
       horaire_list_destroy(pathTime);
     }
     borne_list_saveHorairesPdcInPythonListFormat(list_borne,
-                                                   "response_pdc.txt");
+                                                 "response_pdc.txt");
     borne_list_destroy(list_borne);
     car_list_destroy(list_car);
   } else if (argc == 8) {
@@ -82,6 +90,13 @@ int main(int argc, char *argv[]) {
     line_array *file4 = line_array_create(MAX_LINES_BORNES, 4);
     csvParser(file_path4, 1, file4);
     borne_list *list_borne = borne_list_create();
+    
+    char *file_path5 = "response_pdc.txt";
+    line_array *file5 = line_array_create(MAX_LINES_BORNES, 200);
+    parser_pdcList(file_path5, file5);
+    borne_list_memoryImporter(file5, list_borne);
+    line_array_destroy(file5);
+
     // import the data to a bornes_list
     borne_list_dataImporter(file4, list_borne);
     line_array_destroy(file4);
