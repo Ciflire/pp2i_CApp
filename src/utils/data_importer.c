@@ -39,15 +39,16 @@ void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
   borne_list *bl = list_borne;
   for (int i = 0; i < line_array_getSize(pdcList); i++) {
     line *current_line = pdcList->line[i];
-    for (int j = 0; j < bl->borne->pdc; j++) {
+    for (int j = 0; j < bl->borne->pdc-1; j++) {
       char *pdc = current_line->info[j];
+      printf("pdc size : %lu\n", strlen(pdc));
       printf("pdc : %s\n", pdc);
       int k = 0;
       int l = 0;
       bool in_parenthesis = false;
       bool before_comma = true;
-      char *arr = malloc(sizeof(char) * strlen(pdc));
-      char *dep = malloc(sizeof(char) * strlen(pdc));
+      char *arr = malloc(sizeof(char) * (4*strlen(pdc)+1));
+      char *dep = malloc(sizeof(char) * (strlen(pdc)+1));
 
       while (pdc[k] != '\0') {
         if (pdc[k] == '[') {
