@@ -37,19 +37,18 @@ void car_list_dataImporter(line_array *file, car_list *list_car) {
 void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
   printf("In importer\n");
   borne_list *bl = list_borne;
-  char *arr = calloc(256,sizeof(char));
-  char *dep = calloc(256,sizeof(char));
+  char *arr = calloc(256, sizeof(char));
+  char *dep = calloc(256, sizeof(char));
   for (int i = 0; i < line_array_getSize(pdcList); i++) {
     line *current_line = pdcList->line[i];
     for (int j = 0; j < bl->borne->pdc - 1; j++) {
-      char *pdc = current_line->info[j];/* 
-      printf("pdc size : %lu\n", strlen(pdc));
-      printf("pdc : %s\n", pdc); */
+      char *pdc = current_line->info[j]; 
+      //  printf("pdc size : %lu\n", strlen(pdc));
+       printf("pdc : %s\n", pdc);
       int k = 0;
       int l = 0;
       bool in_parenthesis = false;
       bool before_comma = true;
-
       while (pdc[k] != '\0') {
         if (pdc[k] == '[') {
           k++;
@@ -71,13 +70,11 @@ void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
         } else if (pdc[k] == ',' && !in_parenthesis) {
           l = 0;
           before_comma = true;
-        }
-        else if (pdc[k] == ']') {
+        } else if (pdc[k] == ']') {
           k++;
         } else {
           if (before_comma) {
             arr[l] = pdc[k];
-            printf("arr : %s\n", arr);
           } else {
             dep[l] = pdc[k];
           }
