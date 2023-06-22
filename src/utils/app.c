@@ -3,8 +3,10 @@
 #include "../include/data_importer.h"
 #include "../include/pathfinding.h"
 #include <stdlib.h>
+#include "../include/timer.h"
 
 int main(int argc, char *argv[]) {
+  timer_start();
   // check if arguments are numberOfCarSimulated and seed
   if (argc == 3) {
     int nbSimu = atoi(argv[1]);
@@ -25,10 +27,10 @@ int main(int argc, char *argv[]) {
     line_array_destroy(file4);
 
     char *file_path5 = "response_pdc.txt";
-    line_array *file5 = line_array_create(MAX_LINES_BORNES, 1600);
-    parser_pdcList(file_path5, file5);
+    line_array *file5 = line_array_create(65401, 1600);
+    parser_pdc(file_path5, file5);
     printf("yes \n");
-    borne_list_memoryImporter(file5, list_borne);
+    borne_list_memImport(file5, list_borne);
     printf("double yes\n");
     line_array_destroy(file5);
     // importing the cars from Vehicules.csv
@@ -75,6 +77,8 @@ int main(int argc, char *argv[]) {
                                                  "response_pdc.txt");
     borne_list_destroy(list_borne);
     car_list_destroy(list_car);
+    timer_stop();
+    timer_print();
   } else if (argc == 8) {
     int car_id = atoi(argv[1]);
     int id_origin = atoi(argv[2]);
@@ -90,13 +94,6 @@ int main(int argc, char *argv[]) {
     line_array *file4 = line_array_create(MAX_LINES_BORNES, 4);
     csvParser(file_path4, 1, file4);
     borne_list *list_borne = borne_list_create();
-    
-    char *file_path5 = "response_pdc.txt";
-    line_array *file5 = line_array_create(MAX_LINES_BORNES, 200);
-    parser_pdcList(file_path5, file5);
-    borne_list_memoryImporter(file5, list_borne);
-    line_array_destroy(file5);
-
     // import the data to a bornes_list
     borne_list_dataImporter(file4, list_borne);
     line_array_destroy(file4);

@@ -9,4 +9,6 @@ void csvParser(char *path, int linesToSkip, line_array *file);
 
 void parser_pdcList(char *path, line_array *file);
 
+void parser_pdc(char * path, line_array * file);
+
 #endif

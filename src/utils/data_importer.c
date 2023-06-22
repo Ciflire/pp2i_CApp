@@ -1,4 +1,5 @@
 #include "../include/data_importer.h"
+#include <stdlib.h>
 #include <string.h>
 
 // Import the data from a line_array struct to a borne_list struct
@@ -34,7 +35,7 @@ void car_list_dataImporter(line_array *file, car_list *list_car) {
   }
 }
 
-void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
+/* void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
   printf("In importer\n");
   borne_list *bl = list_borne;
   char *arr = calloc(256, sizeof(char));
@@ -42,9 +43,9 @@ void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
   for (int i = 0; i < line_array_getSize(pdcList); i++) {
     line *current_line = pdcList->line[i];
     for (int j = 0; j < bl->borne->pdc - 1; j++) {
-      char *pdc = current_line->info[j]; 
+      char *pdc = current_line->info[j];
       //  printf("pdc size : %lu\n", strlen(pdc));
-       printf("pdc : %s\n", pdc);
+      printf("pdc : %s\n", pdc);
       int k = 0;
       int l = 0;
       bool in_parenthesis = false;
@@ -83,5 +84,26 @@ void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
         k++;
       }
     }
+  }
+}
+ */
+void borne_list_memImport(line_array *file, borne_list *list_borne) {
+  int num_line = 0;
+  printf("in mem import\n");
+  borne_list *bl = list_borne;
+  for (int i = 0; i < borne_list_length(list_borne); i++) {
+    line *current_line = file->line[num_line]; // get the current line number i
+    int nb_pdc = bl->borne->pdc;
+    for (int j = 0; j < nb_pdc; j++) {
+      if (strcmp((current_line->info[2 * j]), "")) {
+        horaire_list_insert(
+            bl->borne->horairePdc[j],
+            horaire_createWithValues(
+                strtol(current_line->info[2 * j], NULL, 10),
+                strtol(current_line->info[2 * j + 1], NULL, 10)));
+        num_line++;
+      }
+    }
+    bl = list_borne->next;
   }
 }

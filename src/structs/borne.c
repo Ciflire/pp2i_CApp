@@ -10,12 +10,9 @@ borne *borne_create(int id, int pdc, int power, double latitude,
   b->power = power;
   b->latitude = latitude;
   b->longitude = longitude;
-  b->horairePdc = calloc(pdc, sizeof(horaire_list));
+  b->horairePdc = malloc(pdc * sizeof(horaire_list));
   for (int i = 0; i < pdc; i++) {
     b->horairePdc[i] = horaire_list_create();
-    if (id==1761){
-      horaire_list_print(b->horairePdc[i]);
-    }
   }
   return b;
 }

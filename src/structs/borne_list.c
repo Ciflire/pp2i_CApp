@@ -30,7 +30,7 @@ void borne_list_destroy(borne_list *list) {
         borne_list_getBorneById(temp, 1761)->horairePdc[0]);
     printf("yes\n"); */
     temp = temp->next;
-    horaire_list_print(temp->prev->borne->horairePdc[0]);
+    // horaire_list_print(temp->prev->borne->horairePdc[0]);
     borne_destroy(temp->prev->borne);
     free(temp->prev);
   }
@@ -194,11 +194,7 @@ void borne_list_saveHorairesPdcInPythonListFormat(borne_list *list,
   borne_list *temp = list;
   for (int i = 0; i < borne_list_length(list); i++) {
     borne *b = temp->borne;
-    fprintf(f, "[");
     for (int j = 0; j < b->pdc; j++) {
-      if (j != 0) {
-        fprintf(f, ",");
-      }
       horaire_list *h = b->horairePdc[j];
       fprintf(f, "[");
       for (int k = 0; k < horaire_list_length(b->horairePdc[j]); k++) {
@@ -208,9 +204,8 @@ void borne_list_saveHorairesPdcInPythonListFormat(borne_list *list,
         fprintf(f, "(%d,%d)", h->horaire->arrivalTime,
                 h->horaire->departureTime);
       }
-      fprintf(f, "]");
+      fprintf(f, "]\n");
     }
-    fprintf(f, "]\n");
     temp = temp->next;
   }
   fclose(f);

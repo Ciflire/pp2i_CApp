@@ -80,6 +80,7 @@ void parser_pdcList(char *path, line_array *file) {
         // if we read a comma it mean we increment the column
       } else if (c == ',' && !inBrackets && inBigBrackets) {
         file->line[indLigne]->info[indCol][indChar] = '\0';
+        // printf("%s\n", file->line[indLigne]->info[indCol]);
         indCol++;
         indChar = 0;
         // if we read a character we add it to the current column
@@ -88,11 +89,54 @@ void parser_pdcList(char *path, line_array *file) {
         indChar++;
       }
     }
+    line_array_print(file);
     fclose(f);
     return;
   }
 }
-/* 
+
+void parser_pdc(char *path, line_array *file) {
+  if ((fopen(path, "r"))) {
+    int indLigne = 0;
+    int indCol = 0;
+    int indChar = 0;
+    bool inBrackets = false;
+    bool inParenthesis = false;
+    char c;
+    FILE *f = fopen(path, "r");
+    while ((c = fgetc(f)) != EOF) {
+      if (c == '\n') {
+        indLigne++;
+        indCol = 0;
+        indChar = 0;
+        inBrackets = false;
+        inParenthesis = false;
+      } else if (c == '[' && !inBrackets) {
+        inBrackets = true;
+      } else if (c == '(' && inBrackets && !inParenthesis) {
+        inParenthesis = true;
+      } else if (c == ',' && inParenthesis) {
+        file->line[indLigne]->info[indCol][indChar] = '\0';
+        indCol++;
+        indChar = 0;
+      } else if (c == ',' && !inParenthesis && inBrackets) {
+        inParenthesis = false;
+      } else if (c == ')' && inBrackets && inParenthesis ) {
+        inParenthesis = false;
+        file->line[indLigne]->info[indCol][indChar] = '\0';
+        indCol++;
+        indChar = 0;
+      } else if (c == ']') {
+        inBrackets = false;
+      } else {
+        file->line[indLigne]->info[indCol][indChar] = c;
+      }
+    }
+    fclose(f);
+  }
+}
+
+/*
 void parser_pdcList2(char *path, line_array *file) {
   int indLigne = 0;
   int indCol = 0;
