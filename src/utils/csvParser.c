@@ -121,7 +121,7 @@ void parser_pdc(char *path, line_array *file) {
         indChar = 0;
       } else if (c == ',' && !inParenthesis && inBrackets) {
         inParenthesis = false;
-      } else if (c == ')' && inBrackets && inParenthesis ) {
+      } else if (c == ')' && inBrackets && inParenthesis) {
         inParenthesis = false;
         file->line[indLigne]->info[indCol][indChar] = '\0';
         indCol++;
@@ -136,37 +136,21 @@ void parser_pdc(char *path, line_array *file) {
   }
 }
 
-/*
-void parser_pdcList2(char *path, line_array *file) {
-  int indLigne = 0;
-  int indCol = 0;
-  int indChar = 0;
-  bool inBrackets = false;
-  bool inBigBracket = false;
-  bool before = true;
-  char *word = malloc(sizeof(char) * 1000);
+int get_max_pdc_number(char *path) {
+  FILE *file = fopen(path, "r");
   char c;
-  FILE *f = fopen(path, "r");
-  while ((c = fgetc(f)) != EOF) {
+  char *number = malloc(10 * sizeof(char *));
+  int i = 0;
+  while ((c = fgetc(file)) != EOF) {
     if (c == '\n') {
-      file->line[indLigne]->info[indCol][indChar] = '\0';
-      indLigne++;
-      indChar = 0;
-      indCol = 0;
-    } else if (c == '[' && indCol != 0) {
-      inBrackets = true;
-    } else if (c == '[' && indCol == 0) {
-      inBigBracket = true;
-    } else if (c == ',' && inBrackets) {
-      before = false;
-    } else if (c == ']' && inBigBracket) {
-      word[indChar] = '\0';
-      inBrackets = false;
-      file->line[indLigne]->info[indCol] = word;
-    } else if (c == ',' && !inBrackets) {
-    } else if (c == ']' && !inBrackets) {
-      inBigBracket = false;
-    } else
-      ()
+      number[i]='\0';
+      return atoi(number);
+      
+    }
+    else {
+      number[i]=c;
+    }
+    i++;
   }
-} */
+  return 0;
+}

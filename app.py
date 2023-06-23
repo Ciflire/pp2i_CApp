@@ -43,9 +43,9 @@ def search():
 @app.route('/search/<departure>/<arrival>/<car>/<heure_depart>/<max_charging_time>/<max_waiting_time>/<battery_minimum>')
 def search_result(departure, arrival, car, heure_depart, max_charging_time, max_waiting_time, battery_minimum):
     os.system("./bin/app " + car +" "+departure+" "+heure_depart+" "+arrival+" "+battery_minimum+" "+max_charging_time+" "+max_waiting_time)
-    link = read_response_file("response_link.txt")
-    list_borne = read_data_file("response_borne.txt")
-    list_horaires = read_data_file("response_horaires.txt")
+    link = read_response_file("data/response_link.txt")
+    list_borne = read_data_file("data/response_borne.txt")
+    list_horaires = read_data_file("data/response_horaires.txt")
     return render_template('search.html', departure=departure, arrival=arrival, car=car, heure_depart=heure_depart, max_charging_time=max_charging_time, max_waiting_time=max_waiting_time, battery_minimum=battery_minimum, link=link, list_borne=list_borne, list_horaires=list_horaires)
 
 @app.route('/simulation', methods=['GET'])
@@ -66,8 +66,29 @@ def simul_result(nb_cars, seed):
     
 @app.route('/reset', methods=['GET'])
 def reset():
-    f = open("response_link.txt","w")
+    #reset the link data file
+    f = open("data/response_link.txt","w")
     f.write("")
+    f.close()
+    #reset the horaires data file
+    f = open("data/response_horaires.txt","w")
+    f.write("")
+    f.close()
+    #reset the borne data file
+    f = open("data/response_borne.txt","w")
+    f.write("")
+    f.close()
+    #reset the pdc data file
+    f = open("data/response_pdc.txt","w")
+    reset=""
+    for i in range (64501) :
+        reset+="[]\n"
+    print(reset)
+    f.write(reset)
+    f.close()
+    #reset the max pdc counter
+    f = open("data/nb_max_pdc.txt","w")
+    f.write("0\n")
     f.close()
     return redirect('/home')
 

@@ -11,4 +11,6 @@ void parser_pdcList(char *path, line_array *file);
 
 void parser_pdc(char * path, line_array * file);
 
+int get_max_pdc_number(char *path);
+
 #endif
