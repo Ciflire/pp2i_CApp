@@ -1,1 +1,0 @@
-https://www.google.com/maps/embed/v1/directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=48.048000,-4.650000&destination=48.469000,-4.646000&mode=driving&units=metric

@@ -105,7 +105,6 @@ def reset():
     reset = ""
     for i in range(64501):
         reset += "[]\n"
-    print(reset)
     f.write(reset)
     f.close()
     # reset the max pdc counter
