@@ -6,6 +6,12 @@ import os
 from random import *
 app = Flask(__name__)
 
+f = open("data/Vehicules.csv","r")
+list = f.read().split("\n")
+l=[]
+for elmnt in list[:-1] :
+    l.append(elmnt.split(",")[0])
+f.close()
 
 # read the file path and return the string stored in the fist line
 def read_response_file(path):
@@ -30,7 +36,7 @@ def index():
 
 @app.route('/home')
 def home():
-    return render_template('home.html')
+    return render_template('home.html',cars=l)
 
 
 @app.route('/search', methods=['POST'])
@@ -39,6 +45,10 @@ def search():
         departure = request.form['departure']
         arrival = request.form['arrival']
         car = request.form['car']
+        for i in range(len(l)) :
+            if l[i] == car :
+                car = str(i+1)
+                break
         heure_depart = request.form['heure_depart']
         max_charging_time = request.form['max_charging_time']
         max_waiting_time = request.form['max_waiting_time']

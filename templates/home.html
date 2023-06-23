@@ -15,14 +15,21 @@
                 <label for="battery_minimum">Batterie minimum (en %) :</label>
             </div>
             
-            <input type="number" placeholder="Borne de départ" name="departure" min="1" max="3858">
-            <input type="number" placeholder="Borne d'arrivée" name="arrival" min="1" max="3858">
-            <input type="number" placeholder="Type de voiture" name="car" min="1" max="287">
-            <!-- <datalist id="voiturelist">
-                {% for car in range(26) %}
-                    <option value="{{ car }}">
+            <input type="number" placeholder="Borne de départ" name="departure" min="1" max="14760">
+            <input type="number" placeholder="Borne d'arrivée" name="arrival" min="1" max="14760">
+            <!-- <input type="number" placeholder="Type de voiture" name="car" min="1" max="287"> -->
+            <input placeholder="Entrez votre voiture" list="cars_list" name="car">
+            <datalist id="cars_list">
+                {% for car in cars%}
+                    <option value="{{car}}"></option>
                 {% endfor %}
-            </datalist> -->
+            </datalist>
+            <!-- <select name="car">
+                <option selected disabled value="0">Entrez votre voiture</option>
+                {% for i in range(cars|length)%}
+                    <option value="{{i+1}}">{{cars[i]}}</option>
+                {% endfor %}
+            </select> -->
             <input type="number" placeholder="Heure du départ" name="heure_depart" min="0" max="3600" value = "0">
             <input type="number" placeholder="Temps de charge max (en minutes)" min="0" max="9999" value = "9999" name="max_charging_time">
             <input type="number" placeholder="Temps d'attente max (en minutes)" min="0" max="9999" value = "9999" name="max_waiting_time">

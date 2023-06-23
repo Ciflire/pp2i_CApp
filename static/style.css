@@ -222,6 +222,17 @@ input{
     font-weight: 500;
 }
 
+select{
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 form{
     margin: 20px;
     padding: 20px;
@@ -230,7 +241,6 @@ form{
 }
 form > div{
     display: flex;
-
     margin-bottom: 20px;
 }
 form > div > label{
