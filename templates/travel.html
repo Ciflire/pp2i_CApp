@@ -1,0 +1,44 @@
+
+<div class="travel">
+  <div class="gray-bar">
+    <div class="table">
+    <div class="travel-icon"></div>
+    <div class="row fluid">Partir de {{ list_borne[0] }} à
+      {% if list_horaires[0][0] < 60 %}
+        {{ list_horaires[0][0] }} min.
+      {% else %}
+        {{ list_horaires[0][0] // 60 }} h {{ list_horaires[0][0] % 60 }} min.
+      {% endif %}
+    </div>
+  </div>
+  
+  {% for i in range (1, list_borne|length - 2) %}
+  <div class="table">
+    <div class="travel-icon"></div>
+    <div class="row fluid">
+      <p>Etape à {{ list_borne[i] }}</p>
+      <p>Chargement pendant
+        {% if (list_horaires[i][1] - list_horaires[i][0]) < 60 %}
+          {{ list_horaires[i][1] - list_horaires[i][0] }} min.
+        {% else %}
+          {{ (list_horaires[i][1] - list_horaires[i][0]) // 60 }} h {{ (list_horaires[i][1] - list_horaires[i][0]) % 60 }} min.
+        {% endif %}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="table">
+    <div class="end-icon"></div>
+    <div class="row fluid">Vous arriverez à {{ list_borne[list_borne|length - 1] }} à
+      {% if list_horaires[list_borne|length - 1][0] < 60 %}
+        {{ list_horaires[list_borne|length - 1][0] }} min.
+      {% else %}
+        {{ list_horaires[list_borne|length - 1][0] // 60 }} h {{ list_horaires[list_borne|length - 1][0] % 60 }} min.
+      {% endif %}
+    </div>
+  </div>
+</div>
+</div>
+
+
+

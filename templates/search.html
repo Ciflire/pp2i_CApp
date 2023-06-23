@@ -2,9 +2,8 @@
 
 <div>
     {% block body %}
-    test
     <!-- Uncomment to start rendering the map -->
-    <div class="test">
+    <!-- <div class="test">
         <iframe
         width="1450"
         height="850"
@@ -13,13 +12,15 @@
         src="{{link}}"
         allowfullscreen>
       </iframe>
+    </div> -->
+    <div class="layout">
+        <div class="left">
+            <a class="title">Votre itinéraire</a>
+            {% include 'travel.html' %}
+        </div>
+        <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11407104.56605654!2d-8.485296465585453!3d45.73234543725318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47effe3bbfecc2cf%3A0x89de9ac87f66f40c!2sLa%20Fistini%C3%A8re!5e0!3m2!1sfr!2sfr!4v1686843721510!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
     </div>
-    {% for i in range (list_borne|length) %}
-    <div class="borne">
-        <p>Borne : {{list_borne[i]}} </p>
-        Heure_d'arrivée : {{list_horaires[i][0]}} 
-        Heure_de_départ : {{list_horaires[i][1]}}
-    </div>
-    {% endfor %}
     {% endblock %}
 </div>

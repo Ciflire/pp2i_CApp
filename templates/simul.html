@@ -3,13 +3,17 @@
 <div>
     {% block body %}
 
+    <a class="main-title">Simuler des trajets</a>
     <div class="search-container">
         <form action="/simul" method="POST">
-            <input type="number" placeholder="Nombre de voiture" name="nb_cars" min="1" width="100">
+            <div>
+                <input type="number" placeholder="Nombre de voiture" name="nb_cars" min="1" width="100">
+            </div>
+            
             <button type="submit" name="start_a_path">Simuler</button>
         </form>
     </div>
-    <div>
+    <div class="result">
         {% if nb_cars != 0 %}
         GENERATED {{nb_cars}} CARS
         {% endif %}
