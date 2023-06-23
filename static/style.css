@@ -279,9 +279,10 @@ div.result{
     padding: 5px;
     margin: 5px;
     width: 60%;
-    height: 60px;
+    height: fit-content;
     font-size: 25px;
     font-weight: 500;
+    padding: 20px;
 }
 
 .phone {
