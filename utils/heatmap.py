@@ -7,6 +7,7 @@ def heatmap():
 
     with open('data/response_pdc.txt', 'r') as f:
         data = f.readlines()
+        print(len(data))
 
     usage = np.zeros((len(a), 300))
 
@@ -15,6 +16,8 @@ def heatmap():
     for pdc in a[:, 2]:
         i += 1
         for _ in range(int(pdc)):
+            if j >= len(data):
+                break
             liste = eval(data[j][:-1])
             chemin = np.array(liste)
             j += 1
