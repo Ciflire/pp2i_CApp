@@ -28,6 +28,14 @@
     "csvparser.h": "c",
     "*.tcc": "c",
     "algorithm": "c",
-    "functional": "c"
+    "functional": "c",
+    "pathfinding.h": "c",
+    "borne_list.h": "c",
+    "horaire_list.h": "c",
+    "car_list.h": "c",
+    "car.h": "c",
+    "stdbool.h": "c",
+    "math.h": "c",
+    "stdio.h": "c"
   }
 }
