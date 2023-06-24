@@ -56,5 +56,7 @@ void borne_list_printPathMapsIntegrator(borne_list *list);
 
 void borne_list_savePathInPythonListFormat(borne_list *list, char *filename);
 
+void borne_list_saveHorairesPdcInPythonListFormat(borne_list *list,
+                                                  char *filename);
 
 #endif

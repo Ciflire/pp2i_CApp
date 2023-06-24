@@ -1,4 +1,6 @@
 #include "../include/data_importer.h"
+#include <stdlib.h>
+#include <string.h>
 
 // Import the data from a line_array struct to a borne_list struct
 void borne_list_dataImporter(line_array *file, borne_list *list_borne) {
@@ -30,5 +32,78 @@ void car_list_dataImporter(line_array *file, car_list *list_car) {
                                          atoi(current_line->info[1]),
                                          atof(current_line->info[2])));
     id++;
+  }
+}
+
+/* void borne_list_memoryImporter(line_array *pdcList, borne_list *list_borne) {
+  printf("In importer\n");
+  borne_list *bl = list_borne;
+  char *arr = calloc(256, sizeof(char));
+  char *dep = calloc(256, sizeof(char));
+  for (int i = 0; i < line_array_getSize(pdcList); i++) {
+    line *current_line = pdcList->line[i];
+    for (int j = 0; j < bl->borne->pdc - 1; j++) {
+      char *pdc = current_line->info[j];
+      //  printf("pdc size : %lu\n", strlen(pdc));
+      printf("pdc : %s\n", pdc);
+      int k = 0;
+      int l = 0;
+      bool in_parenthesis = false;
+      bool before_comma = true;
+      while (pdc[k] != '\0') {
+        if (pdc[k] == '[') {
+          k++;
+        } else if (pdc[k] == '(') {
+          in_parenthesis = true;
+          before_comma = true;
+        } else if (pdc[k] == ')') {
+          in_parenthesis = false;
+          dep[l] = '\0';
+          printf("arr : %s\n", arr);
+          printf("dep : %s\n", dep);
+          horaire_list_insert(bl->borne->horairePdc[j],
+                              horaire_createWithValues(atoi(arr), atoi(dep)));
+          l = 0;
+        } else if (pdc[k] == ',' && in_parenthesis) {
+          arr[l] = '\0';
+          l = 0;
+          before_comma = false;
+        } else if (pdc[k] == ',' && !in_parenthesis) {
+          l = 0;
+          before_comma = true;
+        } else if (pdc[k] == ']') {
+          k++;
+        } else {
+          if (before_comma) {
+            arr[l] = pdc[k];
+          } else {
+            dep[l] = pdc[k];
+          }
+          l++;
+        }
+        k++;
+      }
+    }
+  }
+}
+ */
+void borne_list_memImport(line_array *file, borne_list *list_borne) {
+  int num_line = 0;
+  borne_list *bl = list_borne;
+  for (int i = 0; i < borne_list_length(list_borne); i++) {
+    line *current_line = file->line[num_line]; // get the current line number i
+    int nb_pdc = bl->borne->pdc;
+    for (int j = 0; j < nb_pdc; j++) {
+      for (int k = 0; k < current_line->size; k += 2) {
+        if (!strcmp(current_line->info[k], "\0")) {
+          horaire_list_insert(bl->borne->horairePdc[j],
+                              horaire_createWithValues(
+                                  strtol(current_line->info[k], NULL, 10),
+                                  strtol(current_line->info[k + 1], NULL, 10)));
+          num_line++;
+        }
+      }
+    }
+    bl = list_borne->next;
   }
 }

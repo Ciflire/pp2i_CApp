@@ -6,7 +6,11 @@ bin/
 
 #ignores data folder
 data/adjacence.csv
-
+data/nb_max_pdc.txt
+data/response_horaires.txt
+data/response_link.txt
+data/response_pdc.txt
+data/usage.csv
 #ignores object files
 *.o
 #ignores executables

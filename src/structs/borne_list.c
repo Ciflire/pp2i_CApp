@@ -1,4 +1,5 @@
 #include "../include/borne_list.h"
+#include <stdio.h>
 
 // Creates a borne_list
 borne_list *borne_list_create(void) {
@@ -30,7 +31,7 @@ void borne_list_destroy(borne_list *list) {
         borne_list_getBorneById(temp, 1761)->horairePdc[0]);
     printf("yes\n"); */
     temp = temp->next;
-    horaire_list_print(temp->prev->borne->horairePdc[0]);
+    // horaire_list_print(temp->prev->borne->horairePdc[0]);
     borne_destroy(temp->prev->borne);
     free(temp->prev);
   }
@@ -93,9 +94,6 @@ borne *borne_list_getBorneById(borne_list *list, int id) {
   }
   borne_list *temp = list;
   for (int i = 0; i < borne_list_length(list); i++) {
-    if (id == 1576 && temp->borne->id >1500 && temp->borne->id<1600) {
-      printf("id : %d\n", temp->borne->id);
-    }
     if (temp->borne->id == id) {
       return borne_list_getBorne(temp);
     }
@@ -135,51 +133,87 @@ void borne_list_printPathLink(borne_list *list) {
 
 // Prints a url to print a path in Maps integrator
 void borne_list_printPathMapsIntegrator(borne_list *list) {
-  FILE *f = fopen("response_link.txt", "w");
+  FILE *f = fopen("data/response_link.txt", "w");
+  borne_list *temp = list;
+  borne_list_print(list);
   printf(
       "https://www.google.com/maps/embed/v1/"
       "directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=%lf,%lf",
-      list->borne->latitude, list->borne->longitude);
-  /* fprintf(
+      temp->borne->latitude, temp->borne->longitude);
+  fprintf(
       f,
       "https://www.google.com/maps/embed/v1/"
       "directions?key=AIzaSyAsCiKsNXq95zuQsLyf09ZcoxdQZPzTMbo&origin=%lf,%lf",
-      list->borne->latitude, list->borne->longitude); */
-  if (borne_list_length(list) == 2) {
-    printf("&destination=%lf,%lf", list->next->borne->latitude,
-           list->next->borne->longitude);
-    /* fprintf(f, "&destination=%lf,%lf", list->next->borne->latitude,
-            list->next->borne->longitude); */
-  } else {
+      temp->borne->latitude, temp->borne->longitude);
+  temp = temp->next;
+  if (borne_list_length(list) > 2) {
     printf("&waypoints=");
-    /* fprintf(f, "&waypoints="); */
-    borne_list *temp = list->next;
+    fprintf(f, "&waypoints=");
+
     for (int i = 0; i < borne_list_length(list) - 2; i++) {
       if (i != 0) {
         printf("|");
-        /* fprintf(f, "|"); */
+        fprintf(f, "|");
       }
       printf("%lf,%lf", temp->borne->latitude, temp->borne->longitude);
-      /* fprintf(f, "%lf,%lf", temp->borne->latitude, temp->borne->longitude);
-      temp = temp->next; */
+      fprintf(f, "%lf,%lf", temp->borne->latitude, temp->borne->longitude);
+      temp = temp->next;
     }
-    printf("&destination=%lf,%lf", list->next->borne->latitude,
-           list->next->borne->longitude);
-    /* fprintf(f, "&destination=%lf,%lf", list->next->borne->latitude,
-            list->next->borne->longitude); */
   }
+  printf("&destination=%lf,%lf", temp->borne->latitude, temp->borne->longitude);
+  fprintf(f, "&destination=%lf,%lf", temp->borne->latitude,
+          temp->borne->longitude);
+
   printf("&mode=driving&units=metric\n");
-  /* fprintf(f, "&mode=driving&units=metric\n"); */
+  fprintf(f, "&mode=driving&units=metric\n");
   fclose(f);
 }
 
-/* void borne_list_savePathInPythonListFormat(borne_list *list, char *filename)
-{ FILE *f = fopen(filename, "a"); fprintf(f, "["); borne_list *temp = list; for
-(int i = 0; i < borne_list_length(list); i++) { if (i != 0) { fprintf(f, ",");
+// Saves the path in response_borne.txt
+void borne_list_savePathInPythonListFormat(borne_list *list, char *filename) {
+  FILE *f = fopen(filename, "a");
+  fprintf(f, "[");
+  borne_list *temp = list;
+  for (int i = 0; i < borne_list_length(list); i++) {
+    if (i != 0) {
+      fprintf(f, ",");
     }
     fprintf(f, "%d", temp->borne->id);
     temp = temp->next;
   }
   fprintf(f, "]\n");
   fclose(f);
-} */
+}
+
+// Saves the bornes horaires_pdc in responses_memory.txt
+void borne_list_saveHorairesPdcInPythonListFormat(borne_list *list,
+                                                  char *filename) {
+  FILE *f = fopen(filename, "w");
+  borne_list *temp = list;
+  int best_k = 0;
+  for (int i = 0; i < borne_list_length(list); i++) {
+    borne *b = temp->borne;
+    for (int j = 0; j < b->pdc; j++) {
+      horaire_list *h = b->horairePdc[j];
+      fprintf(f, "[");
+      if (horaire_list_length(b->horairePdc[j]) > best_k) {
+        best_k = horaire_list_length(b->horairePdc[j]);
+      }
+      for (int k = 0; k < horaire_list_length(b->horairePdc[j]); k++) {
+        if (k != 0) {
+          fprintf(f, ",");
+        }
+        fprintf(f, "(%d,%d)", h->horaire->arrivalTime,
+                h->horaire->departureTime);
+        printf("(%d,%d)", h->horaire->arrivalTime, h->horaire->departureTime);
+        h = h->next;
+      }
+      fprintf(f, "]\n");
+    }
+    temp = temp->next;
+  }
+  fclose(f);
+  FILE *file_best = fopen("data/nb_max_pdc.txt", "w");
+  fprintf(file_best, "%d\n", 2 * best_k);
+  fclose(file_best);
+}

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+<div>
+    {% block body %}
+
+    <a class="main-title">Simuler des trajets</a>
+    <div class="search-container">
+        <form action="/simul" method="POST">
+            <div>
+                <input type="number" placeholder="Nombre de voiture" name="nb_cars" min="1" width="100">
+            </div>
+            
+            <button type="submit" name="start_a_path">Simuler</button>
+        </form>
+    </div>
+    {% if nb_cars != -1 %}
+    <div class="result">
+        {% if nb_cars != 0 %}
+        <a style="margin-bottom: 20px;">GENERATED {{nb_cars}} CARS</a>
+        {% endif %}
+        <img src="/static/images/bornes.png" width="800px">
+    </div>
+    {% endif %}
+    {% endblock %}
+</div>

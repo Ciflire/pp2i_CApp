@@ -3,8 +3,10 @@
 #include "../include/data_importer.h"
 #include "../include/pathfinding.h"
 #include <stdlib.h>
+#include "../include/timer.h"
 
 int main(int argc, char *argv[]) {
+  timer_start();
   // check if arguments are numberOfCarSimulated and seed
   if (argc == 3) {
     int nbSimu = atoi(argv[1]);
@@ -19,10 +21,16 @@ int main(int argc, char *argv[]) {
     line_array *file4 = line_array_create(MAX_LINES_BORNES, 4);
     csvParser(file_path4, 1, file4);
     borne_list *list_borne = borne_list_create();
+
     // import the data to a bornes_list
     borne_list_dataImporter(file4, list_borne);
     line_array_destroy(file4);
-
+    int max_numb_of_horaires_in_pdc= get_max_pdc_number("data/nb_max_pdc.txt");
+    char *file_path5 = "data/response_pdc.txt";
+    line_array *file5 = line_array_create(65401, max_numb_of_horaires_in_pdc);
+    parser_pdc(file_path5, file5);
+    borne_list_memImport(file5, list_borne);
+    line_array_destroy(file5);
     // importing the cars from Vehicules.csv
     char *file_path2 = "data/Vehicules.csv";
     line_array *file2 = line_array_create(MAX_LINES_CARS, 3);
@@ -55,18 +63,20 @@ int main(int argc, char *argv[]) {
           borne_list_getBorneById(list_borne, id_destination), path, pathTime,
           list_borne, max_time_waiting, max_time_charging, &actualTime);
       if (error == 0) {
-        borne_list_printPathLink(path);
-                 /*        borne_list_savePathInPythonListFormat(path,
-                    "response_borne.txt");
-                       horaire_list_saveHorairePathInPythonListFormat(pathTime,
-                                                                      "response_horaires.txt");
-                  */
+        // borne_list_printPathLink(path);
+        borne_list_savePathInPythonListFormat(path, "data/response_borne.txt");
+        horaire_list_saveHorairePathInPythonListFormat(pathTime,
+                                                       "data/response_horaires.txt");
       }
       free(path);
       horaire_list_destroy(pathTime);
     }
+    borne_list_saveHorairesPdcInPythonListFormat(list_borne,
+                                                 "data/response_pdc.txt");
     borne_list_destroy(list_borne);
     car_list_destroy(list_car);
+    timer_stop();
+    timer_print();
   } else if (argc == 8) {
     int car_id = atoi(argv[1]);
     int id_origin = atoi(argv[2]);
@@ -105,12 +115,12 @@ int main(int argc, char *argv[]) {
     int error = pathFinding(car, actual, dest, path, pathTime, list_borne,
                             max_time_waiting, max_time_charging, &actualTime);
     if (error == 0) {
-      borne_list_printPathLink(path);
-      /* borne_list_printPathMapsIntegrator(path);
-               borne_list_savePathInPythonListFormat(path,
-         "response_borne.txt"); horaire_list_saveHorairePathInPythonListFormat(
-                   pathTime, "response_horaires.txt");
-               */
+      borne_list_savePathInPythonListFormat(path, "data/response_borne.txt");
+      horaire_list_saveHorairePathInPythonListFormat(pathTime,
+                                                     "data/response_horaires.txt");
+      borne_list_saveHorairesPdcInPythonListFormat(list_borne,
+                                                   "data/response_pdc.txt");
+                                                   borne_list_printPathMapsIntegrator(path);
     }
     free(path);
     borne_list_destroy(list_borne);

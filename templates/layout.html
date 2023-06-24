@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/static/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <!-- CSS only -->
+    </head>
+    <body>
+        <!-- JavaScript Bundle with Popper -->
+        <!-- <nav class="navbar">
+            
+        </nav>-->
+        <nav class="desktop">
+            <nav class="content">
+                <ul class="pages"> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home"><img class="logo_accueil" width="40" height="40" src="/static/images/logo_electric_car.png" alt="Logo"></a>
+                        <a class="nav-link" href="/home">Home - Rechercher un trajet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/simulation">Simuler des trajets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reset">Réinitialiser les trajets enregistrés</a>
+                    </li>
+                </ul>
+            </nav>
+        </nav> 
+        <nav class="phone">
+            <nav class="content">
+                <ul class="pages"> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home"><img class="logo_accueil" width="40" height="40" src="/static/images/logo_electric_car.png" alt="Logo"></a>
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/simulation">Simulation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/reset">Réinitialiser</a>
+                    </li>
+                </ul>
+            </nav>
+        </nav> 
+
+
+
+
+        {% block body %}
+
+        {% endblock %}
+    </body>
+</html>

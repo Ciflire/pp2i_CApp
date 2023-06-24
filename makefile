@@ -1,6 +1,6 @@
 CC = clang
 #clang = compiler
-CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -Werror
+CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -Werror -g -O3 
 #Wall = all warnings
 #Wextra = extra warnings
 #pedantic = all warnings demanded by strict ISO C and ISO C++
@@ -8,7 +8,7 @@ CFLAGS := -Wall -Wextra -pedantic -fdiagnostics-color=always -g -Werror
 #Werror = treat all warnings as errors
 #O0 = no optimization
 #O2 = optimize even more
-LDFLAGS = -fsanitize=address -fsanitize=undefined
+LDFLAGS =  -fsanitize=undefined -lm #-fsanitize=address
 #fsanitize=address = enable address sanitizer
 #fsanitize=undefined = enable undefined behavior sanitizer
 
