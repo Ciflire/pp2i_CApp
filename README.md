@@ -41,6 +41,12 @@ make
 
 to build the project.
 
+Finally run the app.py file
+
+```bash
+python3 app.py
+```
+
 You can now run any executable including the tests. Some of them may present memory leaks, but the main application does not.
 
 
