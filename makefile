@@ -26,6 +26,7 @@ app.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 app : $(OBJ) app.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
 
+
 #Borne
 borne_test.o : $(wildcard src/*.c) $(wildcard src/include/*.h) $(wildcard src/test/*.c)
 	$(CC) $(CFLAGS) -c src/test/borne_test.c
