@@ -16,3 +16,4 @@ data/usage.csv
 #ignores executables
 *_test
 
+.direnv/

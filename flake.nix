@@ -10,16 +10,15 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       devShells.${system}.default =
-        pkgs.mkShell.override { stdenv = pkgs.clang15Stdenv; } {
+        pkgs.mkShell.override { stdenv = pkgs.clangStdenv; } {
           packages = [
-            pkgs.gdb
-
-            # Choose the build tools that you need
             pkgs.gnumake
-            pkgs.llvmPackages_9.clang-unwrapped
+            pkgs.clang
             pkgs.rocmPackages.llvm.lldb
-
+            pkgs.rocmPackages.llvm.clang-tools-extra
           ];
+
+          LIBRARY_PATH = "${pkgs.glibc}/include";
         };
 
     };
